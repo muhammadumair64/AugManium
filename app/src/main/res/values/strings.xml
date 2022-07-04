@@ -1,3 +1,10 @@
-<resources>
-    <string name="app_name">AugManium</string>
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">EBuddy</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+<string name="CategoryText">Believe in yourself, take on your challenges, dig \n within yourself to conquer fears. </string>
+<string name="scanDis">Please wait , scanning your face for\n identification  </string>
+<string name="signInText">Sign up to get started and experience \ngreat shopping deals</string>
+<string name="welcomeText">Introducing Next Gen Product \n Experiance</string>
 </resources>

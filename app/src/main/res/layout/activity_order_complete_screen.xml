@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+  </data>
+
+  <RelativeLayout
+      class="androidx.appcompat.app.AlertController$RecycleListView"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:paddingTop="@dimen/_20sdp"
+      android:paddingStart="@dimen/_20sdp"
+      android:paddingEnd="@dimen/_20sdp"
+      tools:context=".checkout.OrderAcceptedScreen">
+
+    <RelativeLayout
+        android:id="@+id/toplayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+      <ImageView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerVertical="true"
+          android:background="@drawable/ic_back" />
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="@dimen/_30sdp"
+          android:layout_centerInParent="true"
+          android:fontFamily="@font/montserrat_bold"
+          android:paddingTop="@dimen/_4sdp"
+          android:paddingBottom="@dimen/_8sdp"
+          android:text="Checkout"
+          android:textColor="@color/Primary"
+          android:textSize="@dimen/_17sdp" />
+
+
+      <ImageView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentRight="true"
+          android:layout_centerVertical="true"
+          android:src="@drawable/ic_icons_search_gray" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@id/toplayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/_20sdp">
+
+      <com.airbnb.lottie.LottieAnimationView
+          android:layout_centerHorizontal="true"
+          android:id="@+id/lottie_layer_name"
+          android:layout_width="@dimen/_200sdp"
+          android:layout_height="@dimen/_200sdp"
+          android:background="@drawable/ic_bg"
+          app:lottie_autoPlay="true"
+          app:lottie_loop="true"
+          />
+<!--      app:lottie_rawRes="@raw/orderdone"-->
+      <TextView
+          android:fontFamily="@font/montserrat_semibold"
+          android:id="@+id/order_accepted"
+          android:layout_marginTop="@dimen/_25sdp"
+          android:layout_below="@id/lottie_layer_name"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Order Accepted"
+          android:textColor="@color/secondary"
+          android:textStyle="bold"
+          android:textSize="@dimen/_21sdp"
+          android:gravity="center" />
+
+      <TextView
+          android:id="@+id/order_number"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/order_accepted"
+          android:fontFamily="@font/montserrat_semibold"
+          android:gravity="center"
+          android:padding="@dimen/_10sdp"
+          android:text="Your Order No. #123-456 has been placed"
+          android:textColor="@color/Primary"
+          android:textSize="@dimen/_16sdp"
+          android:textStyle="bold" />
+
+      <RelativeLayout
+          android:layout_marginTop="@dimen/_30sdp"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/order_number"
+          >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_37sdp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/item_botton" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="Track order"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15sdp" />
+      </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+  </RelativeLayout>
+</layout>

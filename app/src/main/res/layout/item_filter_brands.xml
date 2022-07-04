@@ -1,0 +1,26 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+
+    </data>
+    <RelativeLayout
+        android:id="@+id/brandsLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{}"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="@dimen/_18sdp"/>
+        <ImageView
+            android:id="@+id/checkedIcon"
+            android:layout_width="@dimen/_17sdp"
+            android:layout_height="@dimen/_17sdp"
+            android:src="@drawable/ic_circle_tick"
+            android:layout_alignParentRight="true"
+            android:visibility="invisible"
+            />
+
+    </RelativeLayout>
+</layout>

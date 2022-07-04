@@ -1,22 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.augmanium">
+    package="com.example.augmanium" >
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AugManium">
+        android:theme="@style/Theme.AugManium" >
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".OrderCompleteScreen"
+            android:exported="false" />
+        <activity
+            android:name=".CheckoutSummary"
+            android:exported="false" />
+        <activity
+            android:name=".CheckOutPayment"
+            android:exported="false" />
+        <activity
+            android:name=".afterAuth.checkOutFlow.CheckOutAddress"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".afterAuth.category.AllCategories"
+            android:exported="false" />
+        <activity
+            android:name=".afterAuth.category.SpecificCategoryProducts"
+            android:exported="false" />
+        <activity
+            android:name=".afterAuth.category.categoryScreen"
+            android:exported="false" />
+        <activity
+            android:name=".afterAuth.search.SearchResult"
+            android:exported="false" />
+        <activity
+            android:name=".afterAuth.filter.FilterScreen"
+            android:exported="false" />
+        <activity
+            android:name=".beforeAuth.FinishScan"
+            android:exported="false" />
+        <activity
+            android:name=".beforeAuth.ScanFace"
+            android:exported="true" />
+        <activity
+            android:name=".CreateNewPassword"
+            android:exported="false" />
+        <activity
+            android:name=".beforeAuth.ForgotPassword"
+            android:exported="false" />
+        <activity
+            android:name=".beforeAuth.SignUp"
+            android:exported="false" />
+        <activity
+            android:name=".beforeAuth.signin.signIn"
+            android:exported="false" />
+        <activity
+            android:name=".beforeAuth.SplashScreen"
+            android:exported="true"
+            android:noHistory="true" >
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".afterAuth.MainActivity"
+            android:exported="true" >
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
     </application>
 
