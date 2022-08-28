@@ -15,4 +15,6 @@
     <color name="yellowish">#FFCC00</color>
     <color name="layoutbackground">#EAEAEA</color>
     <color name="unselected">#BEBEBE</color>
+    <color name="light_gray">#F1F0F2</color>
+    <color name="orange">#FF3D00</color>
 </resources>

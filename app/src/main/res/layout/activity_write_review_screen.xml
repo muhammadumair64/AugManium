@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WriteReviewScreen"
+    android:background="@color/secondary"
+    >
+
+    <RelativeLayout
+        android:id="@+id/toplayout"
+        android:paddingStart="@dimen/_12sdp"
+        android:paddingEnd="@dimen/_12sdp"
+        android:paddingTop="@dimen/_12sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:paddingTop="@dimen/_8sdp"
+            android:paddingEnd="@dimen/_8sdp"
+            android:paddingBottom="@dimen/_8sdp"
+            android:src="@drawable/ic_icon_left_white" />
+
+        <TextView
+            android:id="@+id/CategoryName"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/montserrat_bold"
+            android:paddingTop="@dimen/_4sdp"
+            android:paddingBottom="@dimen/_8sdp"
+            android:text="Women"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_18sdp" />
+
+        <ImageView
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_alignParentRight="true"
+            android:paddingTop="@dimen/_8sdp"
+            android:paddingEnd="@dimen/_8sdp"
+            android:paddingBottom="@dimen/_8sdp"
+            android:src="@drawable/ic_icon_heart_white" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/productLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toplayout"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginBottom="@dimen/_40sdp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/productName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:gravity="center_vertical"
+            android:text="Gucci Sunglasses"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/productPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:gravity="center_vertical"
+            android:text="40$"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/productLayout"
+        android:background="@drawable/item_white_round_corner_bg">
+
+
+        <RelativeLayout
+            android:id="@+id/add_to_cart_layout"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_25sdp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_minus" />
+
+
+            <RelativeLayout
+                android:layout_width="@dimen/_130sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_6sdp"
+                android:layout_weight="1"
+                android:background="@drawable/item_botton">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:text="ADD TO CART"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_13sdp" />
+            </RelativeLayout>
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_button_add_red" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_below="@id/add_to_cart_layout"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:weightSum="2">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_6sdp"
+
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:text="DETAILS"
+                    android:textColor="@color/light_gray"
+                    android:textSize="@dimen/_12sdp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_6sdp"
+                android:layout_weight="1"
+                android:background="@drawable/item_gray_stroke_btn">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:text="REVIEWS"
+                    android:textColor="@color/Primary"
+                    android:textSize="@dimen/_12sdp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/review"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tabs"
+            android:layout_margin="@dimen/_25sdp">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/circular_Image_View"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:src="@color/secondary" />
+
+
+            <RelativeLayout
+                android:id="@+id/upper_layer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_toRightOf="@id/circular_Image_View"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:gravity="center_vertical"
+                    android:text="Andre"
+                    android:textColor="@color/secondary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/name"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:gravity="center_vertical"
+                    android:text="Wonderful glasses, perfect gift for my girl for our anniversary!"
+                    android:textColor="@color/secondary"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+
+            <!--            <RatingBar-->
+            <!--                android:id="@+id/ratingbarproduct1"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="@dimen/_110sdp"-->
+            <!--                android:backgroundTint="@null"-->
+            <!--                android:isIndicator="true"-->
+            <!--                android:max="5"-->
+            <!--                android:numStars="5"-->
+            <!--                android:rating="3"-->
+            <!--                android:scaleX=".5"-->
+            <!--                android:scaleY=".5"-->
+            <!--                android:transformPivotX="@dimen/_15sdp"-->
+            <!--                android:transformPivotY="@dimen/_5sdp" />-->
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:id="@+id/write_review"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/review"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:orientation="vertical">
+
+
+            <EditText
+                android:id="@+id/edit_review"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:background="@color/white"
+                android:fontFamily="@font/montserrat_regular"
+                android:gravity="center_vertical"
+                android:hint="Tell us your experience"
+                android:textSize="@dimen/_13sdp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@drawable/ic_field_password" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_below="@id/write_review"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_6sdp"
+            android:layout_weight="1"
+            android:background="@drawable/item_botton">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="SUBMIT"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13sdp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>
