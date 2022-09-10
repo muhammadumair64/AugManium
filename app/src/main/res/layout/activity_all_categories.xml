@@ -1,50 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:paddingTop="@dimen/_20sdp"
-    tools:context=".afterAuth.category.AllCategories">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
     <RelativeLayout
-        android:paddingStart="@dimen/_20sdp"
-        android:paddingEnd="@dimen/_20sdp"
-        android:id="@+id/toplayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_menu" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/_30sdp"
-            android:layout_centerInParent="true"
-            android:fontFamily="@font/montserrat_bold"
-            android:paddingTop="@dimen/_4sdp"
-            android:text="Category"
-            android:textColor="@color/Primary"
-            android:textSize="@dimen/_17sdp" />
-
-
-        <ImageView
-            android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_icons_search_gray"
-            android:layout_alignParentRight="true"
-            />
-
-
-    </RelativeLayout>
-    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toplayout"
-        android:layout_marginTop="@dimen/_20sdp"
-/>
-</RelativeLayout>
+        android:background="@color/white"
+        android:paddingTop="@dimen/_20sdp"
+        android:paddingStart="@dimen/_12sdp"
+        android:paddingEnd="@dimen/_12sdp"
+        tools:context=".afterAuth.category.AllCategories">
+
+        <RelativeLayout
+            android:paddingStart="@dimen/_8sdp"
+            android:paddingEnd="@dimen/_8sdp"
+            android:id="@+id/toplayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_menu" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/montserrat_bold"
+                android:paddingTop="@dimen/_4sdp"
+                android:text="Category"
+                android:textColor="@color/Primary"
+                android:textSize="@dimen/_17sdp" />
+
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_icons_search_gray"
+                android:layout_alignParentRight="true" />
+
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/allCategoryRv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toplayout"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_all_category_rv"
+            android:layout_marginTop="@dimen/_20sdp" />
+    </RelativeLayout>
+</layout>

@@ -1,97 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="@dimen/_180sdp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginBottom="@dimen/_12sdp"
-   >
-    <LinearLayout
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:weightSum="2"
-        >
-        <RelativeLayout
-            android:layout_marginEnd="@dimen/_10sdp"
+    <data>
+        <variable
+            name="dataClass"
+            type="com.example.augmanium.afterAuth.category.dataClass.SpecificCatagoryProductDataClass" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_200sdp"
+        android:layout_marginBottom="@dimen/_12sdp">
+
+        <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+
             >
 
-            <androidx.cardview.widget.CardView
+            <RelativeLayout
+                android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginEnd="@dimen/_5sdp"
-                android:layout_marginBottom="@dimen/_5sdp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="@dimen/_30sdp"
-                app:cardElevation="@dimen/_5sdp">
 
-                <RelativeLayout
-                    android:layout_width="@dimen/_75sdp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:background="@drawable/item_product_label">
+                >
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:text="Dress"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_7sdp" />
-                </RelativeLayout>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/_30sdp"
+                    app:cardElevation="@dimen/_5sdp">
 
+                    <RelativeLayout
+                        android:layout_width="@dimen/_75sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:background="@drawable/item_product_label">
 
-            </androidx.cardview.widget.CardView>
-
-
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            >
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginEnd="@dimen/_5sdp"
-                android:layout_marginBottom="@dimen/_5sdp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="@dimen/_30sdp"
-                app:cardElevation="@dimen/_5sdp">
-
-                <RelativeLayout
-                    android:layout_width="@dimen/_75sdp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:background="@drawable/item_product_label">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:text="Top"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_7sdp" />
-                </RelativeLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:text="@{dataClass.productName}"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_7sdp" />
+                    </RelativeLayout>
 
 
-            </androidx.cardview.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
 
-        </RelativeLayout>
-
-    </LinearLayout>
+            </RelativeLayout>
 
 
+        </LinearLayout>
 
 
-
-</RelativeLayout>
+    </RelativeLayout>
+</layout>

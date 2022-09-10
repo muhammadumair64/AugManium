@@ -1,128 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="@dimen/_20sdp"
-    android:background="@color/white"
-    tools:context=".afterAuth.category.SpecificCategoryProducts">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
 
     <RelativeLayout
-        android:paddingStart="@dimen/_20sdp"
-        android:paddingEnd="@dimen/_20sdp"
-        android:id="@+id/toplayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_menu" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/_30sdp"
-            android:layout_centerInParent="true"
-            android:fontFamily="@font/montserrat_bold"
-            android:paddingTop="@dimen/_4sdp"
-            android:text="Category"
-            android:textColor="@color/Primary"
-            android:textSize="@dimen/_17sdp" />
-
-
-        <ImageView
-            android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_icons_search_gray"
-            android:layout_alignParentRight="true"
-            />
-
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:paddingStart="@dimen/_20sdp"
-        android:paddingEnd="@dimen/_20sdp"
-        android:id="@+id/category"
-        android:layout_below="@id/toplayout"
-        android:layout_marginTop="@dimen/_15sdp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_icons_back" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/_30sdp"
-            android:layout_centerInParent="true"
-            android:fontFamily="@font/montserrat_bold"
-            android:paddingTop="@dimen/_4sdp"
-            android:text="Women"
-            android:textColor="@color/secondary"
-            android:textSize="@dimen/_15sdp" />
-
-
-        <ImageView
-            android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_icons_filter_gray"
-            android:layout_alignParentRight="true"
-            />
-
-
-    </RelativeLayout>
-
-
-    <TextView
-        android:id="@+id/CategoryDis"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/category"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/_12sdp"
-        android:text="@string/CategoryText"
-        android:textAlignment="center"
-        android:textColor="@color/secondary"
-        android:textSize="@dimen/_10sdp"
-        />
-
-    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/CategoryDis"
-        android:layout_marginTop="@dimen/_12sdp"
-        android:orientation="vertical"
-        android:paddingStart="@dimen/_20sdp"
-        android:paddingEnd="@dimen/_20sdp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_category_products"
+        android:paddingTop="@dimen/_20sdp"
+        android:background="@color/white"
+        tools:context=".afterAuth.category.SpecificCategoryProducts">
 
-        />
+        <RelativeLayout
+            android:paddingStart="@dimen/_20sdp"
+            android:paddingEnd="@dimen/_20sdp"
+            android:id="@+id/toplayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_100sdp"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/item_all_category_label">
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_menu" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/montserrat_bold"
+                android:paddingTop="@dimen/_4sdp"
+                android:text="Category"
+                android:textColor="@color/Primary"
+                android:textSize="@dimen/_17sdp" />
+
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_icons_search_gray"
+                android:layout_alignParentRight="true" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:paddingStart="@dimen/_20sdp"
+            android:paddingEnd="@dimen/_20sdp"
+            android:id="@+id/category"
+            android:layout_below="@id/toplayout"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_icons_back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/montserrat_bold"
+                android:paddingTop="@dimen/_4sdp"
+                android:text="Women"
+                android:textColor="@color/secondary"
+                android:textSize="@dimen/_15sdp" />
+
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_icons_filter_gray"
+                android:layout_alignParentRight="true" />
+
+
+        </RelativeLayout>
+
 
         <TextView
+            android:id="@+id/CategoryDis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ALL CATEGORIES"
-            android:textColor="@color/white"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:fontFamily="@font/montserrat_bold"
-            android:layout_centerHorizontal="true" />
+            android:layout_below="@id/category"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:text="@string/CategoryText"
+            android:textAlignment="center"
+            android:textColor="@color/secondary"
+            android:textSize="@dimen/_10sdp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/allProductRV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/CategoryDis"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/_20sdp"
+            android:paddingEnd="@dimen/_20sdp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_category_products"
+
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/item_all_category_label">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ALL CATEGORIES"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:fontFamily="@font/montserrat_bold"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+
 
     </RelativeLayout>
-
-
-</RelativeLayout>
+</layout>

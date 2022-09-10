@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="dataClass"
+            type="com.example.augmanium.afterAuth.orderHistory.dataClass.OrderHistoryDataClass" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_120sdp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_110sdp"
+            android:elevation="@dimen/_10sdp"
+            android:background="@color/white"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/imageCard"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_80sdp"
+                    app:cardCornerRadius="@dimen/_12sdp"
+                    android:layout_margin="@dimen/_8sdp"
+                    app:cardElevation="@dimen/_5sdp">
+
+                    <ImageView
+                        android:background="@color/gray"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </androidx.cardview.widget.CardView>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/imageCard"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:layout_centerInParent="true">
+
+                    <TextView
+                        android:id="@+id/order_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{dataClass.orderNumber}"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:textSize="@dimen/_14sdp"
+                        />
+                    <RelativeLayout
+                        android:layout_below="@+id/order_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        >
+                        <TextView
+                            android:id="@+id/order_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/_10sdp"
+                            android:textColor="@color/black"
+                            android:text="@{dataClass.orderPrice}"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:textSize="@dimen/_10sdp"
+                            android:textColor="@color/black"
+                            android:text="@{dataClass.orderDateTime}"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            />
+
+                    </RelativeLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+
+</layout>

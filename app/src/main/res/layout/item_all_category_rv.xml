@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="dataClass"
+            type="com.example.augmanium.afterAuth.category.dataClass.AllCategoryDataClass" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/imageCard"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            app:cardCornerRadius="@dimen/_12sdp"
+            android:layout_margin="@dimen/_8sdp"
+            app:cardElevation="@dimen/_5sdp">
+
+            <ImageView
+                android:background="@color/gray"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            android:id="@+id/name"
+            android:layout_toRightOf="@id/imageCard"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:id="@+id/category_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{dataClass.categoryName}"
+                android:fontFamily="@font/montserrat_bold"
+                android:textSize="@dimen/_16sdp"
+                android:textColor="@color/secondary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/category_name"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="@{dataClass.itemCount}"
+
+                android:textColor="@color/gray"
+                android:textSize="@dimen/_13sdp" />
+        </RelativeLayout>
+
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentRight="true"
+    android:layout_centerInParent="true"
+    android:layout_margin="@dimen/_5sdp"
+    >
+    <TextView
+        android:layout_width="@dimen/_11sdp"
+        android:layout_height="@dimen/_15sdp"
+        android:background="@drawable/arrow_right_shape"
+        />
+</RelativeLayout>
+
+
+
+
+    </RelativeLayout>
+</layout>

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.augmanium.R
-import com.example.augmanium.afterAuth.MainActivity
 
 import android.content.Intent
 import com.example.augmanium.beforeAuth.signin.signIn
