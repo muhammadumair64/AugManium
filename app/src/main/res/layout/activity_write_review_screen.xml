@@ -103,6 +103,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/addtocart"
                 android:layout_width="@dimen/_130sdp"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_centerInParent="true"

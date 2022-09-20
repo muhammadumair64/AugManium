@@ -7,5 +7,19 @@ class CheckoutSummary : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checkout_summary)
+
+        initViews()
+    }
+
+    fun initViews(){
+
+
+
+
+
+
+
+
+
     }
 }
