@@ -14,8 +14,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/imageCard"
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="@dimen/_100sdp"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_90sdp"
             app:cardCornerRadius="@dimen/_12sdp"
             android:layout_margin="@dimen/_8sdp"
             app:cardElevation="@dimen/_5sdp">
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:text="@{dataClass.categoryName}"
                 android:fontFamily="@font/montserrat_bold"
-                android:textSize="@dimen/_16sdp"
+                android:textSize="@dimen/_14sdp"
                 android:textColor="@color/secondary" />
 
             <TextView
@@ -52,7 +52,7 @@
                 android:text="@{dataClass.itemCount}"
 
                 android:textColor="@color/gray"
-                android:textSize="@dimen/_13sdp" />
+                android:textSize="@dimen/_11sdp" />
         </RelativeLayout>
 
 <RelativeLayout
@@ -63,8 +63,8 @@
     android:layout_margin="@dimen/_5sdp"
     >
     <TextView
-        android:layout_width="@dimen/_11sdp"
-        android:layout_height="@dimen/_15sdp"
+        android:layout_width="@dimen/_7sdp"
+        android:layout_height="@dimen/_11sdp"
         android:background="@drawable/arrow_right_shape"
         />
 </RelativeLayout>

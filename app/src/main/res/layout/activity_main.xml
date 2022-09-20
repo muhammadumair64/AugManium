@@ -10,12 +10,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/_20sdp"
+        android:paddingTop="@dimen/_20sdp"
         android:background="@color/white"
         tools:context=".afterAuth.mainActivity.MainActivity">
 
 
         <RelativeLayout
+            android:paddingStart="@dimen/_20sdp"
+            android:paddingEnd="@dimen/_20sdp"
             android:id="@+id/toplayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -49,9 +51,11 @@
         </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:paddingStart="@dimen/_20sdp"
+            android:paddingEnd="@dimen/_20sdp"
             android:id="@+id/categoryRv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_30sdp"
             android:layout_below="@id/toplayout"
             android:layout_marginTop="@dimen/_12sdp"
             android:orientation="horizontal"
@@ -63,13 +67,12 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/allProductRV"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_below="@id/categoryRv"
             android:layout_marginTop="@dimen/_12sdp"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            tools:listitem="@layout/item_all_product_rv"
-
-            />
+            android:paddingStart="@dimen/_20sdp"
+            android:paddingEnd="@dimen/_20sdp"
+            tools:listitem="@layout/item_all_product_rv" />
 
     </RelativeLayout>
 </layout>

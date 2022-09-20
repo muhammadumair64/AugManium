@@ -8,6 +8,7 @@ import com.example.augmanium.R
 import com.example.augmanium.afterAuth.search.searchDataClass.CatagoryDataClass
 import com.example.augmanium.databinding.ItemCategoryRvBinding
 
+
 class CatagoryAdapter (val catagoryArrayList:ArrayList<CatagoryDataClass>):
     RecyclerView.Adapter<CatagoryAdapter.ItemCatagoryViewHolder>() {
 

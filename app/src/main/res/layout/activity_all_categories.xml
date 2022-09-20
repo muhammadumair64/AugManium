@@ -55,9 +55,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/toplayout"
+            android:layout_marginTop="@dimen/_20sdp"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_all_category_rv"
-            android:layout_marginTop="@dimen/_20sdp" />
+            tools:listitem="@layout/item_all_category_rv" />
     </RelativeLayout>
 </layout>

@@ -2,6 +2,7 @@ package com.example.augmanium.afterAuth.mainActivity
 
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil

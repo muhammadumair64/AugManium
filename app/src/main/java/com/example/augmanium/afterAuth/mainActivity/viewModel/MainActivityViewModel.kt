@@ -3,7 +3,7 @@ package com.example.augmanium.afterAuth.mainActivity.viewModel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.augmanium.afterAuth.mainActivity.Adapter.AllProductViewAdapter
+import com.example.augmanium.afterAuth.mainActivity.Adapter.AllProductAdapter
 import com.example.augmanium.afterAuth.mainActivity.Adapter.CatagoryAdapter
 import com.example.augmanium.afterAuth.search.searchDataClass.AllProductDataClass
 import com.example.augmanium.afterAuth.search.searchDataClass.CatagoryDataClass
@@ -28,16 +28,20 @@ class MainActivityViewModel @Inject constructor(): ViewModel(){
     }
 
     private fun allProductRv(binding: ActivityMainBinding, activityContext: Context) {
-        allProductArrayList.add(AllProductDataClass("White Top", "Women", "$15"))
+        allProductArrayList.add(AllProductDataClass("T-Shirt", "Men", "$15"))
         allProductArrayList.add(AllProductDataClass("White Top", "Women", "$15"))
         allProductArrayList.add(AllProductDataClass("White Top", "Women", "$15"))
         allProductArrayList.add(AllProductDataClass("White Top", "Women", "$15"))
         allProductArrayList.add(AllProductDataClass("White Top", "Women", "$15"))
 
         binding.allProductRV.also {
-            it.adapter = AllProductViewAdapter(allProductArrayList)
-            it.setLayoutManager(GridLayoutManager(activityContext,2))
+            it.adapter = AllProductAdapter(allProductArrayList)
+
+            it.layoutManager = GridLayoutManager(activityContext,2)
             it.setHasFixedSize(true)
+
+
+
         }
     }
 
@@ -45,6 +49,8 @@ class MainActivityViewModel @Inject constructor(): ViewModel(){
         productsTitleArrayList.add(CatagoryDataClass("All"))
         productsTitleArrayList.add(CatagoryDataClass("Women"))
         productsTitleArrayList.add(CatagoryDataClass("Men"))
+        productsTitleArrayList.add(CatagoryDataClass("Children"))
+        productsTitleArrayList.add(CatagoryDataClass("Electronics"))
         productsTitleArrayList.add(CatagoryDataClass("Best Sellers"))
 
         binding.categoryRv.also {
