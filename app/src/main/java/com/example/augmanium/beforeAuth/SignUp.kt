@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
 import com.example.augmanium.R
 import com.example.augmanium.beforeAuth.fireBase.Extensions.toast
 import com.example.augmanium.beforeAuth.fireBase.FirebaseUtils.firebaseAuth
@@ -15,6 +16,8 @@ import com.example.augmanium.databinding.ActivitySignUpBinding
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class SignUp : AppCompatActivity() {
 
@@ -56,22 +59,24 @@ class SignUp : AppCompatActivity() {
 
             /*create a user*/
         if(notEmpty()) {
-            firebaseAuth.createUserWithEmailAndPassword(userEmail, userPassword)
-                .addOnCompleteListener { task ->
+            lifecycleScope.launch(Dispatchers.IO) {
+                firebaseAuth.createUserWithEmailAndPassword(userEmail, userPassword)
+                    .addOnCompleteListener { task ->
 
-                    if (task.isSuccessful) {
-                        toast("created account successfully !")
-                        sendEmailVerification(userEmail)
+                        if (task.isSuccessful) {
+                            toast("created account successfully !")
+                            sendEmailVerification(userEmail)
 //                        startActivity(Intent(this, HomeActivity::class.java))
 //                        finish()
-                    } else {
+                        } else {
 
-                        toast("failed to Authenticate !")
-                        println("error on signup.... " + task.exception)
+                            toast("failed to Authenticate !")
+                            println("error on signup.... " + task.exception)
 
 
+                        }
                     }
-                }
+            }
         }else{
             signInInputsArray.forEach { input ->
                 if (input.text.toString().trim().isEmpty()) {
