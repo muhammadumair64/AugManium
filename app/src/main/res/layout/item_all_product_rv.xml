@@ -43,7 +43,7 @@
                         android:id="@+id/nameLayout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10sdp">
+                        android:layout_marginTop="@dimen/_7sdp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -64,7 +64,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/nameLayout"
-                        android:layout_marginTop="@dimen/_3sdp">
+                        android:layout_marginTop="@dimen/_1sdp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -84,7 +84,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/categoryLayout"
-                        android:layout_marginTop="@dimen/_3sdp"
+                        android:layout_marginTop="@dimen/_1sdp"
                         android:text="@{dataClass.productPrice}"
                         android:textSize="@dimen/_13sdp"
                         android:textColor="@color/Primary" />

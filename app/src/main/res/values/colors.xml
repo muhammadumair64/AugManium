@@ -22,4 +22,5 @@
     <color name="profiletextcolor">#919191</color>
     <color name="lightgray">#DAD7E0</color>
     <color name="lightBlack">#2A2A2A</color>
+    <color name="ProfileBox">#A3FA4248</color>
 </resources>
