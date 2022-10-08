@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "564244897064",
+    "project_id": "augmanium",
+    "storage_bucket": "augmanium.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:564244897064:android:d301aa7afb0b6a9b6ec41d",
+        "android_client_info": {
+          "package_name": "com.example.augmanium"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "564244897064-mga96n750lvd1sruug8tgc92suo3b7sg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.augmanium",
+            "certificate_hash": "4173beacbc33bf05719fd02e2ff15856ead76209"
+          }
+        },
+        {
+          "client_id": "564244897064-halqp5mefgeoeqn31e4qd1eun9a5aidt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCG92uK6iOdckgb3puSp93nrEPlHOPy4qo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "564244897064-halqp5mefgeoeqn31e4qd1eun9a5aidt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
