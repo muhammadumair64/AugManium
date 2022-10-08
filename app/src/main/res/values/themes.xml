@@ -19,4 +19,8 @@
         <item name="android:textColor">@color/white</item>
 
     </style>
+
+    <style name="Style_menuItem">
+        <item name="fontFamily">@font/montserrat_semibold</item>
+    </style>
 </resources>

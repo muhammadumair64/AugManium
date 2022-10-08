@@ -24,15 +24,17 @@
         android:requestLegacyExternalStorage="true"
         >
         <activity
+            android:name=".EditProfile"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".afterAuth.notification.NotificationScreen"
-            android:exported="true" >
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".afterAuth.orderHistory.OrderHistory"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".WriteReviewScreen"
             android:exported="false" />
@@ -51,12 +53,13 @@
         <activity
             android:name=".afterAuth.category.AllCategories"
             android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
 
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
 
         </activity>
         <activity
@@ -69,7 +72,6 @@
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
         </activity>
-
         <activity
             android:name=".afterAuth.category.categoryScreen"
             android:exported="false" />
@@ -119,13 +121,11 @@
         <activity
             android:name=".afterAuth.mainActivity.MainActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-<!--             <intent-filter>-->
-<!--             <action android:name="android.intent.action.MAIN" />-->
-
-
-<!--             <category android:name="android.intent.category.LAUNCHER" />-->
-<!--             </intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

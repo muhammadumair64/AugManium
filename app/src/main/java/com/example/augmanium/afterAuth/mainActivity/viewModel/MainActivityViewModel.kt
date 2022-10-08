@@ -8,6 +8,7 @@ import com.example.augmanium.afterAuth.mainActivity.Adapter.CatagoryAdapter
 import com.example.augmanium.afterAuth.search.searchDataClass.AllProductDataClass
 import com.example.augmanium.afterAuth.search.searchDataClass.CatagoryDataClass
 import com.example.augmanium.databinding.ActivityMainBinding
+import com.example.augmanium.databinding.FragmentHomeBinding
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -17,17 +18,16 @@ class MainActivityViewModel @Inject constructor(): ViewModel(){
     var productsTitleArrayList: ArrayList<CatagoryDataClass> = ArrayList()
     val allProductArrayList: ArrayList<AllProductDataClass> = ArrayList()
 
-    fun catagoryRvBinding(activityContext : Context, binding: ActivityMainBinding){
+    fun catagoryRvBinding(activityContext: Context, binding: FragmentHomeBinding){
         productsTitleArrayList.clear()
         allProductArrayList.clear()
-
         productTitleRv(binding)
         allProductRv(binding, activityContext)
 
 
     }
 
-    private fun allProductRv(binding: ActivityMainBinding, activityContext: Context) {
+    private fun allProductRv(binding:FragmentHomeBinding , activityContext: Context) {
         allProductArrayList.add(AllProductDataClass("T-Shirt", "Men", "$15"))
         allProductArrayList.add(AllProductDataClass("White Top", "Women", "$15"))
         allProductArrayList.add(AllProductDataClass("White Top", "Women", "$15"))
@@ -45,7 +45,7 @@ class MainActivityViewModel @Inject constructor(): ViewModel(){
         }
     }
 
-    fun productTitleRv(binding : ActivityMainBinding){
+    fun productTitleRv(binding : FragmentHomeBinding){
         productsTitleArrayList.add(CatagoryDataClass("All"))
         productsTitleArrayList.add(CatagoryDataClass("Women"))
         productsTitleArrayList.add(CatagoryDataClass("Men"))
@@ -56,6 +56,7 @@ class MainActivityViewModel @Inject constructor(): ViewModel(){
         binding.categoryRv.also {
             it.adapter = CatagoryAdapter(productsTitleArrayList)
             it.setHasFixedSize(true)
+
         }
     }
 }

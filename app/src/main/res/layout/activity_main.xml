@@ -10,69 +10,35 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="@dimen/_20sdp"
-        android:background="@color/white"
-        tools:context=".afterAuth.mainActivity.MainActivity">
-
+        tools:context=".MainActivity">
 
         <RelativeLayout
-            android:paddingStart="@dimen/_20sdp"
-            android:paddingEnd="@dimen/_20sdp"
-            android:id="@+id/toplayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <ImageView
-                android:layout_centerVertical="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_menu" />
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/navHostFragment"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:defaultNavHost="true"
+                app:navGraph="@navigation/navigation_graph"
+                android:layout_above="@id/menu"
+                />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/_30sdp"
-                android:layout_centerInParent="true"
-                android:fontFamily="@font/montserrat_bold"
-                android:paddingTop="@dimen/_4sdp"
-                android:paddingBottom="@dimen/_8sdp"
-                android:text="Discover"
-                android:textColor="@color/Primary"
-                android:textSize="@dimen/_17sdp" />
-
-
-            <ImageView
-                android:layout_centerVertical="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_icons_search_gray"
-                android:layout_alignParentRight="true" />
+            <com.ismaeldivita.chipnavigation.ChipNavigationBar
+                android:id="@+id/menu"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/item_nav_bg"
+                android:elevation="@dimen/_16sdp"
+                app:cnb_iconColor="@color/white"
+                app:cnb_menuResource="@menu/navigationbar_menu"
+                app:cnb_orientationMode="horizontal" />
 
 
         </RelativeLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:paddingStart="@dimen/_20sdp"
-            android:paddingEnd="@dimen/_20sdp"
-            android:id="@+id/categoryRv"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_30sdp"
-            android:layout_below="@id/toplayout"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_category_rv"
-
-            />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/allProductRV"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/categoryRv"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:paddingStart="@dimen/_20sdp"
-            android:paddingEnd="@dimen/_20sdp"
-            tools:listitem="@layout/item_all_product_rv" />
 
     </RelativeLayout>
 </layout>
