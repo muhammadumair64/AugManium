@@ -3,9 +3,9 @@ package com.example.augmanium
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class CheckOutPayment : AppCompatActivity() {
+class TrackOrder : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_check_out_payment)
+        setContentView(R.layout.activity_track_order)
     }
 }

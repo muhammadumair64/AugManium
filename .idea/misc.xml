@@ -32,7 +32,7 @@
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/activity_all_categories.xml" value="0.30625" />
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/activity_category_screen.xml" value="0.30625" />
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/activity_check_out_address.xml" value="0.25" />
-        <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/activity_check_out_payment.xml" value="0.22" />
+        <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/activity_check_out_payment.xml" value="0.33" />
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/activity_checkout_summary.xml" value="0.2" />
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/activity_create_new_password.xml" value="0.12041884816753927" />
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/activity_edit_profile.xml" value="0.30625" />
@@ -49,6 +49,7 @@
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/activity_specific_category_products.xml" value="0.33" />
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/activity_splash_screen.xml" value="0.14" />
+        <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/activity_track_order.xml" value="0.25" />
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/activity_write_review_screen.xml" value="0.33" />
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/fragment_cart.xml" value="0.5" />
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/fragment_home.xml" value="0.30625" />

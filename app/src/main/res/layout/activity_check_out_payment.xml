@@ -426,7 +426,7 @@
                     android:id="@+id/card_number_divider"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/cardNumberEditText"
+            android:layout_alignParentBottom="true"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:src="@drawable/item_gray_divider" />
 
@@ -547,7 +547,7 @@
 
         <LinearLayout
             android:id="@+id/navigation"
-            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_25sdp"
             android:layout_below="@id/Fields"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_35sdp"
@@ -568,6 +568,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="BACK"
+                    android:fontFamily="@font/montserrat_semibold"
                     android:textColor="@color/secondary"
                     android:textSize="@dimen/_15sdp" />
             </RelativeLayout>
@@ -585,24 +586,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
+                    android:fontFamily="@font/montserrat_semibold"
                     android:text="NEXT"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_15sdp" />
             </RelativeLayout>
         </LinearLayout>
 
-        <eightbitlab.com.blurview.BlurView
+<!--        <eightbitlab.com.blurview.BlurView-->
 
-            android:id="@+id/blurView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@id/navigation"
-            android:layout_below="@id/selectionlayout"
-            android:layout_marginBottom="@dimen/_10sdp"
-            android:visibility="invisible">
+<!--            android:id="@+id/blurView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_above="@id/navigation"-->
+<!--            android:layout_below="@id/selectionlayout"-->
+<!--            android:layout_marginBottom="@dimen/_10sdp"-->
+<!--            android:visibility="invisible">-->
 
 
-        </eightbitlab.com.blurview.BlurView>
+<!--        </eightbitlab.com.blurview.BlurView>-->
 
     </RelativeLayout>
 </layout>
