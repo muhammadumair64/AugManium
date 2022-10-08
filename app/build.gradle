@@ -115,6 +115,11 @@ dependencies {
 
     //circular image view
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+//    //nav bar
+//    implementation 'com.github.ismaeldivita:chip-navigation-bar:1.4.0'
+
+    implementation 'com.github.UmerSarfraz5557:chip-navigation-bar:506d9e07a9'
 }
 // Allow references to generated code
 kapt {

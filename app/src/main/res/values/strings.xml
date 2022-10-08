@@ -6,4 +6,11 @@
     <string name="scanDis">Please wait , scanning your face for\n identification  </string>
     <string name="signInText">Sign up to get started and experience \ngreat shopping deals</string>
     <string name="welcomeText">Introducing Next Gen Product \n Experiance</string>
+
+    <string name="action_product">Products</string>
+    <string name="action_home">Home</string>
+    <string name="action_catalog">Catalog</string>
+    <string name="action_category">Category</string>
+    <string name="action_WishList">WishList</string>
+    <string name="action_collection">Collection</string>
 </resources>

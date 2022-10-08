@@ -11,11 +11,15 @@
     <color name="secondary">#202020</color>
     <color name="Coral">#FA4248</color>
     <color name="gray">#7F7F7F</color>
-    <color name ="light_Pink">#F2BBC3</color>
+    <color name ="light_Pink">#F2BBC3</color>w`
     <color name="yellowish">#FFCC00</color>
     <color name="layoutbackground">#EAEAEA</color>
     <color name="unselected">#BEBEBE</color>
     <color name="light_gray">#F1F0F2</color>
     <color name="orange">#FF3D00</color>
     <color name="lightPinkNImg">#FF9797</color>
+    <color name="headerColor">#FFB3BD</color>
+    <color name="profiletextcolor">#919191</color>
+    <color name="lightgray">#DAD7E0</color>
+    <color name="lightBlack">#2A2A2A</color>
 </resources>

@@ -13,12 +13,12 @@ import dagger.hilt.android.AndroidEntryPoint
 class AllCategories : AppCompatActivity() {
 
     lateinit var binding: ActivityAllCategoriesBinding
-    val viewModel: AllCategoriesViewModel by viewModels<AllCategoriesViewModel>()
+    val viewModel: AllCategoriesViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding =DataBindingUtil.setContentView(this,R.layout.activity_all_categories)
 
-        viewModel.allCategoryRv(binding,this)
+//        viewModel.allCategoryRv(binding,this)
     }
 }
