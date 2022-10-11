@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.augmanium">
 
     <uses-permission android:name="android.permission.CAMERA" />
@@ -18,17 +19,44 @@
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AugManium"
-        android:requestLegacyExternalStorage="true"
-        >
+        android:theme="@style/Theme.AugManium" >
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.augmanium.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+
+
+        <activity
+            android:name=".beforeAuth.editProfileDetectFace.FaceDetection"
+            android:exported="true" >
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
         <activity
             android:name=".EditProfile"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="true" >
+<!--             <intent-filter>-->
+<!--             <action android:name="android.intent.action.MAIN" />-->
+
+
+<!--             <category android:name="android.intent.category.LAUNCHER" />-->
+<!--             </intent-filter>-->
+        </activity> <!-- <activity -->
+        <!-- android:name=".MainActivity" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".afterAuth.notification.NotificationScreen"
             android:exported="true" />
@@ -52,25 +80,14 @@
             android:exported="true" />
         <activity
             android:name=".afterAuth.category.AllCategories"
-            android:exported="true">
+            android:exported="true" >
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
 
         </activity>
         <activity
             android:name=".afterAuth.category.SpecificCategoryProducts"
             android:exported="true" >
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".afterAuth.category.categoryScreen"
@@ -87,12 +104,7 @@
         <activity
             android:name=".beforeAuth.ScanFace"
             android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".CreateNewPassword"
@@ -109,24 +121,18 @@
         <activity
             android:name=".beforeAuth.SplashScreen"
             android:exported="true"
-            android:noHistory="true">
-
-<!--             <intent-filter>-->
-<!--             <action android:name="android.intent.action.MAIN" />-->
-
-
-<!--             <category android:name="android.intent.category.LAUNCHER" />-->
-<!--             </intent-filter>-->
-        </activity>
-        <activity
-            android:name=".afterAuth.mainActivity.MainActivity"
-            android:exported="true">
+            android:noHistory="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<!--        <activity-->
+<!--            android:name=".afterAuth.mainActivity.MainActivity"-->
+<!--            android:exported="true" >-->
+
+<!--        </activity>-->
     </application>
 
 </manifest>

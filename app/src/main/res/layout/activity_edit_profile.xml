@@ -106,7 +106,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/profilelayout"
-
+                android:layout_marginTop="@dimen/_15sdp"
                 android:layout_marginEnd="@dimen/_20sdp"
                 android:layout_marginStart="@dimen/_20sdp">
 
@@ -145,110 +145,6 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:fontFamily="@font/montserrat_semibold"
-                        android:textSize="@dimen/_15sdp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Address lane"
-                        android:textStyle="bold"
-                        android:textColor="@color/profiletextcolor" />
-
-                    <TextView
-                        android:id="@+id/address"
-                        android:fontFamily="@font/montserrat_semibold"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_30sdp"
-                        android:text="Model Town"
-                        android:textStyle="bold"
-                        android:padding="@dimen/_3sdp"
-                        android:textColor="@color/lightBlack"
-                        android:inputType="text"
-                        android:background="@null"/>
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/item_dividericon"
-                        />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:fontFamily="@font/montserrat_semibold"
-                        android:textSize="@dimen/_15sdp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="City"
-                        android:textStyle="bold"
-                        android:textColor="@color/profiletextcolor" />
-
-                    <TextView
-                        android:id="@+id/city"
-                        android:fontFamily="@font/montserrat_semibold"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_30sdp"
-                        android:text="Lahore"
-                        android:textStyle="bold"
-                        android:padding="@dimen/_3sdp"
-                        android:textColor="@color/lightBlack"
-                        android:inputType="text"
-                        android:background="@null"/>
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/item_dividericon"
-                        />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:fontFamily="@font/montserrat_semibold"
-                        android:textSize="@dimen/_15sdp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Gender"
-                        android:textStyle="bold"
-                        android:textColor="@color/profiletextcolor" />
-
-                    <TextView
-                        android:id="@+id/gender"
-                        android:fontFamily="@font/montserrat_semibold"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_30sdp"
-                        android:text="Male"
-                        android:textStyle="bold"
-                        android:padding="@dimen/_3sdp"
-                        android:textColor="@color/lightBlack"
-                        android:inputType="text"
-                        android:background="@null"/>
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/item_dividericon"
-                        />
-
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -286,6 +182,9 @@
 
                 </LinearLayout>
 
+
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -297,20 +196,91 @@
                         android:textSize="@dimen/_15sdp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Phone Number"
+                        android:text="City"
                         android:textStyle="bold"
                         android:textColor="@color/profiletextcolor" />
 
-                    <TextView
-                        android:id="@+id/number"
+                    <EditText
+                        android:id="@+id/city"
                         android:fontFamily="@font/montserrat_semibold"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_30sdp"
-                        android:text="+923447478906"
+                        android:hint="Lahore"
                         android:textStyle="bold"
                         android:padding="@dimen/_3sdp"
                         android:textColor="@color/lightBlack"
-                        android:inputType="number"
+                        android:inputType="text"
+                        android:background="@null"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/item_dividericon"
+                        />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:textSize="@dimen/_15sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Password"
+                        android:textStyle="bold"
+                        android:textColor="@color/profiletextcolor" />
+
+                    <EditText
+                        android:id="@+id/password"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:hint="******"
+                        android:textStyle="bold"
+                        android:padding="@dimen/_3sdp"
+                        android:textColor="@color/lightBlack"
+                        android:inputType="textPassword"
+                        android:editable="false"
+                        android:background="@null"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/item_dividericon"
+                        />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:textSize="@dimen/_15sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gender"
+                        android:textStyle="bold"
+                        android:textColor="@color/profiletextcolor" />
+
+                    <EditText
+                        android:id="@+id/gender"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:hint="Male"
+                        android:textStyle="bold"
+                        android:padding="@dimen/_3sdp"
+                        android:textColor="@color/lightBlack"
+                        android:inputType="text"
                         android:background="@null"/>
                     <ImageView
                         android:layout_width="wrap_content"
@@ -322,9 +292,13 @@
                 </LinearLayout>
 
 
+
+
+
             </LinearLayout>
 
             <RelativeLayout
+                android:id="@+id/save_Btn"
                 android:layout_marginStart="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_20sdp"
                 android:layout_width="match_parent"
@@ -342,8 +316,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
+                    android:layout_centerInParent="true"
                     android:fontFamily="@font/montserrat_semibold"
                     android:text="SAVE"
                     android:textColor="@color/white"
