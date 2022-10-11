@@ -1,6 +1,5 @@
 package com.example.augmanium.beforeAuth.signin
 
-import android.R
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
+import com.example.augmanium.ModelActivity
 import com.example.augmanium.afterAuth.mainActivity.MainActivity
 import com.example.augmanium.beforeAuth.ForgotPassword
 import com.example.augmanium.beforeAuth.SignUp
@@ -98,7 +98,10 @@ class SignIn : AppCompatActivity() {
                    .addOnCompleteListener { signIn ->
                        if (signIn.isSuccessful) {
                            toast("signed in successfully")
-                           var intent = Intent(this@SignIn, MainActivity::class.java)
+//                           var intent = Intent(this@SignIn, MainActivity::class.java)
+//                           startActivity(intent)
+
+                           var intent = Intent(this@SignIn, ModelActivity::class.java)
                            startActivity(intent)
                        }
                        else {

@@ -38,14 +38,11 @@
 
     </RelativeLayout>
 
+
+
 <androidx.cardview.widget.CardView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_below="@id/upperlayout"
-    android:layout_above="@id/add_to_cart_layout"
-    android:layout_margin="@dimen/_25sdp"
-    app:cardCornerRadius="@dimen/_20sdp"
-    android:elevation="@dimen/_5sdp"
 
     >
     <fragment
@@ -54,10 +51,6 @@
         android:id="@+id/arFragment"
         android:name="com.google.ar.sceneform.ux.ArFragment" />
 
-
-</androidx.cardview.widget.CardView>
-
-
     <RelativeLayout
         android:id="@+id/add_to_cart_layout"
         android:layout_marginStart="@dimen/_12sdp"
@@ -65,7 +58,7 @@
         android:layout_width="200sp"
         android:layout_height="@dimen/_35sdp"
         android:layout_centerHorizontal="true"
-android:layout_marginBottom="@dimen/_30sdp"
+        android:layout_marginBottom="@dimen/_30sdp"
         android:background="@drawable/item_botton"
         android:layout_alignParentBottom="true"
 
@@ -77,9 +70,13 @@ android:layout_marginBottom="@dimen/_30sdp"
             android:layout_centerInParent="true"
             android:layout_marginStart="@dimen/_15sdp"
             android:fontFamily="@font/montserrat_semibold"
-            android:text="ADD TO CART"
+            android:text="Press"
             android:textColor="@color/white"
             android:textSize="@dimen/_10sdp" />
 
     </RelativeLayout>
+</androidx.cardview.widget.CardView>
+
+
+
 </RelativeLayout>
