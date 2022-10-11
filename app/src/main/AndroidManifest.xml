@@ -23,6 +23,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AugManium">
         <activity
+            android:name=".ModelActivity"
+            android:exported="false" />
+        <activity
             android:name=".ProductDetailsActivity"
             android:exported="false" />
         <activity
