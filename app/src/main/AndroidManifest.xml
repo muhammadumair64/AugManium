@@ -55,6 +55,16 @@
 <!--             <category android:name="android.intent.category.LAUNCHER" />-->
 <!--             </intent-filter>-->
         </activity> <!-- <activity -->
+        android:theme="@style/Theme.AugManium">
+        <activity
+            android:name=".ProductDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TrackOrder"
+            android:exported="false" />
+        <activity
+            android:name=".EditProfile"
+            android:exported="false" /> <!-- <activity -->
         <!-- android:name=".MainActivity" -->
         <!-- android:exported="false" /> -->
         <activity
@@ -73,10 +83,16 @@
             android:name=".CheckoutSummary"
             android:exported="false" />
         <activity
-            android:name=".CheckOutPayment"
-            android:exported="false" />
+            android:name=".afterAuth.checkout.checkOutPayment.CheckOutPayment"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
-            android:name=".afterAuth.checkOutFlow.CheckOutAddress"
+            android:name=".afterAuth.checkout.CheckOutAddress"
             android:exported="true" />
         <activity
             android:name=".afterAuth.category.AllCategories"
@@ -121,11 +137,25 @@
             android:name=".beforeAuth.SplashScreen"
             android:exported="true"
             android:noHistory="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".afterAuth.mainActivity.MainActivity"
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
 <!--        <activity-->
 <!--            android:name=".afterAuth.mainActivity.MainActivity"-->

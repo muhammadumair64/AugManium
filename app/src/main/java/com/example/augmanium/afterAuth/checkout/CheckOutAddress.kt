@@ -1,4 +1,4 @@
-package com.example.augmanium.afterAuth.checkOutFlow
+package com.example.augmanium.afterAuth.checkout
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

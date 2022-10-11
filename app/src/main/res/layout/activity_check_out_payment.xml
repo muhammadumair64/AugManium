@@ -426,7 +426,7 @@
                     android:id="@+id/card_number_divider"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/cardNumberEditText"
+            android:layout_alignParentBottom="true"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:src="@drawable/item_gray_divider" />
 
@@ -547,7 +547,7 @@
 
         <LinearLayout
             android:id="@+id/navigation"
-            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_25sdp"
             android:layout_below="@id/Fields"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_35sdp"
@@ -567,6 +567,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
+                    android:fontFamily="@font/montserrat_semibold"
                     android:text="BACK"
                     android:textColor="@color/secondary"
                     android:textSize="@dimen/_15sdp" />
@@ -585,6 +586,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
+                    android:fontFamily="@font/montserrat_semibold"
                     android:text="NEXT"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_15sdp" />
