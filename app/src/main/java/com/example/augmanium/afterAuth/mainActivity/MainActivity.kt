@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.augmanium.R
 import com.example.augmanium.afterAuth.mainActivity.viewModel.MainActivityViewModel
@@ -18,6 +19,9 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+companion object{
+    var position = 0
+}
 
     lateinit var binding:ActivityMainBinding
 //    val viewModel: MainActivityViewModel by viewModels<MainActivityViewModel>()
@@ -58,18 +62,110 @@ class MainActivity : AppCompatActivity() {
         binding.menu.setOnItemSelectedListener {
 
             when (it) {
+
                 R.id.homeFragment -> {
-                    Toast.makeText(this, "clicked", Toast.LENGTH_SHORT).show()
+
+                    when(position){
+                        2->{
+                            findNavController(R.id.navHostFragment).navigate(
+                                R.id.action_cartFragment_to_homeFragment, null, null
+                            )
+                            position=0
+                        }
+                        3->{
+                            findNavController(R.id.navHostFragment).navigate(
+                                R.id.action_profileFragment_to_homeFragment, null, null
+                            )
+                            position=0
+                        }
+                        4->{
+                            findNavController(R.id.navHostFragment).navigate(
+                                R.id.action_settingsFragment_to_homeFragment, null, null
+                            )
+                            position=0
+                        }
+
+                    }
+
                 }
                 R.id.profileFragment -> {
-                    println("clicked")
+
+                    when(position){
+                        0->{
+                            findNavController(R.id.navHostFragment).navigate(
+                                R.id.action_homeFragment_to_profileFragment, null, null
+                            )
+                            position=3
+                        }
+                        2->{
+                            findNavController(R.id.navHostFragment).navigate(
+                                R.id.action_cartFragment_to_profileFragment, null, null
+                            )
+                            position=3
+                        }
+                        4->{
+                            findNavController(R.id.navHostFragment).navigate(
+                                R.id.action_settingsFragment_to_profileFragment, null, null
+                            )
+                            position=3
+                        }
+
+                    }
 
 
                 }
                 R.id.cartFragment -> {
 
+                    when(position){
+                        0->{
+                            findNavController(R.id.navHostFragment).navigate(
+                                R.id.action_homeFragment_to_cartFragment, null, null
+
+                            )
+                            position = 2
+                        }
+                        3->{
+                            findNavController(R.id.navHostFragment).navigate(
+                                R.id.action_profileFragment_to_cartFragment, null, null
+                            )
+                            position = 2
+                        }
+                        4->{
+                            findNavController(R.id.navHostFragment).navigate(
+                                R.id.action_settingsFragment_to_cartFragment, null, null
+                            )
+                            position = 2
+                        }
+
+                    }
 
                 }
+               R.id.settingsFragment->{
+
+                   when(position){
+                       0->{
+                           findNavController(R.id.navHostFragment).navigate(
+                               R.id.action_homeFragment_to_settingsFragment, null, null
+                           )
+                           position=4
+                       }
+                       2->{
+                           findNavController(R.id.navHostFragment).navigate(
+                               R.id.action_cartFragment_to_settingsFragment, null, null
+                           )
+                           position=4
+                       }
+                       3->{
+                           findNavController(R.id.navHostFragment).navigate(
+                               R.id.action_profileFragment_to_settingsFragment, null, null
+                           )
+                           position=4
+                       }
+
+                   }
+
+}
+
 
             }
 

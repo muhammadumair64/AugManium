@@ -104,7 +104,6 @@
         <activity
             android:name=".beforeAuth.ScanFace"
             android:exported="true" >
-
         </activity>
         <activity
             android:name=".CreateNewPassword"

@@ -8,6 +8,10 @@
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/drawable-v24/item_layout_background.xml" value="0.33046875" />
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/drawable-v24/item_line.xml" value="0.33046875" />
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/drawable-v24/item_unselectedcards.xml" value="0.33046875" />
+        <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/drawable/ic_cart.xml" value="0.33046875" />
+        <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/drawable/ic_editprofile.xml" value="0.33046875" />
+        <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/drawable/ic_home.xml" value="0.33046875" />
+        <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/drawable/ic_icon_collection.xml" value="0.33046875" />
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/drawable/ic_icons_filter_gray.xml" value="0.33046875" />
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/drawable/ic_plus.xml" value="0.33046875" />
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/drawable/ic_whitelogo.xml" value="0.22890625" />
@@ -40,6 +44,8 @@
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/activity_splash_screen.xml" value="0.14" />
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/activity_write_review_screen.xml" value="0.33" />
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/fragment_cart.xml" value="0.5" />
+        <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/fragment_home.xml" value="0.30625" />
+        <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/item_all_categories.xml" value="0.30625" />
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/item_all_category_rv.xml" value="0.33" />
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/item_all_product_rv.xml" value="0.30625" />
@@ -61,7 +67,7 @@
         <entry key="..\:/Android Projects/GitFyp/AugManium/app/src/main/res/layout/activity_notification_screen.xml" value="0.14666666666666667" />
         <entry key="..\:/Android Projects/GitFyp/AugManium/app/src/main/res/layout/activity_order_complete_screen.xml" value="0.16893115942028986" />
         <entry key="..\:/Android Projects/GitFyp/AugManium/app/src/main/res/layout/activity_order_history.xml" value="0.16893115942028986" />
-        <entry key="..\:/Android Projects/GitFyp/AugManium/app/src/main/res/layout/activity_scan_face.xml" value="0.16049382716049382" />
+        <entry key="..\:/Android Projects/GitFyp/AugManium/app/src/main/res/layout/activity_scan_face.xml" value="0.16893115942028986" />
         <entry key="..\:/Android Projects/GitFyp/AugManium/app/src/main/res/layout/activity_search_result.xml" value="0.14130434782608695" />
         <entry key="..\:/Android Projects/GitFyp/AugManium/app/src/main/res/layout/activity_sign_in.xml" value="0.16666666666666666" />
         <entry key="..\:/Android Projects/GitFyp/AugManium/app/src/main/res/layout/activity_sign_up.xml" value="0.16893115942028986" />
