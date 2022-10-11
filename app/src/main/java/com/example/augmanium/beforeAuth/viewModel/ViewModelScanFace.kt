@@ -7,6 +7,7 @@ import android.hardware.camera2.CaptureRequest
 import android.media.ExifInterface
 import android.media.Image
 import android.os.Environment
+import android.util.Base64
 import android.util.Log
 import android.util.Range
 import android.util.Size
@@ -23,6 +24,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.augmanium.beforeAuth.ScanFace
 import com.example.augmanium.databinding.ActivityScanFaceBinding
 import com.example.augmanium.utils.FaceRecognition
+import com.example.augmanium.utils.K
+import com.example.augmanium.utils.TinyDB
 import com.google.common.util.concurrent.ListenableFuture
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -32,6 +35,7 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+import java.net.URL
 import java.nio.ReadOnlyBufferException
 import java.util.*
 import java.util.concurrent.ExecutionException
@@ -54,6 +58,7 @@ class ViewModelScanFace @Inject constructor(
     lateinit var activityContext: Context
     lateinit var binding: ActivityScanFaceBinding
     lateinit var preview : Preview
+    lateinit var tinyDB: TinyDB
     var mediaImage: Image? = null
     var faceRecognition = FaceRecognition()
     var counter = 0
@@ -73,6 +78,7 @@ class ViewModelScanFace @Inject constructor(
     ) {
         this.activityContext = activityContext
         this.binding = binding
+        tinyDB = TinyDB(activityContext)
         Log.d(TAG, "initViews")
         convertImageUrlToBitmap()
     }
@@ -107,44 +113,33 @@ class ViewModelScanFace @Inject constructor(
 
                 Log.d(TAG, "Image Pixels$imageBitmap")
 
-//                when (loggedInMethod) {
-//                    2 -> {
-//                        val imageFile = File(tinyDB.getString(K.PROFILE_PIC_BASIC_LOGIN)!!)
-//                        imageBitmap = BitmapFactory.decodeFile(imageFile.absolutePath)
-//                        Log.d(TAG,"ImageBitmap...$imageBitmap")
-////                        withContext(Dispatchers.Main){
-////                            binding.profileImage.setImageBitmap(imageBitmap)
-////                        }
-//
-//                    }
-//                    3 -> {
-//                        val url =
-//                            URL(
-//                                tinyDB.getObject(
-//                                    K.MOODLE_LOGIN_DATA,
-//                                    MoodleInfoDataclass::class.java
-//                                ).stImage
-//                            )
-//                        Log.d(TAG, "Url $url")
-//
-//                        imageBitmap =
-//                            BitmapFactory.decodeStream(url.openConnection().getInputStream())
-//
-//
-//                        Log.d(TAG, "ImageBitmap$imageBitmap")
-//
-//                    }
-//                }
-                val url = File(
-                    Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM),
-                    "/Tiny/mypic.jpg"
-                )
-                Log.d("FILE_PATH",url.toString())
-                imageBitmap = BitmapFactory.decodeFile(url.absolutePath)
-//                binding.img.setImageBitmap(imageBitmap)
-                Log.d("FILE_BITMAP",imageBitmap.toString())
+
+//                val url = File(
+//                    Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM),
+//                    "/Tiny/mypic.jpg"
+//                )
+//                Log.d("FILE_PATH",url.toString())
+//                imageBitmap = BitmapFactory.decodeFile(url.absolutePath)
+////                binding.img.setImageBitmap(imageBitmap)
+//                Log.d("FILE_BITMAP",imageBitmap.toString())
+                var user_img = tinyDB.getString(K.USER_IMG)
+
+                try {
+                    val url = URL(user_img)
+                    imageBitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream())
+                } catch (e: IOException) {
+                    println(e)
+                }
+//                imageBitmap = StringToBitMap(user_img)
+//                imageBitmap = MediaStore.Images.Media.getBitmap(activityContext.contentResolver ,imageUri)
+
+
+
                 withContext(Dispatchers.Main)
                 {
+
+
+
                     faceRecognition.detectoreAnalyze(imageBitmap!!, activityContext, 1, {
 
                         Toast.makeText(
@@ -157,9 +152,11 @@ class ViewModelScanFace @Inject constructor(
                     },
                         {
 //                        binding.progressLayout.visibility = View.GONE
-                        cameraBind()
-                        startRunner()
-                    })
+                            cameraBind()
+                            startRunner()
+                        })
+
+
                     cameraBind()
                     startRunner()
                 }
@@ -191,7 +188,7 @@ class ViewModelScanFace @Inject constructor(
 
     @SuppressLint("UnsafeOptInUsageError")
     private fun bindPreview(cameraProvider: ProcessCameraProvider) {
-
+Log.d("PREVIEW"," Binding preview")
         cameraSelector = CameraSelector.Builder()
             .requireLensFacing(CameraSelector.LENS_FACING_FRONT)
             .build()
@@ -201,6 +198,7 @@ class ViewModelScanFace @Inject constructor(
                 .build()
                 .also {
                     it.setSurfaceProvider(binding.cameraPreview.surfaceProvider)
+                    Log.d("PREVIEW"," preview done")
                 }
         }
 //        withContext(Dispatchers.Main){}
@@ -515,5 +513,29 @@ class ViewModelScanFace @Inject constructor(
         )
     }
 
+    /**
+     * @param encodedString
+     * @return bitmap (from given string)
+     */
+    fun StringToBitMap(base64: String?): Bitmap? {
+        return try {
+            val imageBytes = Base64.decode(base64, 0)
+            val image = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+            image
+        }catch (e: Exception){
+            Log.d("StringToBitMap","${e.localizedMessage}")
+            null
+        }
+    }
 
+
+
+
+//fun bitmpConvert(encodedImage: String?):Bitmap{
+//    return try {
+//        val decodedString: ByteArray = Base64.decode(encodedImage, Base64.DEFAULT)
+//        val decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
+//    }
+//
+//}
 }

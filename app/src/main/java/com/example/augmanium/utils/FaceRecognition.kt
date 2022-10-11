@@ -2,16 +2,20 @@ package com.example.augmanium.utils
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.graphics.*
 import android.util.Log
-import android.widget.Toast
+import com.example.augmanium.CreateNewPassword
 import com.example.augmanium.R
+import com.example.augmanium.beforeAuth.ScanFace
+import com.google.firebase.auth.FirebaseAuth
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.face.FaceDetection
-import com.google.mlkit.vision.face.FaceDetector
 import com.google.mlkit.vision.face.FaceDetectorOptions
-
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import org.tensorflow.lite.Interpreter
 import java.io.FileInputStream
 import java.io.IOException
@@ -19,12 +23,13 @@ import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.nio.MappedByteBuffer
 import java.nio.channels.FileChannel
-import java.util.*
+
 
 class FaceRecognition {
 
 //    var baseViewModel = BaseViewModel()
     lateinit var context: Context
+    lateinit var tinyDB: TinyDB
 
     lateinit var detector: com.google.mlkit.vision.face.FaceDetector
     lateinit var tfLite: Interpreter
@@ -40,6 +45,7 @@ class FaceRecognition {
     var OUTPUT_SIZE = 192 //Output size of model
     var isFaceMatched = false
     var TAG = "FACE_RECOGNITION"
+    var forgotPass = true
 
 
     init {
@@ -61,6 +67,7 @@ class FaceRecognition {
         Log.d(TAG, "student Image $idImageBitmap")
 
         this.context = activityContext
+        tinyDB = TinyDB(context)
 
         bitmapArray = ArrayList()
 
@@ -171,7 +178,11 @@ class FaceRecognition {
 
                                     Log.d(TAG, "size of bitmapArray...$index${bitmapArray.size}")
 
-                                    recognizeImage(scaled, index) {   action2() }
+
+                                        recognizeImage(scaled, index) {   action2() }
+
+
+
 
 
                                 }
@@ -294,10 +305,34 @@ class FaceRecognition {
                     {
 
                         isFaceMatched = true
-                        Log.d("FACE_REC_RESULT", "Same face")
+                        val email = tinyDB.getString(K.EMAIL)
+                        Log.d("FACE_REC_RESULT", "Same face $email")
 //                        BaseClass.runOnMain {
 //                            Toast.makeText(context, "Same Face", Toast.LENGTH_SHORT).show()
 //                        }
+
+
+                        if(forgotPass){
+                            forgotPass = false
+                            FirebaseAuth.getInstance().sendPasswordResetEmail(email!!)
+                                .addOnCompleteListener { task ->
+                                    if (task.isSuccessful) {
+                                        Log.d(TAG, "Email sent.")
+
+                                        val intent = Intent(context,CreateNewPassword::class.java)
+                                        (context as ScanFace).startActivity(intent)
+                                        (context as ScanFace).finish()
+                                    }
+                                    else if (task.isCanceled){
+                                        Log.d(TAG, "Email sent. Canceled")
+                                        (context as ScanFace).finish()
+                                    }else{
+                                        Log.d(TAG, "Email sent. ${task.exception!!.localizedMessage}")
+                                        (context as ScanFace).finish()
+                                    }
+                                }
+                        }
+
 
 
                     } else {
@@ -418,5 +453,7 @@ class FaceRecognition {
         bm.recycle()
         return resizedBitmap
     }
+
+
 
 }

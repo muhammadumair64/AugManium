@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.augmanium">
 
     <uses-permission android:name="android.permission.CAMERA" />
@@ -34,6 +35,39 @@
         <activity
             android:name=".EditProfile"
             android:exported="false" /> <!-- <activity -->
+        android:theme="@style/Theme.AugManium" >
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.augmanium.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+
+
+        <activity
+            android:name=".beforeAuth.editProfileDetectFace.FaceDetection"
+            android:exported="true" >
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".EditProfile"
+            android:exported="true" >
+<!--             <intent-filter>-->
+<!--             <action android:name="android.intent.action.MAIN" />-->
+
+
+<!--             <category android:name="android.intent.category.LAUNCHER" />-->
+<!--             </intent-filter>-->
+        </activity> <!-- <activity -->
         <!-- android:name=".MainActivity" -->
         <!-- android:exported="false" /> -->
         <activity
@@ -65,26 +99,14 @@
             android:exported="true" />
         <activity
             android:name=".afterAuth.category.AllCategories"
-            android:exported="true">
+            android:exported="true" >
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
 
         </activity>
         <activity
             android:name=".afterAuth.category.SpecificCategoryProducts"
-            android:exported="true">
+            android:exported="true" >
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".afterAuth.category.categoryScreen"
@@ -100,14 +122,7 @@
             android:exported="false" />
         <activity
             android:name=".beforeAuth.ScanFace"
-            android:exported="true">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+            android:exported="true" >
         </activity>
         <activity
             android:name=".CreateNewPassword"
@@ -144,6 +159,11 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
+<!--        <activity-->
+<!--            android:name=".afterAuth.mainActivity.MainActivity"-->
+<!--            android:exported="true" >-->
+
+<!--        </activity>-->
     </application>
 
 </manifest>

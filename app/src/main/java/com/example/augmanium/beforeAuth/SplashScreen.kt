@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.augmanium.R
 
 import android.content.Intent
+import com.example.augmanium.beforeAuth.signin.SignIn
 
 
 class SplashScreen : AppCompatActivity() {
@@ -20,7 +21,7 @@ class SplashScreen : AppCompatActivity() {
         continueBtn = findViewById(R.id.continueBtn)
 
        continueBtn.setOnClickListener {
-           val send = Intent(this, SignUp::class.java)
+           val send = Intent(this, SignIn::class.java)
            startActivity(send)
        }
     }
