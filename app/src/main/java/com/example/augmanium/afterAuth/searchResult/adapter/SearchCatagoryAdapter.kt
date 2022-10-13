@@ -6,9 +6,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.augmanium.R
 import com.example.augmanium.afterAuth.searchResult.searchDataClass.CatagoryDataClass
+import com.example.augmanium.afterAuth.search.searchDataClass.SearchCatagoryDataClass
 import com.example.augmanium.databinding.ItemCategroySearchResultBinding
 
-class SearchCatagoryAdapter (val catagoryArrayList:ArrayList<CatagoryDataClass>):
+class SearchCatagoryAdapter (val catagoryArrayList:ArrayList<SearchCatagoryDataClass>):
     RecyclerView.Adapter<SearchCatagoryAdapter.ItemCatagoryViewHolder>() {
 
     class ItemCatagoryViewHolder(val itemCatagory: ItemCategroySearchResultBinding):RecyclerView.ViewHolder(itemCatagory.root) {

@@ -10,5 +10,7 @@ class K {
         val USER_IMG = "user_img"
         val ADDRESS="user_address"
         val MODEL ="3D_Model"
+        val PRODUCT_DATA = "product_data"
+        val SPECIFIC_CATEGORY_PRODUCTS = "specific_category_product"
     }
 }

@@ -10,12 +10,14 @@ import androidx.fragment.app.viewModels
 import com.example.augmanium.afterAuth.mainActivity.MainActivity
 import com.example.augmanium.afterAuth.mainActivity.viewModel.MainActivityViewModel
 import com.example.augmanium.databinding.FragmentHomeBinding
+import com.google.firebase.database.DatabaseReference
 
 
 class HomeFragment : Fragment() {
 
     lateinit var binding: FragmentHomeBinding
     val viewModel: MainActivityViewModel by viewModels<MainActivityViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

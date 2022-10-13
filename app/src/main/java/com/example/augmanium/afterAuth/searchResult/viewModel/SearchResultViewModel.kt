@@ -6,6 +6,8 @@ import com.example.augmanium.afterAuth.mainActivity.Adapter.AllProductViewAdapte
 import com.example.augmanium.afterAuth.mainActivity.Adapter.CatagoryAdapter
 import com.example.augmanium.afterAuth.searchResult.searchDataClass.AllProductDataClass
 import com.example.augmanium.afterAuth.searchResult.searchDataClass.CatagoryDataClass
+import com.example.augmanium.afterAuth.search.searchDataClass.SearchAllProductDataClass
+import com.example.augmanium.afterAuth.search.searchDataClass.SearchCatagoryDataClass
 import com.example.augmanium.databinding.ActivitySearchResultBinding
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -13,8 +15,8 @@ import javax.inject.Inject
 @HiltViewModel
 class SearchResultViewModel @Inject constructor(): ViewModel(){
 
-    var productsTitleArrayList: ArrayList<CatagoryDataClass> = ArrayList()
-    val allProductArrayList: ArrayList<AllProductDataClass> = ArrayList()
+    var productsTitleArrayList: ArrayList<SearchCatagoryDataClass> = ArrayList()
+    val allProductArrayList: ArrayList<SearchAllProductDataClass> = ArrayList()
 
     fun screenBinding(activityContext : Context, binding: ActivitySearchResultBinding){
         productsTitleArrayList.clear()
@@ -27,11 +29,11 @@ class SearchResultViewModel @Inject constructor(): ViewModel(){
     }
 
     private fun allProductRv(binding: ActivitySearchResultBinding, activityContext: Context) {
-        allProductArrayList.add(AllProductDataClass("White Top", "Women", "$15"))
-        allProductArrayList.add(AllProductDataClass("White Top", "Women", "$15"))
-        allProductArrayList.add(AllProductDataClass("White Top", "Women", "$15"))
-        allProductArrayList.add(AllProductDataClass("White Top", "Women", "$15"))
-        allProductArrayList.add(AllProductDataClass("White Top", "Women", "$15"))
+        allProductArrayList.add(SearchAllProductDataClass("White Top", "Women", "$15"))
+        allProductArrayList.add(SearchAllProductDataClass("White Top", "Women", "$15"))
+        allProductArrayList.add(SearchAllProductDataClass("White Top", "Women", "$15"))
+        allProductArrayList.add(SearchAllProductDataClass("White Top", "Women", "$15"))
+        allProductArrayList.add(SearchAllProductDataClass("White Top", "Women", "$15"))
 
         binding.allProductRV.also {
             it.adapter = AllProductViewAdapter(allProductArrayList)
@@ -40,14 +42,14 @@ class SearchResultViewModel @Inject constructor(): ViewModel(){
     }
 
     fun productTitleRv(binding : ActivitySearchResultBinding){
-        productsTitleArrayList.add(CatagoryDataClass("All"))
-        productsTitleArrayList.add(CatagoryDataClass("Women"))
-        productsTitleArrayList.add(CatagoryDataClass("Men"))
-        productsTitleArrayList.add(CatagoryDataClass("Best Sellers"))
+        productsTitleArrayList.add(SearchCatagoryDataClass("All"))
+        productsTitleArrayList.add(SearchCatagoryDataClass("Women"))
+        productsTitleArrayList.add(SearchCatagoryDataClass("Men"))
+        productsTitleArrayList.add(SearchCatagoryDataClass("Best Sellers"))
 
-        binding.categoryRv.also {
-            it.adapter = CatagoryAdapter(productsTitleArrayList)
-            it.setHasFixedSize(true)
-        }
+//        binding.categoryRv.also {
+//            it.adapter = CatagoryAdapter(productsTitleArrayList)
+//            it.setHasFixedSize(true)
+//        }
     }
 }

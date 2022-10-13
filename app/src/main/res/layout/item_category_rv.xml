@@ -4,7 +4,7 @@
     <data>
         <variable
             name="dataClass"
-            type="com.example.augmanium.afterAuth.searchResult.searchDataClass.CatagoryDataClass" />
+            type="com.example.augmanium.afterAuth.mainActivity.dataClass.CatagoryDataClass" />
     </data>
 
     <RelativeLayout
