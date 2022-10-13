@@ -5,9 +5,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.example.augmanium.R
-import com.example.augmanium.afterAuth.mainActivity.viewModel.MainActivityViewModel
 import com.example.augmanium.afterAuth.mainActivity.viewModel.SearchResultViewModel
-import com.example.augmanium.databinding.ActivityMainBinding
 import com.example.augmanium.databinding.ActivitySearchResultBinding
 
 class SearchResult : AppCompatActivity() {

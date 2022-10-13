@@ -10,6 +10,7 @@ import android.os.Environment
 import android.preference.PreferenceManager
 import android.text.TextUtils
 import android.util.Log
+import com.example.augmanium.afterAuth.mainActivity.dataClass.AllProductDataClass
 import com.google.gson.Gson
 import java.io.File
 import java.io.FileOutputStream
@@ -415,7 +416,7 @@ class TinyDB(appContext: Context?) {
         putString(key, gson.toJson(obj))
     }
 
-    fun putListObject(key: String?, objArray: ArrayList<Any>) {
+    fun putListObject(key: String?, objArray: ArrayList<AllProductDataClass>) {
         checkForNullKey(key)
         val gson = Gson()
         val objStrings = ArrayList<String>()

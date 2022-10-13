@@ -5,11 +5,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.augmanium.R
-import com.example.augmanium.afterAuth.search.searchDataClass.AllProductDataClass
-import com.example.augmanium.databinding.ItemAllProductRvBinding
+import com.example.augmanium.afterAuth.search.searchDataClass.SearchAllProductDataClass
 import com.example.augmanium.databinding.ItemSearchRvBinding
 
-class AllProductViewAdapter(val allProductArrayList:ArrayList<AllProductDataClass>):
+class AllProductViewAdapter(val allProductArrayList:ArrayList<SearchAllProductDataClass>):
     RecyclerView.Adapter<AllProductViewAdapter.ViewHolderAllProduct>() {
 
     class ViewHolderAllProduct(val allProductRvBinding: ItemSearchRvBinding):RecyclerView.ViewHolder(allProductRvBinding.root) {

@@ -97,7 +97,9 @@ class SignIn : AppCompatActivity() {
                firebaseAuth.signInWithEmailAndPassword(signInEmail, signInPassword)
                    .addOnCompleteListener { signIn ->
                        if (signIn.isSuccessful) {
+                           tinyDB.putString(K.EMAIL,signInEmail)
                            toast("signed in successfully")
+
                            var intent = Intent(this@SignIn, MainActivity::class.java)
                            startActivity(intent)
                        }
