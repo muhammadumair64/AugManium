@@ -106,12 +106,12 @@ class SignIn : AppCompatActivity() {
                            viewModel.uploadFCMToken(signInEmail,database,this@SignIn)
 
 //
-//                           var intent = Intent(this@SignIn, MainActivity::class.java)
-//                           startActivity(intent)
-
-
-                           val intent = Intent(this@SignIn, ModelActivity::class.java)
+                           val intent = Intent(this@SignIn, MainActivity::class.java)
                            startActivity(intent)
+
+//
+//                           val intent = Intent(this@SignIn, ModelActivity::class.java)
+//                           startActivity(intent)
                        }
 
                        else {
