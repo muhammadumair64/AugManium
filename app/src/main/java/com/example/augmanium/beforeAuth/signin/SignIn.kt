@@ -109,8 +109,8 @@ class SignIn : AppCompatActivity() {
 //                           var intent = Intent(this@SignIn, MainActivity::class.java)
 //                           startActivity(intent)
 
+                           var intent = Intent(this@SignIn, MainActivity::class.java)
 
-                           val intent = Intent(this@SignIn, ModelActivity::class.java)
                            startActivity(intent)
                        }
 
