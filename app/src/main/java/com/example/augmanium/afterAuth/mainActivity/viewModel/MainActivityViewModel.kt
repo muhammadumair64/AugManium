@@ -10,8 +10,6 @@ import com.example.augmanium.ProductDetailsActivity
 import com.example.augmanium.afterAuth.interfaces.OnItemClickListener
 import com.example.augmanium.afterAuth.mainActivity.Adapter.AllProductAdapter
 import com.example.augmanium.afterAuth.mainActivity.Adapter.CatagoryAdapter
-import com.example.augmanium.afterAuth.searchResult.searchDataClass.AllProductDataClass
-import com.example.augmanium.afterAuth.searchResult.searchDataClass.CatagoryDataClass
 import com.example.augmanium.afterAuth.mainActivity.dataClass.AllProductDataClass
 import com.example.augmanium.afterAuth.mainActivity.dataClass.CatagoryDataClass
 import com.example.augmanium.databinding.FragmentHomeBinding
