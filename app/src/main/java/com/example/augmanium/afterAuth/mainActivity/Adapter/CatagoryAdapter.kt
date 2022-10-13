@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.augmanium.R
-import com.example.augmanium.afterAuth.searchResult.searchDataClass.CatagoryDataClass
+
 import com.example.augmanium.afterAuth.interfaces.OnItemClickListener
 import com.example.augmanium.afterAuth.mainActivity.dataClass.CatagoryDataClass
-import com.example.augmanium.afterAuth.search.searchDataClass.SearchCatagoryDataClass
+
 import com.example.augmanium.databinding.ItemCategoryRvBinding
 
 
