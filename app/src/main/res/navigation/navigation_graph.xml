@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
-        android:name="com.example.augmanium.CartFragment"
+        android:name="com.example.augmanium.afterAuth.cartFragment.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" >
         <action

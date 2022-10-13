@@ -5,6 +5,7 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 
+
 @BindingAdapter("setHomeFragmentImage")
 fun setHomeFragmentImage(view: ImageView, resource: String) {
 //    view.setImageResource(resource)

@@ -59,9 +59,12 @@ class CartFragmentViewModel @Inject constructor() : ViewModel(), CartRVClick {
                     var cartData = snap.getValue(CartFragmentDataClass::class.java)
                     var price = cartData!!.productPrice
                     val separatedPrice = price!!.split("$").toTypedArray()[0]
-                    var totalPrice = separatedPrice.toString().toInt()
-//                    totalPrice += totalPrice
-                    totalPriceOfProducts = totalPrice + totalPrice
+                    var totalPrice = separatedPrice.toInt()
+
+                    var count = cartData.productCount?.trim()
+
+               val currentPrize = totalPrice * (count?.toInt()!!)
+                    totalPriceOfProducts = totalPriceOfProducts + currentPrize
                     Log.d("PRODUCT_PRICE","$totalPriceOfProducts")
                     cartFragmentArrayList.add(cartData!!)
                     Log.d("CART_DATA___"," ${cartFragmentArrayList}")
