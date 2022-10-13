@@ -32,8 +32,13 @@
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/activity_all_categories.xml" value="0.30625" />
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/activity_category_screen.xml" value="0.30625" />
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/activity_check_out_address.xml" value="0.25" />
+<<<<<<< HEAD
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/activity_check_out_payment.xml" value="0.33" />
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/activity_checkout_summary.xml" value="0.2" />
+=======
+        <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/activity_check_out_payment.xml" value="0.22" />
+        <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/activity_checkout_summary.xml" value="0.33" />
+>>>>>>> main
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/activity_create_new_password.xml" value="0.12041884816753927" />
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/activity_face_detection.xml" value="0.2828125" />
         <entry key="..\:/Android Projects TestCase/AugManium/app/src/main/res/layout/activity_filter_screen.xml" value="0.30625" />
