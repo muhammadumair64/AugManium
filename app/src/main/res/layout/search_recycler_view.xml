@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="search"
+            type="com.example.augmanium.afterAuth.searchscreen.dataclass.SearchData" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/searchedText"
+            android:textSize="@dimen/_16sdp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:textColor="@color/hintColor"
+           />
+
+
+    </RelativeLayout>
+</layout>

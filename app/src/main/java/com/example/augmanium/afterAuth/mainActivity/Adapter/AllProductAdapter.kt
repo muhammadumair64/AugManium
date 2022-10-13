@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.augmanium.R
-import com.example.augmanium.afterAuth.search.searchDataClass.AllProductDataClass
+import com.example.augmanium.afterAuth.searchResult.searchDataClass.AllProductDataClass
 import com.example.augmanium.databinding.ItemAllProductRvBinding
 
 class AllProductAdapter(val allProductArrayList:ArrayList<AllProductDataClass>):

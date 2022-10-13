@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ModelActivity">
+
     <RelativeLayout
         android:id="@+id/upperlayout"
         android:layout_width="match_parent"
@@ -43,13 +44,20 @@
 <androidx.cardview.widget.CardView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:layout_margin="@dimen/_20sdp"
+    android:layout_below="@id/upperlayout"
+    app:cardCornerRadius="@dimen/_20sdp"
+    android:layout_above="@id/add_to_cart_layout"
     >
+
     <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/arFragment"
         android:name="com.google.ar.sceneform.ux.ArFragment" />
+
+</androidx.cardview.widget.CardView>
+
 
     <RelativeLayout
         android:id="@+id/add_to_cart_layout"
@@ -58,7 +66,7 @@
         android:layout_width="200sp"
         android:layout_height="@dimen/_35sdp"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/_30sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
         android:background="@drawable/item_botton"
         android:layout_alignParentBottom="true"
 
@@ -70,12 +78,14 @@
             android:layout_centerInParent="true"
             android:layout_marginStart="@dimen/_15sdp"
             android:fontFamily="@font/montserrat_semibold"
-            android:text="Press"
+            android:text="Download"
             android:textColor="@color/white"
             android:textSize="@dimen/_10sdp" />
 
     </RelativeLayout>
-</androidx.cardview.widget.CardView>
+
+
+
 
 
 

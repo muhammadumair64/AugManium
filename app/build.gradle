@@ -56,6 +56,15 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+
+
+
+
+
+
+
     def nav_version = "2.3.5"
     def lifecycle_version = "2.4.0"
 
@@ -177,6 +186,9 @@ dependencies {
     // Firebase UI Library
     implementation 'com.firebaseui:firebase-ui-auth:8.0.1'
     implementation 'com.firebaseui:firebase-ui-database:8.0.1'
+
+    //flexbox layout
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
 }
 // Allow references to generated code
 kapt {

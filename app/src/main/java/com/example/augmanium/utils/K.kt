@@ -8,5 +8,7 @@ class K {
         val SIGN_UP = "sign_up"
         val IMG = "img"
         val USER_IMG = "user_img"
+        val ADDRESS="user_address"
+        val MODEL ="3D_Model"
     }
 }

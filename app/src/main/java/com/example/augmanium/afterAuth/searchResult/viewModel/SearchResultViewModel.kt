@@ -2,12 +2,10 @@ package com.example.augmanium.afterAuth.mainActivity.viewModel
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
-import androidx.recyclerview.widget.GridLayoutManager
 import com.example.augmanium.afterAuth.mainActivity.Adapter.AllProductViewAdapter
 import com.example.augmanium.afterAuth.mainActivity.Adapter.CatagoryAdapter
-import com.example.augmanium.afterAuth.search.searchDataClass.AllProductDataClass
-import com.example.augmanium.afterAuth.search.searchDataClass.CatagoryDataClass
-import com.example.augmanium.databinding.ActivityMainBinding
+import com.example.augmanium.afterAuth.searchResult.searchDataClass.AllProductDataClass
+import com.example.augmanium.afterAuth.searchResult.searchDataClass.CatagoryDataClass
 import com.example.augmanium.databinding.ActivitySearchResultBinding
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

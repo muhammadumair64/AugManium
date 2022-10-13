@@ -7,4 +7,9 @@
         <item name="colorAccent">@color/Primary</item>
         <!-- Customize your theme here. -->
     </style>
+
+
+    <style name="searchView">
+        <item name="fontFamily">@font/montserrat_regular</item>
+    </style>
 </resources>

@@ -23,4 +23,6 @@
     <color name="lightgray">#DAD7E0</color>
     <color name="lightBlack">#2A2A2A</color>
     <color name="ProfileBox">#A3FA4248</color>
+    <color name="hintColor">#A6A6A6</color>
+    <color name="flexboxbd">#F7F7F7</color>
 </resources>

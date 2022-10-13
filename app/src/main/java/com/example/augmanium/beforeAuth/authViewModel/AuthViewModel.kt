@@ -5,17 +5,19 @@ import android.content.Intent
 import android.widget.EditText
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import com.example.augmanium.EditProfile
-import com.example.augmanium.beforeAuth.fireBase.Extensions.toast
 import com.example.augmanium.beforeAuth.fireBase.FirebaseUtils
 import com.example.augmanium.databinding.ActivitySignUpBinding
 import com.example.augmanium.utils.K
+import com.example.augmanium.utils.MyFirebaseMessagingService
 import com.example.augmanium.utils.TinyDB
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -34,7 +36,7 @@ class AuthViewModel @Inject constructor(): ViewModel()  {
     val auth = Firebase.auth
 
     private fun notEmpty(): Boolean = userEmail.isNotEmpty() && userPassword.isNotEmpty() && userName.isNotEmpty()
-    fun signUp(binding: ActivitySignUpBinding, context: Context) {
+    fun signUp(binding: ActivitySignUpBinding, context: Context, database: DatabaseReference) {
 
         tinyDB = TinyDB(context)
         tinyDB.clear()
@@ -59,6 +61,7 @@ class AuthViewModel @Inject constructor(): ViewModel()  {
                         if (task.isSuccessful) {
                             Toast.makeText(context, "created account successfully !", Toast.LENGTH_SHORT).show()
                             tinyDB.putInt(K.SIGN_UP,1)
+                            uploadFCMToken(userEmail,database,context)
                             val intent = Intent(context, EditProfile::class.java)
                            ActivityCompat.startActivity(context,intent,null)
 //                            ActivityCompat.finish()
@@ -79,6 +82,32 @@ class AuthViewModel @Inject constructor(): ViewModel()  {
         }
 
     }
+
+
+
+
+
+
+    fun uploadFCMToken(email: String, database: DatabaseReference, context: Context) {
+
+        val value = email.split("@").toTypedArray()[0]
+        database.child("User").child(value).child("FCM_Token").setValue(MyFirebaseMessagingService.getToken(context))
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                Toast.makeText(context, "User Created", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+
+            }
+        }
+
+        database.addValueEventListener(postListener)
+
+
+    }
+
 
 
 

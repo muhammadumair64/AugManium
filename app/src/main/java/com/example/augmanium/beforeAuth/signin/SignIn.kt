@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
@@ -12,18 +13,14 @@ import com.example.augmanium.ModelActivity
 import com.example.augmanium.afterAuth.mainActivity.MainActivity
 import com.example.augmanium.beforeAuth.ForgotPassword
 import com.example.augmanium.beforeAuth.SignUp
+import com.example.augmanium.beforeAuth.authViewModel.AuthViewModel
 import com.example.augmanium.beforeAuth.fireBase.Extensions.toast
 import com.example.augmanium.beforeAuth.fireBase.FirebaseUtils.firebaseAuth
 import com.example.augmanium.databinding.ActivitySignInBinding
 import com.example.augmanium.utils.K
 import com.example.augmanium.utils.TinyDB
 import com.firebase.ui.auth.AuthUI
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -35,10 +32,12 @@ class SignIn : AppCompatActivity() {
     lateinit var signInPassword : String
     lateinit var signInInputsArray: Array<EditText>
     lateinit var tinyDB: TinyDB
-
+    private lateinit var database: DatabaseReference
+    val viewModel: AuthViewModel by viewModels<AuthViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
        binding = DataBindingUtil.setContentView(this, com.example.augmanium.R.layout.activity_sign_in)
+        database = FirebaseDatabase.getInstance().reference
 
         signInInputsArray = arrayOf(binding.email, binding.editPassword)
         tinyDB = TinyDB(this)
@@ -47,15 +46,15 @@ class SignIn : AppCompatActivity() {
             signInUser()
         }
         binding.signUp.setOnClickListener {
-            var intent = Intent(this, SignUp::class.java)
+            val intent = Intent(this, SignUp::class.java)
             startActivity(intent)
         }
         binding.signUpBtn.setOnClickListener {
-            var intent = Intent(this, SignUp::class.java)
+            val intent = Intent(this, SignUp::class.java)
             startActivity(intent)
         }
         binding.forgetPassword.setOnClickListener {
-            var intent = Intent(this, ForgotPassword::class.java)
+            val intent = Intent(this, ForgotPassword::class.java)
             startActivity(intent)
         }
         binding.backButton.setOnClickListener {
@@ -88,6 +87,12 @@ class SignIn : AppCompatActivity() {
 
     private fun notEmpty(): Boolean = signInEmail.isNotEmpty() && signInPassword.isNotEmpty()
 
+
+
+
+
+
+
     private fun signInUser() {
         signInEmail = binding.email.text.toString().trim()
         signInPassword = binding.editPassword.text.toString().trim()
@@ -97,13 +102,18 @@ class SignIn : AppCompatActivity() {
                firebaseAuth.signInWithEmailAndPassword(signInEmail, signInPassword)
                    .addOnCompleteListener { signIn ->
                        if (signIn.isSuccessful) {
-                           toast("signed in successfully")
+                           tinyDB.putString(K.EMAIL,signInEmail)
+                           viewModel.uploadFCMToken(signInEmail,database,this@SignIn)
+
+//
 //                           var intent = Intent(this@SignIn, MainActivity::class.java)
 //                           startActivity(intent)
 
-                           var intent = Intent(this@SignIn, ModelActivity::class.java)
+
+                           val intent = Intent(this@SignIn, ModelActivity::class.java)
                            startActivity(intent)
                        }
+
                        else {
 
                            Log.d("Login_Exception "," ${signIn.exception}")

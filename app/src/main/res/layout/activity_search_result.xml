@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:padding="@dimen/_20sdp"
         android:background="@color/white"
-        tools:context=".afterAuth.search.mainClass.SearchResult">
+        tools:context=".afterAuth.searchResult.mainClass.SearchResult">
 
         <RelativeLayout
             android:id="@+id/toplayout"

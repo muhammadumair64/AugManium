@@ -1,13 +1,9 @@
 package com.example.augmanium.afterAuth.orderHistory.viewModel
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
-import com.example.augmanium.afterAuth.mainActivity.Adapter.AllProductViewAdapter
 import com.example.augmanium.afterAuth.orderHistory.adapter.OrderHistoryAdapter
 import com.example.augmanium.afterAuth.orderHistory.dataClass.OrderHistoryDataClass
-import com.example.augmanium.afterAuth.search.searchDataClass.AllProductDataClass
 import com.example.augmanium.databinding.ActivityOrderHistoryBinding
-import com.example.augmanium.databinding.ActivitySearchResultBinding
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

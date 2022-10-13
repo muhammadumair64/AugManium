@@ -23,4 +23,9 @@
     <style name="Style_menuItem">
         <item name="fontFamily">@font/montserrat_semibold</item>
     </style>
+
+
+    <style name="searchView">
+        <item name="fontFamily">@font/montserrat_regular</item>
+    </style>
 </resources>

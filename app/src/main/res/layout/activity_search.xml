@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".afterAuth.searchscreen.SearchActivity">
+
+
+        <RelativeLayout
+            android:id="@+id/upperlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:elevation="@dimen/_40sdp"
+                app:cardElevation="@dimen/_8sdp">
+
+
+                <LinearLayout
+                    android:id="@+id/searchbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_15sdp"
+                        android:background="@drawable/item_search_icon" />
+
+                    <TextView
+                        android:layout_width="@dimen/_1sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:background="@drawable/icon_divider" />
+
+
+                    <SearchView
+
+                        style="@style/searchView"
+                        android:id="@+id/searchText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:background="@null"
+                        android:iconifiedByDefault="false"
+                        android:queryBackground="@android:color/transparent"
+                        android:searchHintIcon="@null"
+                        android:searchIcon="@null"
+                        android:text="Search"
+                        android:textSize="@dimen/_18sdp">
+
+                    </SearchView>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_below="@id/upperlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginRight="@dimen/_17sdp"
+            android:layout_marginLeft="@dimen/_10sdp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_weight="2"
+                android:id="@+id/searchRecyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/search_recycler_view"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Recent Searches"
+                android:textColor="@color/Primary"
+                android:textSize="@dimen/_14sdp"
+                android:fontFamily="@font/montserrat_regular"
+                android:layout_margin="@dimen/_12sdp"
+
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/flexbox_rv"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_170sdp"
+                tools:listitem="@layout/item_flexbox_rv"
+                android:orientation="horizontal"
+                app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
+                tools:itemCount="10" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

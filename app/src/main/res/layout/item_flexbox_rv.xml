@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="flextext"
+            type="com.example.augmanium.afterAuth.searchscreen.dataclass.FlexBoxDataClass" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_35sdp"
+        android:background="@drawable/flexbox_background"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+
+
+        >
+
+        <TextView
+            android:id="@+id/searchItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{flextext.searchHistory}"
+            android:textColor="@color/secondary"
+            android:textSize="@dimen/_14sdp"
+            android:fontFamily="@font/montserrat_regular"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_centerInParent="true"
+            />
+
+    </RelativeLayout>
+</layout>
