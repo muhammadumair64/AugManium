@@ -120,8 +120,16 @@
             android:name=".OrderCompleteScreen"
             android:exported="false" />
         <activity
-            android:name=".CheckoutSummary"
-            android:exported="false" />
+            android:name=".afterAuth.checkout.checkOutSummary.CheckoutSummary"
+            android:exported="true" >
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
+
+
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
+
+        </activity>
         <activity
             android:name=".afterAuth.checkout.checkOutPayment.CheckOutPayment"
             android:exported="true">
@@ -154,12 +162,12 @@
         <activity
             android:name=".afterAuth.category.CategoryScreen"
             android:exported="true" >
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
+<!--             <intent-filter>-->
+<!--             <action android:name="android.intent.action.MAIN" />-->
 
 
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+<!--             <category android:name="android.intent.category.LAUNCHER" />-->
+<!--             </intent-filter>-->
         </activity>
         <activity
             android:name=".afterAuth.searchResult.mainClass.SearchResult"
@@ -199,12 +207,12 @@
             android:name=".afterAuth.mainActivity.MainActivity"
             android:exported="true">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
+<!--             <intent-filter>-->
+<!--             <action android:name="android.intent.action.MAIN" />-->
 
 
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+<!--             <category android:name="android.intent.category.LAUNCHER" />-->
+<!--             </intent-filter>-->
         </activity>
 
         <service
