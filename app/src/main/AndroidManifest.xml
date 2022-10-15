@@ -15,8 +15,10 @@
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-feature android:name="android.hardware.camera.ar" android:required="true" />
 
+    <uses-feature
+        android:name="android.hardware.camera.ar"
+        android:required="true" />
 
     <application
         android:name=".myApplication.MyApplication"
@@ -28,13 +30,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AugManium">
         <activity
-            android:name=".afterAuth.searchscreen.SearchActivity"
+            android:name=".afterAuth.Location.Location"
             android:exported="true" >
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
 
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".afterAuth.searchscreen.SearchActivity"
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
 
         </activity>
         <activity
@@ -50,7 +63,10 @@
 
         </activity>
 
-        <meta-data android:name="com.google.ar.core" android:value="required" />
+        <meta-data
+            android:name="com.google.ar.core"
+            android:value="required" />
+
         <activity
             android:name=".ProductDetailsActivity"
             android:exported="false" />
@@ -82,20 +98,18 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-
         <activity
             android:name=".afterAuth.notification.NotificationScreen"
-            android:exported="true" >
-<!--             <intent-filter>-->
-<!--             <action android:name="android.intent.action.MAIN" />-->
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
 
 
-<!--             <category android:name="android.intent.category.LAUNCHER" />-->
-<!--             </intent-filter>-->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
 
         </activity>
-
-
         <activity
             android:name=".afterAuth.orderHistory.OrderHistory"
             android:exported="true" />
@@ -121,30 +135,31 @@
         </activity>
         <activity
             android:name=".afterAuth.checkout.CheckOutAddress"
-            android:exported="true" >
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            android:exported="true">
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
 
         </activity>
-
         <activity
             android:name=".afterAuth.category.AllCategories"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".afterAuth.category.SpecificCategoryProducts"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".afterAuth.category.CategoryScreen"
             android:exported="true" >
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
 
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
         </activity>
         <activity
             android:name=".afterAuth.searchResult.mainClass.SearchResult"
@@ -157,7 +172,7 @@
             android:exported="false" />
         <activity
             android:name=".beforeAuth.ScanFace"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".CreateNewPassword"
             android:exported="false" />
@@ -173,26 +188,23 @@
         <activity
             android:name=".beforeAuth.SplashScreen"
             android:exported="true"
-            android:noHistory="true" >
+            android:noHistory="true">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-
-
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".afterAuth.mainActivity.MainActivity"
             android:exported="true">
 
-<!--             <intent-filter>-->
-<!--             <action android:name="android.intent.action.MAIN" />-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
 
 
-<!--             <category android:name="android.intent.category.LAUNCHER" />-->
-<!--             </intent-filter>-->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
 
         <service
@@ -203,8 +215,11 @@
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-
         </service>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDZE679CTAUHDgBRtCUazx9mZKcIkZiCds" />
     </application>
 
 </manifest>

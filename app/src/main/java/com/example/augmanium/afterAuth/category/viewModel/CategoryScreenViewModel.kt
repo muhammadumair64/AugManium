@@ -46,12 +46,12 @@ class CategoryScreenViewModel @Inject constructor(): ViewModel() {
         tinyDB = TinyDB(context)
 //        var data = tinyDB.getObject(K.PRODUCT_DATA, AllProductDataClass::class.java)
 
-        getData("Best Seller").toString()
-        getData("Children").toString()
-        getData("Men").toString()
-        getData("women").toString()
+        getData("Best Seller")
+        getData("Children")
+        getData("Men")
+        getData("women")
         getData("Electronics")
-        getData("All").toString()
+        getData("All")
 
 
         binding.apply {
@@ -83,7 +83,7 @@ class CategoryScreenViewModel @Inject constructor(): ViewModel() {
     }
 
     fun setCount(){
-        categoryProductArrayList.clear()
+//        categoryProductArrayList.clear()
         activityBinding.electronicCount.text = countElectronics.toString()
         activityBinding.womenCount.text = countWomen.toString()
         activityBinding.menCount.text = countMen.toString()
@@ -94,6 +94,7 @@ class CategoryScreenViewModel @Inject constructor(): ViewModel() {
         tinyDB.putString(K.WOMEN_COUNT,countWomen.toString())
         tinyDB.putString(K.ELECTRONICS_COUNT,countElectronics.toString())
         tinyDB.putString(K.BESTSALLER_COUNT,countBestSeller.toString())
+
     }
 
     fun getData(category: String){
@@ -101,26 +102,21 @@ class CategoryScreenViewModel @Inject constructor(): ViewModel() {
         database.child("Product").addListenerForSingleValueEvent(object :
             ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                for (snap in snapshot.getChildren()) {
+                for (snap in snapshot.children) {
+
                     Log.d("NODE___"," ${snap.key} $snapshot")
 //                    for (products in snap.children) {
                     Log.d("NODE___"," ${snap.key} $snap")
-                    var product = snap.getValue(ProductDetailCategoryProductDataClass::class.java)
+                    val product = snap.getValue(ProductDetailCategoryProductDataClass::class.java)
                     when (category) {
+
                         "All" -> {
 
-//                            if(product!!.productCategory == category){
-                                categoryProductArrayList.add(product!!)
-                                countAll = categoryProductArrayList.size
-                                Log.d(
-                                    "PRODUCT_DISPLAY $category",
-                                    "$countAll"
-                                )
+
+                                 countAll = countAll + 1
+
+
                                 setCount()
-//                            }
-//                            else {
-//                                Log.d("PRODUCT_DISPLAY $category", "NOTHING TO SHOW___!!!!!!")
-//                            }
                         }
                         "women" -> {
                             if(product!!.productCategory == category){

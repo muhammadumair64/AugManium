@@ -38,6 +38,12 @@
                     app:cardCornerRadius="@dimen/_30sdp"
                     app:cardElevation="@dimen/_5sdp">
 
+                    <ImageView
+                        android:scaleType="fitXY"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        setHomeFragmentImage="@{dataClass.image}"
+                        />
                     <RelativeLayout
                         android:layout_width="@dimen/_75sdp"
                         android:layout_height="@dimen/_30sdp"
@@ -55,11 +61,7 @@
 
                     </RelativeLayout>
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        setHomeFragmentImage="@{dataClass.image}"
-                        />
+
                 </androidx.cardview.widget.CardView>
 
 
