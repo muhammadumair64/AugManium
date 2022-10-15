@@ -3,6 +3,7 @@ package com.example.augmanium.afterAuth.category.viewModel
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.augmanium.ProductDetailsActivity
@@ -60,7 +61,7 @@ class SpecificCategoryProductViewModel @Inject constructor(): ViewModel(), OnIte
     fun rvData(product: SpecificCatagoryProductDataClass,binding: ActivitySpecificCategoryProductsBinding, category: String){
         if(product!!.productCategory == category){
             specificCategoryProductArrayList.add(product!!)
-
+            binding.stock.visibility = View.INVISIBLE
             binding.allProductRV.also {
                 it.adapter = SpecificCategoryProductAdapter(specificCategoryProductArrayList, this)
                 it.setLayoutManager(GridLayoutManager(activityContext,2))
@@ -74,6 +75,7 @@ class SpecificCategoryProductViewModel @Inject constructor(): ViewModel(), OnIte
             )
         }
         else {
+//            binding.stock.visibility = View.VISIBLE
             Log.d("PRODUCT_DISPLAY $category", "NOTHING TO SHOW___!!!!!!")
         }
     }
@@ -93,8 +95,24 @@ class SpecificCategoryProductViewModel @Inject constructor(): ViewModel(), OnIte
                     var product = snap.getValue(SpecificCatagoryProductDataClass::class.java)
                     when (category) {
                         "All" -> {
+                            if (product != null){
+                                specificCategoryProductArrayList.add(product!!)
+                                binding.stock.visibility = View.INVISIBLE
+                                binding.allProductRV.also {
+                                    it.adapter = SpecificCategoryProductAdapter(specificCategoryProductArrayList, this@SpecificCategoryProductViewModel)
+                                    it.setLayoutManager(GridLayoutManager(activityContext,2))
+                                    it.setHasFixedSize(true)
+                                    it.adapter!!.notifyDataSetChanged()
+                                }
 
-                            rvData(product!!,binding,"All")
+                                Log.d(
+                                    "PRODUCT_DISPLAY $category",
+                                    "$specificCategoryProductArrayList"
+                                )
+                            }else{
+                                binding.stock.visibility = View.VISIBLE
+                            }
+
                         }
                         "women" -> {
                             rvData(product!!,binding,"women")
