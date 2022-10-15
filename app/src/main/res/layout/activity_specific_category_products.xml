@@ -71,6 +71,7 @@
                     android:src="@drawable/ic_icons_back" />
 
                 <TextView
+                    android:id="@+id/category_name"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_30sdp"
                     android:layout_centerInParent="true"
@@ -117,8 +118,21 @@
                 tools:listitem="@layout/item_category_products"
 
                 />
+            <TextView
+                android:id="@+id/stock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Out of stock!"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15sdp"
+                android:fontFamily="@font/montserrat_bold"
+
+                />
 
             <RelativeLayout
+                android:id="@+id/categoryView"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_50sdp"
                 android:layout_alignParentBottom="true"
@@ -127,7 +141,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
                     android:layout_centerInParent="true"
                     android:fontFamily="@font/montserrat_bold"
                     android:text="ALL CATEGORIES"

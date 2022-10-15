@@ -78,6 +78,18 @@
                 android:paddingEnd="@dimen/_20sdp"
                 tools:listitem="@layout/item_all_product_rv" />
 
+            <TextView
+                android:id="@+id/stock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Out of stock!"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15sdp"
+                android:fontFamily="@font/montserrat_bold"
+                />
+
         </RelativeLayout>
 
     </FrameLayout>

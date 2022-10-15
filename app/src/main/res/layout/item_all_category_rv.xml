@@ -39,17 +39,18 @@
                 android:id="@+id/category_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{dataClass.categoryName}"
+                android:text="@{dataClass.productCategory}"
                 android:fontFamily="@font/montserrat_bold"
                 android:textSize="@dimen/_14sdp"
                 android:textColor="@color/secondary" />
 
             <TextView
+                android:id="@+id/productCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/category_name"
                 android:fontFamily="@font/montserrat_semibold"
-                android:text="@{dataClass.itemCount}"
+                android:text="@{dataClass.productCount}"
 
                 android:textColor="@color/gray"
                 android:textSize="@dimen/_11sdp" />

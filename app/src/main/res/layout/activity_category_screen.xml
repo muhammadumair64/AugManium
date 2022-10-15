@@ -1,9 +1,274 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".afterAuth.category.categoryScreen">
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".afterAuth.category.CategoryScreen">
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_463sdp"
+            android:elevation="@dimen/_10sdp"
+            android:backgroundTint="@color/cardBG4"
+            app:cardCornerRadius="@dimen/_35sdp"
+            >
+            <LinearLayout
+                android:id="@+id/kids"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_90sdp"
+                android:layout_gravity="bottom"
+                android:orientation="vertical"
+                android:gravity="bottom"
+                android:padding="@dimen/_23sdp"
+                >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kids"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_23sdp"
+                android:textStyle="bold"
+                android:fontFamily="@font/montserrat_bold"
+
+                />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/kidsCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="100"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_11sdp"
+                        android:fontFamily="@font/montserrat"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" Items"
+                        android:layout_toRightOf="@id/kidsCount"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_11sdp"
+                        android:fontFamily="@font/montserrat"
+                        />
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_375sdp"
+            android:elevation="@dimen/_10sdp"
+            android:backgroundTint="@color/cardBG3"
+            app:cardCornerRadius="@dimen/_35sdp"
+
+            >
+            <LinearLayout
+                android:id="@+id/electronic"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_90sdp"
+                android:layout_gravity="bottom"
+                android:orientation="vertical"
+                android:gravity="bottom"
+                android:padding="@dimen/_23sdp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Electronics"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_23sdp"
+                android:textStyle="bold"
+                android:fontFamily="@font/montserrat_bold"
+
+                />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/electronicCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="100"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_11sdp"
+                        android:fontFamily="@font/montserrat"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" Items"
+                        android:layout_toRightOf="@id/electronicCount"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_11sdp"
+                        android:fontFamily="@font/montserrat"
+                        />
+                </RelativeLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_285sdp"
+            android:elevation="@dimen/_10sdp"
+            android:backgroundTint="@color/cardBG2"
+            app:cardCornerRadius="@dimen/_35sdp"
+            >
+            <LinearLayout
+                android:id="@+id/women"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_90sdp"
+                android:layout_gravity="bottom"
+                android:orientation="vertical"
+                android:gravity="bottom"
+                android:padding="@dimen/_23sdp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Women"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_23sdp"
+                android:textStyle="bold"
+                android:fontFamily="@font/montserrat_bold"
+                />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/womenCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="100"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_11sdp"
+                        android:fontFamily="@font/montserrat"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" Items"
+                        android:layout_toRightOf="@id/womenCount"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_11sdp"
+                        android:fontFamily="@font/montserrat"
+                        />
+                </RelativeLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_185sdp"
+            android:backgroundTint="@color/cardBG1"
+            android:elevation="@dimen/_10sdp"
+            app:cardCornerRadius="@dimen/_35sdp"
+            >
+            <LinearLayout
+                android:id="@+id/men"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_90sdp"
+                android:layout_gravity="bottom"
+                android:orientation="vertical"
+                android:gravity="bottom"
+                android:padding="@dimen/_23sdp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Men"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_23sdp"
+                android:textStyle="bold"
+                android:fontFamily="@font/montserrat_bold"
+                />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/menCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="100"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_11sdp"
+                        android:fontFamily="@font/montserrat"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" Items"
+                        android:layout_toRightOf="@id/menCount"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_11sdp"
+                        android:fontFamily="@font/montserrat"
+                        />
+                </RelativeLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_125sdp"
+            android:elevation="@dimen/_10sdp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="@dimen/_35sdp"
+            android:layout_marginTop="-50dp"
+            >
+            <RelativeLayout
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingEnd="@dimen/_20sdp"
+                android:id="@+id/toplayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_30sdp"
+                >
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_menu" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:paddingTop="@dimen/_4sdp"
+                    android:paddingBottom="@dimen/_8sdp"
+                    android:text="Category"
+                    android:textColor="@color/Primary"
+                    android:textSize="@dimen/_17sdp" />
+
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_icons_search_gray"
+                    android:layout_alignParentRight="true" />
+
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</layout>

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.augmanium.ProductDetailsActivity
@@ -124,17 +125,26 @@ class MainActivityViewModel @Inject constructor(): ViewModel(), OnItemClickListe
 
                         when (category) {
                             0 -> {
+                                if (product != null) {
+                                    activityBinding.stock.visibility = View.INVISIBLE
                                     allProductArrayList.add(product!!)
-                                    tinyDB.putListObject(K.SPECIFIC_CATEGORY_PRODUCTS,allProductArrayList)
-                                allProductRv()
+                                    tinyDB.putListObject(
+                                        K.SPECIFIC_CATEGORY_PRODUCTS,
+                                        allProductArrayList
+                                    )
+                                    allProductRv()
                                     Log.d(
                                         "ELECTRONICS_PRODUCTS",
                                         "$allProductArrayList ${snap.key}"
                                     )
-
+                                }
+                                else{
+//                                    activityBinding.stock.visibility = View.VISIBLE
+                                }
                             }
                             1 -> {
                                 if (product!!.productCategory == "women"){
+                                    activityBinding.stock.visibility = View.INVISIBLE
                                     allProductArrayList.add(product!!)
                                     allProductRv()
                                     Log.d(
@@ -143,11 +153,13 @@ class MainActivityViewModel @Inject constructor(): ViewModel(), OnItemClickListe
                                     )
                                 }
                                 else {
+//                                    activityBinding.stock.visibility = View.VISIBLE
                                     Log.d("Women_PRODUCT", "NOTHING TO SHOW___!!!!!!")
                                 }
                             }
                             2 -> {
                                 if (product!!.productCategory == "Men"){
+                                    activityBinding.stock.visibility = View.INVISIBLE
                                     allProductArrayList.add(product!!)
                                     allProductRv()
                                     Log.d(
@@ -156,11 +168,13 @@ class MainActivityViewModel @Inject constructor(): ViewModel(), OnItemClickListe
                                     )
                                 }
                                 else {
+//                                    activityBinding.stock.visibility = View.VISIBLE
                                     Log.d("Men_PRODUCT", "NOTHING TO SHOW___!!!!!!")
                                 }
                             }
                             3 -> {
                                 if (product!!.productCategory == "Children"){
+                                    activityBinding.stock.visibility = View.INVISIBLE
                                     allProductArrayList.add(product!!)
                                     allProductRv()
                                     Log.d(
@@ -169,11 +183,13 @@ class MainActivityViewModel @Inject constructor(): ViewModel(), OnItemClickListe
                                     )
                                 }
                                 else {
+//                                    activityBinding.stock.visibility = View.VISIBLE
                                     Log.d("Children_PRODUCT", "NOTHING TO SHOW___!!!!!!")
                                 }
                             }
                             4 -> {
                                 if (product!!.productCategory == "Electronics"){
+                                    activityBinding.stock.visibility = View.INVISIBLE
                                     allProductArrayList.add(product!!)
                                     tinyDB.putListObject(K.SPECIFIC_CATEGORY_PRODUCTS,allProductArrayList)
                                     allProductRv()
@@ -183,12 +199,14 @@ class MainActivityViewModel @Inject constructor(): ViewModel(), OnItemClickListe
                                     )
                                 }
                                 else {
+//                                    activityBinding.stock.visibility = View.VISIBLE
                                     Log.d("ELECTRONICS_PRODUCT", "NOTHING TO SHOW___!!!!!!")
                                 }
 
 
                             }
                             5 -> {
+                                activityBinding.stock.visibility = View.INVISIBLE
                                 if (product!!.productCategory == "Best Seller"){
                                     allProductArrayList.add(product!!)
                                     allProductRv()
@@ -198,6 +216,7 @@ class MainActivityViewModel @Inject constructor(): ViewModel(), OnItemClickListe
                                     )
                                 }
                                 else {
+//                                    activityBinding.stock.visibility = View.VISIBLE
                                     Log.d("Best_Seller_PRODUCT", "NOTHING TO SHOW___!!!!!!")
                                 }
                             }

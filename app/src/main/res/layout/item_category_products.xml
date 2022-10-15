@@ -30,7 +30,10 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="@dimen/_30sdp"
                     app:cardElevation="@dimen/_5sdp">
@@ -48,9 +51,15 @@
                             android:text="@{dataClass.productName}"
                             android:textColor="@color/white"
                             android:textSize="@dimen/_7sdp" />
+
+
                     </RelativeLayout>
 
-
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        setHomeFragmentImage="@{dataClass.image}"
+                        />
                 </androidx.cardview.widget.CardView>
 
 

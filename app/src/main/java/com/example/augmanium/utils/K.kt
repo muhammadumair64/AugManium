@@ -12,5 +12,13 @@ class K {
         val MODEL ="3D_Model"
         val PRODUCT_DATA = "product_data"
         val SPECIFIC_CATEGORY_PRODUCTS = "specific_category_product"
+        val INTENT_CATEGORY = "intent_category"
+        val BESTSALLER_COUNT = "sellercount"
+        val ELECTRONICS_COUNT = "eletctroniccount"
+        val CHILDREN_COUNT = "childcount"
+        val MEN_COUNT = "mencount"
+        val WOMEN_COUNT = "womencount"
+        val ALL_COUNT = "all"
     }
 }
+
