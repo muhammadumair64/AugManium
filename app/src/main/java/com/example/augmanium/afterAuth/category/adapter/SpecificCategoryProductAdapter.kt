@@ -6,10 +6,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.augmanium.R
 import com.example.augmanium.afterAuth.category.dataClass.SpecificCatagoryProductDataClass
+import com.example.augmanium.afterAuth.interfaces.OnItemClickListener
 import com.example.augmanium.databinding.ItemCategoryProductsBinding
 import com.example.augmanium.databinding.ItemCategoryRvBinding
 
-class SpecificCategoryProductAdapter(val productNameArrayList:ArrayList<SpecificCatagoryProductDataClass>):
+class SpecificCategoryProductAdapter(val productNameArrayList:ArrayList<SpecificCatagoryProductDataClass>,val  onItemClick: OnItemClickListener):
     RecyclerView.Adapter<SpecificCategoryProductAdapter.ItemCatagoryViewHolder>() {
 
     class ItemCatagoryViewHolder(val itemCatagoryProduct: ItemCategoryProductsBinding): RecyclerView.ViewHolder(itemCatagoryProduct.root) {
@@ -27,6 +28,10 @@ class SpecificCategoryProductAdapter(val productNameArrayList:ArrayList<Specific
 
     override fun onBindViewHolder(holder: ItemCatagoryViewHolder, position: Int) {
         holder.itemCatagoryProduct.dataClass = productNameArrayList[position]
+
+        holder.itemView.setOnClickListener {
+            onItemClick.moveToNextScreen(position)
+        }
     }
 
     override fun getItemCount(): Int {

@@ -88,6 +88,7 @@ class CartFragmentViewModel @Inject constructor() : ViewModel(), CartRVClick {
             it.adapter!!.notifyDataSetChanged()
         }
 
+        activityBinding.subTotalPrice.text = totalPriceOfProducts.toString()
     }
 
     override fun onDlt(position: Int) {

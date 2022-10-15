@@ -1,0 +1,213 @@
+package com.example.augmanium.afterAuth.category.viewModel
+
+import android.content.Context
+import android.content.Intent
+import android.util.Log
+import androidx.lifecycle.ViewModel
+import com.bumptech.glide.Glide
+import com.example.augmanium.ProductDetailsActivity
+import com.example.augmanium.afterAuth.category.SpecificCategoryProducts
+import com.example.augmanium.afterAuth.mainActivity.Adapter.ProductDetailAdapter
+import com.example.augmanium.afterAuth.mainActivity.dataClass.AllProductDataClass
+import com.example.augmanium.afterAuth.mainActivity.dataClass.ProductDetailCategoryProductDataClass
+import com.example.augmanium.afterAuth.mainActivity.dataClass.ReviewDataclass
+import com.example.augmanium.databinding.ActivityCategoryScreenBinding
+import com.example.augmanium.databinding.ActivityProductDetailsBinding
+import com.example.augmanium.utils.K
+import com.example.augmanium.utils.TinyDB
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
+
+@HiltViewModel
+class CategoryScreenViewModel @Inject constructor(): ViewModel() {
+
+    lateinit var tinyDB: TinyDB
+    lateinit var activityBinding: ActivityCategoryScreenBinding
+    lateinit var activityContext: Context
+    var productCount = 1
+    val categoryProductArrayList: ArrayList<ProductDetailCategoryProductDataClass> = ArrayList()
+    val productReviewArrayList: ArrayList<ReviewDataclass> = ArrayList()
+    var database: com.google.firebase.database.DatabaseReference = FirebaseDatabase.getInstance().reference
+    var countElectronics = 0
+    var countChildren = 0
+    var countMen = 0
+    var countWomen = 0
+    var countAll = 0
+    var countBestSeller = 0
+
+    fun categoryScreenItems(binding: ActivityCategoryScreenBinding, context: Context){
+
+        activityBinding = binding
+        activityContext = context
+        tinyDB = TinyDB(context)
+//        var data = tinyDB.getObject(K.PRODUCT_DATA, AllProductDataClass::class.java)
+
+        getData("Best Seller").toString()
+        getData("Children").toString()
+        getData("Men").toString()
+        getData("women").toString()
+        getData("Electronics")
+        getData("All").toString()
+
+
+        binding.apply {
+            kids.setOnClickListener {
+                val intent = Intent(activityContext,SpecificCategoryProducts::class.java)
+                tinyDB.putString(K.INTENT_CATEGORY,"Children")
+                activityContext.startActivity(intent)
+            }
+            women.setOnClickListener {
+                val intent = Intent(activityContext,SpecificCategoryProducts::class.java)
+                tinyDB.putString(K.INTENT_CATEGORY,"women")
+                activityContext.startActivity(intent)
+            }
+            men.setOnClickListener {
+                val intent = Intent(activityContext,SpecificCategoryProducts::class.java)
+                tinyDB.putString(K.INTENT_CATEGORY,"Men")
+                activityContext.startActivity(intent)
+            }
+            electronic.setOnClickListener {
+                val intent = Intent(activityContext,SpecificCategoryProducts::class.java)
+                tinyDB.putString(K.INTENT_CATEGORY,"Electronics")
+                activityContext.startActivity(intent)
+            }
+
+
+
+        }
+
+    }
+
+    fun setCount(){
+        categoryProductArrayList.clear()
+        activityBinding.electronicCount.text = countElectronics.toString()
+        activityBinding.womenCount.text = countWomen.toString()
+        activityBinding.menCount.text = countMen.toString()
+        activityBinding.kidsCount.text = countChildren.toString()
+        tinyDB.putString(K.ALL_COUNT,countAll.toString())
+        tinyDB.putString(K.CHILDREN_COUNT,countChildren.toString())
+        tinyDB.putString(K.MEN_COUNT,countMen.toString())
+        tinyDB.putString(K.WOMEN_COUNT,countWomen.toString())
+        tinyDB.putString(K.ELECTRONICS_COUNT,countElectronics.toString())
+        tinyDB.putString(K.BESTSALLER_COUNT,countBestSeller.toString())
+    }
+
+    fun getData(category: String){
+        categoryProductArrayList.clear()
+        database.child("Product").addListenerForSingleValueEvent(object :
+            ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (snap in snapshot.getChildren()) {
+                    Log.d("NODE___"," ${snap.key} $snapshot")
+//                    for (products in snap.children) {
+                    Log.d("NODE___"," ${snap.key} $snap")
+                    var product = snap.getValue(ProductDetailCategoryProductDataClass::class.java)
+                    when (category) {
+                        "All" -> {
+
+//                            if(product!!.productCategory == category){
+                                categoryProductArrayList.add(product!!)
+                                countAll = categoryProductArrayList.size
+                                Log.d(
+                                    "PRODUCT_DISPLAY $category",
+                                    "$countAll"
+                                )
+                                setCount()
+//                            }
+//                            else {
+//                                Log.d("PRODUCT_DISPLAY $category", "NOTHING TO SHOW___!!!!!!")
+//                            }
+                        }
+                        "women" -> {
+                            if(product!!.productCategory == category){
+                                categoryProductArrayList.add(product!!)
+                                countWomen = categoryProductArrayList.size
+                                Log.d(
+                                    "PRODUCT_DISPLAY $category",
+                                    "$countWomen"
+                                )
+                                setCount()
+                            }
+                            else {
+                                Log.d("PRODUCT_DISPLAY $category", "NOTHING TO SHOW___!!!!!!")
+                            }
+
+                        }
+                        "Men" -> {
+                            if(product!!.productCategory == category){
+                                categoryProductArrayList.add(product!!)
+                                countMen = categoryProductArrayList.size
+                                Log.d(
+                                    "PRODUCT_DISPLAY $category",
+                                    "$countMen"
+                                )
+                                setCount()
+                            }
+                            else {
+                                Log.d("PRODUCT_DISPLAY $category", "NOTHING TO SHOW___!!!!!!")
+                            }
+                        }
+                        "Children" -> {
+                            if(product!!.productCategory == category){
+                                categoryProductArrayList.add(product!!)
+                                countChildren = categoryProductArrayList.size
+                                Log.d(
+                                    "PRODUCT_DISPLAY $category",
+                                    "$countChildren"
+                                )
+                                setCount()
+                            }
+                            else {
+                                Log.d("PRODUCT_DISPLAY $category", "NOTHING TO SHOW___!!!!!!")
+                            }
+                        }
+                        "Electronics" -> {
+                            if(product!!.productCategory == category){
+                                categoryProductArrayList.add(product!!)
+                                countElectronics = categoryProductArrayList.size
+                                Log.d(
+                                    "PRODUCT_DISPLAY $category",
+                                    "$countElectronics"
+                                )
+                                setCount()
+                            }
+                            else {
+                                Log.d("PRODUCT_DISPLAY $category", "NOTHING TO SHOW___!!!!!!")
+                            }
+                        }
+                        "Best Seller" -> {
+                            if(product!!.productCategory == category){
+                                categoryProductArrayList.add(product!!)
+                                countBestSeller = categoryProductArrayList.size
+                                Log.d(
+                                    "PRODUCT_DISPLAY $category",
+                                    "$countBestSeller"
+                                )
+                                setCount()
+                            }
+                            else {
+                                Log.d("PRODUCT_DISPLAY $category", "NOTHING TO SHOW___!!!!!!")
+                            }
+                        }
+
+
+                    }
+
+                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.d("ERROR_DATABASE","$error")
+            }
+
+        })
+
+
+    }
+
+}

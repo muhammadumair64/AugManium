@@ -19,6 +19,6 @@ class AllCategories : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding =DataBindingUtil.setContentView(this,R.layout.activity_all_categories)
 
-//        viewModel.allCategoryRv(binding,this)
+        viewModel.allCategoryRv(binding,this)
     }
 }
