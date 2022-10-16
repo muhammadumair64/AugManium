@@ -30,7 +30,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AugManium">
         <activity
-            android:name=".afterAuth.Location.Location"
+            android:name=".afterAuth.location.Location"
             android:exported="true" >
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
@@ -112,7 +112,16 @@
         </activity>
         <activity
             android:name=".afterAuth.orderHistory.OrderHistory"
-            android:exported="true" />
+            android:exported="true" >
+
+                         <intent-filter>
+                         <action android:name="android.intent.action.MAIN" />
+
+
+                         <category android:name="android.intent.category.LAUNCHER" />
+                         </intent-filter>
+
+        </activity>
         <activity
             android:name=".WriteReviewScreen"
             android:exported="false" />
@@ -122,12 +131,12 @@
         <activity
             android:name=".afterAuth.checkout.checkOutSummary.CheckoutSummary"
             android:exported="true" >
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
+<!--             <intent-filter>-->
+<!--             <action android:name="android.intent.action.MAIN" />-->
 
 
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+<!--             <category android:name="android.intent.category.LAUNCHER" />-->
+<!--             </intent-filter>-->
 
         </activity>
         <activity

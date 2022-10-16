@@ -20,6 +20,7 @@ class K {
         val WOMEN_COUNT = "womencount"
         val ALL_COUNT = "all"
         val CART ="Cart_product"
+        val Order = "Clicked_Order"
     }
 }
 

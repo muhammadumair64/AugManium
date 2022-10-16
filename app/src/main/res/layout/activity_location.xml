@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".afterAuth.Location.Location">
+    tools:context=".afterAuth.location.Location">
     <fragment
 
         android:id="@+id/map2"

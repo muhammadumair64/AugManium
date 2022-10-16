@@ -19,6 +19,6 @@ class OrderHistory : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_order_history)
 
-        viewModel.orderHistoryRv(binding)
+        viewModel.orderHistoryRv(binding,this)
     }
 }

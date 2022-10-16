@@ -1,4 +1,4 @@
-package com.example.augmanium.afterAuth.Location
+package com.example.augmanium.afterAuth.location
 
 import android.content.res.Resources
 import android.location.Geocoder
@@ -13,7 +13,6 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.database.*
-import com.masterclass.spyadmin.Location.LatLongDataClass
 import java.util.*
 
 class Location : AppCompatActivity() {
