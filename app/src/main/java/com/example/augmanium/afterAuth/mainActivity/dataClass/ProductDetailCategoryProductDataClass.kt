@@ -6,4 +6,5 @@ data class ProductDetailCategoryProductDataClass(val image: String? = "",
                                                  val productColor: String?= "",
                                                  val productDescription: String?= "",
                                                  val productName: String?= "",
-                                                 val productSize: String?= "")
+                                                 val productSize: String?= "",
+                                                 val id: String?="")

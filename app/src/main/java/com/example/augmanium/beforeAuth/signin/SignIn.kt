@@ -9,7 +9,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
-import com.example.augmanium.ModelActivity
 import com.example.augmanium.afterAuth.mainActivity.MainActivity
 import com.example.augmanium.beforeAuth.ForgotPassword
 import com.example.augmanium.beforeAuth.SignUp
@@ -21,10 +20,11 @@ import com.example.augmanium.utils.K
 import com.example.augmanium.utils.TinyDB
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.database.*
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class SignIn : AppCompatActivity() {
 
     lateinit var binding: ActivitySignInBinding
@@ -104,8 +104,9 @@ class SignIn : AppCompatActivity() {
                        if (signIn.isSuccessful) {
                            tinyDB.putString(K.EMAIL,signInEmail)
                            viewModel.uploadFCMToken(signInEmail,database,this@SignIn)
+                           viewModel.getUser(signInEmail, this@SignIn)
 
-//
+                           tinyDB.putString(K.PASSWORD,signInPassword)
                            val intent = Intent(this@SignIn, MainActivity::class.java)
                            startActivity(intent)
 

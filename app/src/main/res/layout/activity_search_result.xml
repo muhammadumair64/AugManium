@@ -48,21 +48,21 @@
         </RelativeLayout>
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/categoryRv"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_100sdp"
-            android:layout_below="@id/toplayout"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_categroy_search_result" />
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/categoryRv"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="@dimen/_100sdp"-->
+<!--            android:layout_below="@id/toplayout"-->
+<!--            android:layout_marginTop="@dimen/_8sdp"-->
+<!--            android:orientation="horizontal"-->
+<!--            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+<!--            tools:listitem="@layout/item_categroy_search_result" />-->
 
         <RelativeLayout
             android:id="@+id/searchLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/categoryRv"
+            android:layout_below="@id/toplayout"
             android:layout_marginTop="@dimen/_8sdp">
 
             <TextView

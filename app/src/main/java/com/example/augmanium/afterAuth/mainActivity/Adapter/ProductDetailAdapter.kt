@@ -11,7 +11,7 @@ import com.example.augmanium.afterAuth.mainActivity.dataClass.ProductDetailCateg
 import com.example.augmanium.databinding.ItemProductDetailRvBinding
 
 class ProductDetailAdapter(val productDetailArrayList:ArrayList<ProductDetailCategoryProductDataClass>
-//, val moveToNextScreen: OnItemClickListener
+, val moveToNextScreen: OnItemClickListener
 ):
     RecyclerView.Adapter<ProductDetailAdapter.ProductDetailViewHolder>() {
 
@@ -31,9 +31,9 @@ class ProductDetailAdapter(val productDetailArrayList:ArrayList<ProductDetailCat
     override fun onBindViewHolder(holder: ProductDetailViewHolder, position: Int) {
         holder.itemCatagory.dataClass = productDetailArrayList[position]
 
-//        holder.itemView.setOnClickListener {
-//            moveToNextScreen.onClick(position)
-//        }
+        holder.itemView.setOnClickListener {
+            moveToNextScreen.moveToNextScreen(position)
+        }
     }
 
     override fun getItemCount(): Int {

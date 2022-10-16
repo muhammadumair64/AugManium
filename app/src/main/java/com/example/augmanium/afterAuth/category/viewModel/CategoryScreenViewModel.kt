@@ -7,8 +7,6 @@ import androidx.lifecycle.ViewModel
 import com.bumptech.glide.Glide
 import com.example.augmanium.ProductDetailsActivity
 import com.example.augmanium.afterAuth.category.SpecificCategoryProducts
-import com.example.augmanium.afterAuth.mainActivity.Adapter.ProductDetailAdapter
-import com.example.augmanium.afterAuth.mainActivity.dataClass.AllProductDataClass
 import com.example.augmanium.afterAuth.mainActivity.dataClass.ProductDetailCategoryProductDataClass
 import com.example.augmanium.afterAuth.mainActivity.dataClass.ReviewDataclass
 import com.example.augmanium.databinding.ActivityCategoryScreenBinding
@@ -46,7 +44,7 @@ class CategoryScreenViewModel @Inject constructor(): ViewModel() {
         tinyDB = TinyDB(context)
 //        var data = tinyDB.getObject(K.PRODUCT_DATA, AllProductDataClass::class.java)
 
-        getData("Best Seller")
+        getData("Best Sellers")
         getData("Children")
         getData("Men")
         getData("women")
@@ -114,14 +112,11 @@ class CategoryScreenViewModel @Inject constructor(): ViewModel() {
 
 
                                  countAll = countAll + 1
-
-
                                 setCount()
                         }
                         "women" -> {
                             if(product!!.productCategory == category){
-                                categoryProductArrayList.add(product!!)
-                                countWomen = categoryProductArrayList.size
+                                countWomen = countWomen + 1
                                 Log.d(
                                     "PRODUCT_DISPLAY $category",
                                     "$countWomen"
@@ -135,8 +130,7 @@ class CategoryScreenViewModel @Inject constructor(): ViewModel() {
                         }
                         "Men" -> {
                             if(product!!.productCategory == category){
-                                categoryProductArrayList.add(product!!)
-                                countMen = categoryProductArrayList.size
+                                countMen = countMen + 1
                                 Log.d(
                                     "PRODUCT_DISPLAY $category",
                                     "$countMen"
@@ -149,8 +143,7 @@ class CategoryScreenViewModel @Inject constructor(): ViewModel() {
                         }
                         "Children" -> {
                             if(product!!.productCategory == category){
-                                categoryProductArrayList.add(product!!)
-                                countChildren = categoryProductArrayList.size
+                                countChildren = countChildren + 1
                                 Log.d(
                                     "PRODUCT_DISPLAY $category",
                                     "$countChildren"
@@ -163,8 +156,7 @@ class CategoryScreenViewModel @Inject constructor(): ViewModel() {
                         }
                         "Electronics" -> {
                             if(product!!.productCategory == category){
-                                categoryProductArrayList.add(product!!)
-                                countElectronics = categoryProductArrayList.size
+                                countElectronics = countElectronics + 1
                                 Log.d(
                                     "PRODUCT_DISPLAY $category",
                                     "$countElectronics"
@@ -175,10 +167,9 @@ class CategoryScreenViewModel @Inject constructor(): ViewModel() {
                                 Log.d("PRODUCT_DISPLAY $category", "NOTHING TO SHOW___!!!!!!")
                             }
                         }
-                        "Best Seller" -> {
+                        "Best Sellers" -> {
                             if(product!!.productCategory == category){
-                                categoryProductArrayList.add(product!!)
-                                countBestSeller = categoryProductArrayList.size
+                                countBestSeller = countBestSeller + 1
                                 Log.d(
                                     "PRODUCT_DISPLAY $category",
                                     "$countBestSeller"
