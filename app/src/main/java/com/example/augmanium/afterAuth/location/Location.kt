@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import com.example.augmanium.R
+import com.example.augmanium.utils.K
+import com.example.augmanium.utils.TinyDB
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
@@ -16,7 +18,7 @@ import com.google.firebase.database.*
 import java.util.*
 
 class Location : AppCompatActivity() {
-
+lateinit var tinyDb :TinyDB
     lateinit var placeName: TextView
     lateinit var button: TextView
     lateinit var mapFragment: SupportMapFragment
@@ -27,6 +29,7 @@ class Location : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_location)
+        tinyDb= TinyDB(this)
         initViews()
         getLocationFromFireBase()
         initListiner()
@@ -90,9 +93,11 @@ class Location : AppCompatActivity() {
 
     fun getLocationFromFireBase() {
 
-        val optionselect: String? = intent.getStringExtra("option")
-        val mobname: String? = intent.getStringExtra("device name")
-
+        var email =  tinyDb.getString(K.EMAIL)
+        if (email != null) {
+            email = email.split("@").toTypedArray()[0]
+        }
+        val orderID =tinyDb.getString(K.Order)
         val postListener = object : ValueEventListener {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -116,8 +121,12 @@ class Location : AppCompatActivity() {
 
         }
 
-        databaseReference.child("User").child("arbazejaz0316").child("Orders").child("11223344").child("location")
-            .addValueEventListener(postListener)
+        if (email != null) {
+            if (orderID != null) {
+                databaseReference.child("User").child(email).child("Orders").child(orderID).child("location")
+                    .addValueEventListener(postListener)
+            }
+        }
 
 
     }
