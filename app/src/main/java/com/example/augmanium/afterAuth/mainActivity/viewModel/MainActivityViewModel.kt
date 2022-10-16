@@ -13,6 +13,7 @@ import com.example.augmanium.afterAuth.mainActivity.Adapter.AllProductAdapter
 import com.example.augmanium.afterAuth.mainActivity.Adapter.CatagoryAdapter
 import com.example.augmanium.afterAuth.mainActivity.dataClass.AllProductDataClass
 import com.example.augmanium.afterAuth.mainActivity.dataClass.CatagoryDataClass
+import com.example.augmanium.afterAuth.searchscreen.SearchActivity
 import com.example.augmanium.databinding.FragmentHomeBinding
 import com.example.augmanium.utils.K
 import com.example.augmanium.utils.TinyDB
@@ -42,6 +43,11 @@ class MainActivityViewModel @Inject constructor(): ViewModel(), OnItemClickListe
         activityBinding = binding
         tinyDB = TinyDB(activityContext)
         getData(0)
+
+        binding.searchBtn.setOnClickListener {
+            var intent = Intent(activityContext,SearchActivity::class.java)
+            activityContext.startActivity(intent)
+        }
 
 
 
@@ -104,6 +110,8 @@ class MainActivityViewModel @Inject constructor(): ViewModel(), OnItemClickListe
         var intent = Intent(activityContextGlobal, ProductDetailsActivity::class.java)
 
         tinyDB.putObject(K.PRODUCT_DATA, productData)
+        tinyDB.putString(K.PRODUCT_ID,productData.id)
+        Log.d("PRODUCTID",productData.id!!)
         (activityContextGlobal ).startActivity(intent)
     }
 
@@ -128,10 +136,7 @@ class MainActivityViewModel @Inject constructor(): ViewModel(), OnItemClickListe
                                 if (product != null) {
                                     activityBinding.stock.visibility = View.INVISIBLE
                                     allProductArrayList.add(product!!)
-                                    tinyDB.putListObject(
-                                        K.SPECIFIC_CATEGORY_PRODUCTS,
-                                        allProductArrayList
-                                    )
+
                                     allProductRv()
                                     Log.d(
                                         "ELECTRONICS_PRODUCTS",
@@ -191,7 +196,6 @@ class MainActivityViewModel @Inject constructor(): ViewModel(), OnItemClickListe
                                 if (product!!.productCategory == "Electronics"){
                                     activityBinding.stock.visibility = View.INVISIBLE
                                     allProductArrayList.add(product!!)
-                                    tinyDB.putListObject(K.SPECIFIC_CATEGORY_PRODUCTS,allProductArrayList)
                                     allProductRv()
                                     Log.d(
                                         "ELECTRONICS_PRODUCTS",
@@ -207,7 +211,7 @@ class MainActivityViewModel @Inject constructor(): ViewModel(), OnItemClickListe
                             }
                             5 -> {
                                 activityBinding.stock.visibility = View.INVISIBLE
-                                if (product!!.productCategory == "Best Seller"){
+                                if (product!!.productCategory == "Best Sellers"){
                                     allProductArrayList.add(product!!)
                                     allProductRv()
                                     Log.d(

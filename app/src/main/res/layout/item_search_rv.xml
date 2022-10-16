@@ -22,7 +22,10 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                setHomeFragmentImage="@{dataClass.image}"
+                />
         </androidx.cardview.widget.CardView>
 
         <RelativeLayout
@@ -45,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:fontFamily="@font/montserrat_semibold"
-                android:text="@{dataClass.productPrice}"
+                android:text="@{dataClass.prize}"
                 android:textColor="@color/Primary"
                 android:textSize="@dimen/_13sdp" />
         </RelativeLayout>
@@ -57,7 +60,7 @@
             android:layout_margin="@dimen/_8sdp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{dataClass.productCatagory}"
+            android:text="@{dataClass.productCategory}"
             android:fontFamily="@font/montserrat_semibold"
             android:textColor="@color/gray"
 

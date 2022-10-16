@@ -12,7 +12,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.bumptech.glide.Glide
 import com.example.augmanium.afterAuth.mainActivity.MainActivity
+import com.example.augmanium.beforeAuth.SplashScreen
 import com.example.augmanium.beforeAuth.editProfileDetectFace.FaceDetection
 import com.example.augmanium.dataClass.Mode
 import com.example.augmanium.dataClass.User
@@ -34,7 +36,6 @@ class EditProfile : AppCompatActivity() {
 
     lateinit var binding: com.example.augmanium.databinding.ActivityEditProfileBinding
     lateinit var tinyDB: TinyDB
-    lateinit var database: com.google.firebase.database.DatabaseReference
     var name: String? =""
     var password: String? =""
     var email: String? =""
@@ -46,15 +47,29 @@ class EditProfile : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_edit_profile)
+        tinyDB = TinyDB(this)
+
+
     }
 
 
 
     override fun onResume() {
         super.onResume()
-        initListner()
-        img = tinyDB.getString(K.IMG)
-        binding.profilePhoto.setImageURI(Uri.parse(img.toString()))
+        var comesFrom = tinyDB.getInt(K.SIGN_UP)
+
+        if (comesFrom == 2){
+            setViews()
+        }
+
+//        if (comesFrom == 1){
+            initListner()
+        if (comesFrom == 3) {
+            img = tinyDB.getString(K.IMG)
+            binding.profilePhoto.setImageURI(Uri.parse(img.toString()))
+        }
+//        }
+
         binding.logOutBtn.setOnClickListener {
             logOut()
         }
@@ -62,10 +77,27 @@ class EditProfile : AppCompatActivity() {
 
     }
 
+    private fun setViews() {
+        var image = tinyDB.getString(K.USER_IMG)
+        var gender = tinyDB.getString(K.GENDER)
+        var city = tinyDB.getString(K.CITY)
+
+        Log.d("IMAGE_TT", "${image} $city ")
+
+//        binding.city.setText(city)
+//        binding.gender.setText(gender)
+        binding.city.setText(city, TextView.BufferType.EDITABLE)
+        binding.gender.setText(gender, TextView.BufferType.EDITABLE)
+
+
+        Glide.with(this)
+            .load(image)
+            .override(300, 200)
+            .into(binding.profilePhoto);
+    }
+
     private fun initListner() {
 
-        database = FirebaseDatabase.getInstance().reference
-        tinyDB = TinyDB(this)
         name = tinyDB.getString(K.USER_NAME)
         email = tinyDB.getString(K.EMAIL)
         password = tinyDB.getString(K.PASSWORD)
@@ -166,6 +198,11 @@ class EditProfile : AppCompatActivity() {
 //                    startActivity(Intent(this@MyActivity, SignInActivity::class.java))
 //                    finish()
                 Toast.makeText(this,"Sign out done",Toast.LENGTH_SHORT).show()
+                tinyDB.clear()
+
+                var intent = Intent(this,SplashScreen::class.java)
+                startActivity(intent)
+                finish()
                 Log.d("signout ","Done")
 
             }.addOnFailureListener {

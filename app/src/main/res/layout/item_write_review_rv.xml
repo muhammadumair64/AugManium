@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="database"
+            type="com.example.augmanium.afterAuth.wrightReview.dataClass.WriteReviewDataClass" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/review"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circular_Image_View"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:src="@color/secondary"
+            setHomeFragmentImage="@{database.profileimage}"
+            />
+
+
+        <RelativeLayout
+            android:id="@+id/upper_layer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@id/circular_Image_View"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="center_vertical"
+                android:text="@{database.name}"
+                android:textColor="@color/secondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/name"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:fontFamily="@font/montserrat_semibold"
+                android:gravity="center_vertical"
+                android:text="@{database.comment}"
+                android:textColor="@color/secondary"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+
+        <!--            <RatingBar-->
+        <!--                android:id="@+id/ratingbarproduct1"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginTop="@dimen/_110sdp"-->
+        <!--                android:backgroundTint="@null"-->
+        <!--                android:isIndicator="true"-->
+        <!--                android:max="5"-->
+        <!--                android:numStars="5"-->
+        <!--                android:rating="3"-->
+        <!--                android:scaleX=".5"-->
+        <!--                android:scaleY=".5"-->
+        <!--                android:transformPivotX="@dimen/_15sdp"-->
+        <!--                android:transformPivotY="@dimen/_5sdp" />-->
+
+    </RelativeLayout>
+</layout>

@@ -114,7 +114,7 @@
             android:name=".afterAuth.orderHistory.OrderHistory"
             android:exported="true" />
         <activity
-            android:name=".WriteReviewScreen"
+            android:name=".afterAuth.wrightReview.WriteReviewScreen"
             android:exported="false" />
         <activity
             android:name=".OrderCompleteScreen"
@@ -154,12 +154,12 @@
         <activity
             android:name=".afterAuth.category.CategoryScreen"
             android:exported="true" >
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
+<!--             <intent-filter>-->
+<!--             <action android:name="android.intent.action.MAIN" />-->
 
 
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+<!--             <category android:name="android.intent.category.LAUNCHER" />-->
+<!--             </intent-filter>-->
         </activity>
         <activity
             android:name=".afterAuth.searchResult.mainClass.SearchResult"
@@ -189,11 +189,11 @@
             android:name=".beforeAuth.SplashScreen"
             android:exported="true"
             android:noHistory="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".afterAuth.mainActivity.MainActivity"

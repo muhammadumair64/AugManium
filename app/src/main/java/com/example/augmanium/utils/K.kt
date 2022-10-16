@@ -11,7 +11,6 @@ class K {
         val ADDRESS="user_address"
         val MODEL ="3D_Model"
         val PRODUCT_DATA = "product_data"
-        val SPECIFIC_CATEGORY_PRODUCTS = "specific_category_product"
         val INTENT_CATEGORY = "intent_category"
         val BESTSALLER_COUNT = "sellercount"
         val ELECTRONICS_COUNT = "eletctroniccount"
@@ -20,6 +19,10 @@ class K {
         val WOMEN_COUNT = "womencount"
         val ALL_COUNT = "all"
         val CART ="Cart_product"
+        val PRODUCT_ID = "product_id"
+        val SEARCH_QUERY = "query"
+        val GENDER = "gender"
+        val CITY = "city"
     }
 }
 

@@ -127,8 +127,8 @@ class SpecificCategoryProductViewModel @Inject constructor(): ViewModel(), OnIte
                         "Electronics" -> {
                             rvData(product!!,binding,"Electronics")
                         }
-                        "Best Seller" -> {
-                            rvData(product!!,binding,"Best Seller")
+                        "Best Sellers" -> {
+                            rvData(product!!,binding,"Best Sellers")
                         }
 
 
@@ -150,6 +150,8 @@ class SpecificCategoryProductViewModel @Inject constructor(): ViewModel(), OnIte
         var intent = Intent(activityContext, ProductDetailsActivity::class.java)
 
         tinyDB.putObject(K.PRODUCT_DATA, productData)
+        tinyDB.putString(K.PRODUCT_ID,productData.id)
+        Log.d("PRODUCT_ID","${productData.id}")
         (activityContext ).startActivity(intent)
     }
 
