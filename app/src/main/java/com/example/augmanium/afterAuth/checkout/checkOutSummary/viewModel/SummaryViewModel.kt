@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.augmanium.afterAuth.cartFragment.dataClass.CartFragmentDataClass
 import com.example.augmanium.afterAuth.checkout.checkOutSummary.adapter.SummaryRVAdapter
 import com.example.augmanium.afterAuth.checkout.checkOutSummary.dataClass.OrderDataClass
+import com.example.augmanium.afterAuth.checkout.checkOutSummary.dataClass.StatusDataClass
 import com.example.augmanium.afterAuth.checkout.checkOutSummary.dataClass.SummaryDataClass
 import com.example.augmanium.databinding.ActivityCheckoutSummaryBinding
 import com.example.augmanium.utils.K
@@ -98,10 +99,13 @@ class SummaryViewModel @Inject constructor() : ViewModel() {
             email = email.split("@").toTypedArray()[0]
         }
 
-       val order = OrderDataClass(totalPrice,millis.toString(),getTime(),summaryArrayList,"0")
+       val order = OrderDataClass(totalPrice,millis.toString(),getTime(),summaryArrayList)
         val location = LatLongDataClass()
+        val status = StatusDataClass()
         email?.let { database.child("User").child(it).child("Orders").child(millis.toString()).setValue(order)
             database.child("User").child(it).child("Orders").child(millis.toString()).child("location").setValue(location)
+            database.child("User").child(it).child("Orders").child(millis.toString()).child("status").setValue(status)
+
         }
 
         val postListener = object : ValueEventListener {

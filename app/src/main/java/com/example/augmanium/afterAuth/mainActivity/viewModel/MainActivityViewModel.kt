@@ -129,7 +129,7 @@ class MainActivityViewModel @Inject constructor(): ViewModel(), OnItemClickListe
                     Log.d("NODE___"," ${snap.key} $snapshot")
 //                    for (products in snap.children) {
                         Log.d("NODE___"," ${snap.key} $snap")
-                        var product = snap.getValue(AllProductDataClass::class.java)
+                        val product = snap.getValue(AllProductDataClass::class.java)
 
                         when (category) {
                             0 -> {
@@ -137,10 +137,7 @@ class MainActivityViewModel @Inject constructor(): ViewModel(), OnItemClickListe
                                     activityBinding.stock.visibility = View.INVISIBLE
                                     allProductArrayList.add(product!!)
 
-                                    tinyDB.putListObject(
-                                        K.SPECIFIC_CATEGORY_PRODUCTS,
-                                        allProductArrayList as ArrayList<Object>
-                                    )
+
                                     allProductRv()
                                     Log.d(
                                         "ELECTRONICS_PRODUCTS",
@@ -201,7 +198,6 @@ class MainActivityViewModel @Inject constructor(): ViewModel(), OnItemClickListe
                                 if (product!!.productCategory == "Electronics"){
                                     activityBinding.stock.visibility = View.INVISIBLE
                                     allProductArrayList.add(product!!)
-                                    tinyDB.putListObject(K.SPECIFIC_CATEGORY_PRODUCTS,allProductArrayList as ArrayList<Object>)
                                     allProductRv()
                                     Log.d(
                                         "ELECTRONICS_PRODUCTS",
