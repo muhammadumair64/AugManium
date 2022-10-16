@@ -22,6 +22,10 @@ class ScanFace : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this,R.layout.activity_scan_face)
 
+        binding.backButton.setOnClickListener {
+            finish()
+        }
+
         viewModel.initViews(binding, this)
     }
 }

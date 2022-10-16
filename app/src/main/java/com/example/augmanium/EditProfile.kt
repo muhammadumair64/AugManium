@@ -49,6 +49,9 @@ class EditProfile : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this,R.layout.activity_edit_profile)
         tinyDB = TinyDB(this)
 
+        binding.backButton.setOnClickListener {
+            finish()
+        }
 
     }
 
@@ -116,7 +119,6 @@ class EditProfile : AppCompatActivity() {
             startActivity(intent)
         }
         binding.saveBtn.setOnClickListener {
-            Toast.makeText(this,"UPLOAD CLICK",Toast.LENGTH_SHORT).show()
             uploadDataToFireBase()
 
         }
@@ -144,6 +146,14 @@ class EditProfile : AppCompatActivity() {
         val yourRef = rootRef.child("User").child(nodeName)
         yourRef.setValue(userinfo)
 
+        Toast.makeText(this,"UPLOADED",Toast.LENGTH_SHORT).show()
+
+        if (tinyDB.getInt(K.SIGN_UP) == 1){
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }else{
+            finish()
+        }
 //        var intent = Intent(this, MainActivity::class.java)
 //        startActivity(intent)
 

@@ -12,6 +12,7 @@ import com.example.augmanium.afterAuth.checkout.checkOutSummary.dataClass.Summar
 import com.example.augmanium.afterAuth.checkout.checkOutSummary.viewModel.SummaryViewModel
 import com.example.augmanium.afterAuth.notification.adapter.NotificationAdapter
 import com.example.augmanium.afterAuth.notification.dataClass.NotificationDataClass
+import com.example.augmanium.afterAuth.orderHistory.OrderHistory
 import com.example.augmanium.afterAuth.orderHistory.adapter.OrderHistoryAdapter
 import com.example.augmanium.afterAuth.orderHistory.dataClass.OrderHistoryDataClass
 import com.example.augmanium.afterAuth.orderHistory.orderInterface.OnItemClicked
@@ -34,6 +35,11 @@ class OrderHistoryViewModel @Inject constructor(): ViewModel() , OnItemClicked{
         database = FirebaseDatabase.getInstance().reference
         activityContext = context
         tinyDb = TinyDB(context)
+
+        binding.backButton.setOnClickListener {
+            (context as OrderHistory).finish()
+        }
+
 //        orderHistoryArrayList.add(OrderHistoryDataClass("Order No: 9980713", "1200$", "9 Jun , 2022 9:57 PM"))
 //        orderHistoryArrayList.add(OrderHistoryDataClass("Order No: 9980713", "1200$", "9 Jun , 2022 9:57 PM"))
 //        orderHistoryArrayList.add(OrderHistoryDataClass("Order No: 9980713", "1200$", "9 Jun , 2022 9:57 PM"))

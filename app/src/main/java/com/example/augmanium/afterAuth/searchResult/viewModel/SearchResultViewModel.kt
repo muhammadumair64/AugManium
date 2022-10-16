@@ -14,6 +14,7 @@ import com.example.augmanium.afterAuth.searchResult.searchDataClass.AllProductDa
 import com.example.augmanium.afterAuth.searchResult.searchDataClass.CatagoryDataClass
 import com.example.augmanium.afterAuth.search.searchDataClass.SearchAllProductDataClass
 import com.example.augmanium.afterAuth.search.searchDataClass.SearchCatagoryDataClass
+import com.example.augmanium.afterAuth.searchResult.mainClass.SearchResult
 import com.example.augmanium.databinding.ActivityProductDetailsBinding
 import com.example.augmanium.databinding.ActivitySearchResultBinding
 import com.example.augmanium.utils.K
@@ -41,6 +42,10 @@ class SearchResultViewModel @Inject constructor(): ViewModel(), OnItemClickListe
         activityBinding = binding
         context = activityContext
         tinyDB = TinyDB(context)
+
+        binding.searchBtn.setOnClickListener {
+            (context as SearchResult).finish()
+        }
 
         var search_for= tinyDB.getString(K.SEARCH_QUERY)
         productsTitleArrayList.clear()

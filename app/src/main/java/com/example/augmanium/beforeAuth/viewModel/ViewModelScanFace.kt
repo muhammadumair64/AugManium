@@ -80,6 +80,7 @@ class ViewModelScanFace @Inject constructor(
         this.binding = binding
         tinyDB = TinyDB(activityContext)
         Log.d(TAG, "initViews")
+
         convertImageUrlToBitmap()
     }
 
