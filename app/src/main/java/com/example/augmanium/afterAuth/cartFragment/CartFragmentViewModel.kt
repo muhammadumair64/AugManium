@@ -82,7 +82,7 @@ class CartFragmentViewModel @Inject constructor() : ViewModel(), CartRVClick {
     }
 
     fun rv(){
-//        tinyDB.putListObject(K.CART,cartFragmentArrayList)
+        tinyDB.putListObject(K.CART,cartFragmentArrayList as ArrayList<Object>)
         activityBinding.cartProduct.also {
             it.adapter = CartFragmentAdapter(cartFragmentArrayList,this@CartFragmentViewModel)
             it.setHasFixedSize(true)

@@ -137,6 +137,10 @@ class MainActivityViewModel @Inject constructor(): ViewModel(), OnItemClickListe
                                     activityBinding.stock.visibility = View.INVISIBLE
                                     allProductArrayList.add(product!!)
 
+                                    tinyDB.putListObject(
+                                        K.SPECIFIC_CATEGORY_PRODUCTS,
+                                        allProductArrayList as ArrayList<Object>
+                                    )
                                     allProductRv()
                                     Log.d(
                                         "ELECTRONICS_PRODUCTS",
@@ -147,6 +151,7 @@ class MainActivityViewModel @Inject constructor(): ViewModel(), OnItemClickListe
 //                                    activityBinding.stock.visibility = View.VISIBLE
                                 }
                             }
+
                             1 -> {
                                 if (product!!.productCategory == "women"){
                                     activityBinding.stock.visibility = View.INVISIBLE
@@ -196,6 +201,7 @@ class MainActivityViewModel @Inject constructor(): ViewModel(), OnItemClickListe
                                 if (product!!.productCategory == "Electronics"){
                                     activityBinding.stock.visibility = View.INVISIBLE
                                     allProductArrayList.add(product!!)
+                                    tinyDB.putListObject(K.SPECIFIC_CATEGORY_PRODUCTS,allProductArrayList as ArrayList<Object>)
                                     allProductRv()
                                     Log.d(
                                         "ELECTRONICS_PRODUCTS",

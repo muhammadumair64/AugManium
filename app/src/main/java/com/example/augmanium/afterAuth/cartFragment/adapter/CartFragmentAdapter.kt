@@ -11,8 +11,7 @@ import com.example.augmanium.databinding.ItemCartProductBinding
 import kotlinx.android.synthetic.main.item_cart_product.view.*
 
 class CartFragmentAdapter(val cartFragmentArrayList:ArrayList<CartFragmentDataClass>, val cartInterface: CartRVClick
-):
-    RecyclerView.Adapter<CartFragmentAdapter.CartFragmentViewHolder>() {
+): RecyclerView.Adapter<CartFragmentAdapter.CartFragmentViewHolder>() {
 
     class CartFragmentViewHolder(val allProductRvBinding: ItemCartProductBinding): RecyclerView.ViewHolder(allProductRvBinding.root) {
 

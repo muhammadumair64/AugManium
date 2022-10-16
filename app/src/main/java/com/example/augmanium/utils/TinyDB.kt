@@ -417,7 +417,7 @@ class TinyDB(appContext: Context?) {
         putString(key, gson.toJson(obj))
     }
 
-    fun putListObject(key: String?, objArray: ArrayList<CartDataClass>) {
+    fun putListObject(key: String?, objArray: ArrayList<Object>) {
         checkForNullKey(key)
         val gson = Gson()
         val objStrings = ArrayList<String>()
