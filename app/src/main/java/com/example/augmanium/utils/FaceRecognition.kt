@@ -305,7 +305,7 @@ class FaceRecognition {
                     {
 
                         isFaceMatched = true
-                        val email = tinyDB.getString(K.EMAIL)
+                        val email = tinyDB.getString(K.EMAIL_FORGOT)
                         Log.d("FACE_REC_RESULT", "Same face $email")
 //                        BaseClass.runOnMain {
 //                            Toast.makeText(context, "Same Face", Toast.LENGTH_SHORT).show()

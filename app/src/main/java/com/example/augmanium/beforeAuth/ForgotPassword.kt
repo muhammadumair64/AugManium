@@ -55,7 +55,7 @@ class ForgotPassword : AppCompatActivity() {
                     if (snapshot.child("email").value==email) {
                         var userImage = snapshot.child("Image").child("imgUrl").value
                         tinyDB.putString(K.USER_IMG,userImage.toString())
-                        tinyDB.putString(K.EMAIL,email)
+                        tinyDB.putString(K.EMAIL_FORGOT,email)
                         //do ur stuff
                         Log.d("Check_EMAIL", "Exist    $userImage  $email")
                         val intent = Intent(this@ForgotPassword, ScanFace::class.java)
