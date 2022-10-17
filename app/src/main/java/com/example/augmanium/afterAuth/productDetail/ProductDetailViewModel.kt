@@ -1,7 +1,9 @@
 package com.example.augmanium.afterAuth.productDetail
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
@@ -83,8 +85,12 @@ class ProductDetailViewModel @Inject constructor(): ViewModel(), OnItemClickList
             Size.text = data.productSize
             productName.text = data.productName
             productPrice.text = data.prize
-            var colorbg = data.productColor
-            color.setBackgroundColor(colorbg!!.toInt())
+
+            var colorbg ="#FFFFFF"
+            colorbg = data.productColor.toString()
+            color.run {
+                setBackgroundColor(Color.parseColor(colorbg))
+            }
 
             Log.d("I_________","${data.id}")
 

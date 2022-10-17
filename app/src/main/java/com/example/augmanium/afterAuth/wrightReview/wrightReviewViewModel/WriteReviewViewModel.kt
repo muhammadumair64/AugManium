@@ -52,10 +52,10 @@ class WriteReviewViewModel @Inject constructor() :ViewModel() {
                 uploadReview(review)
             }
             backButton.setOnClickListener {
-                (activityBinding as WriteReviewScreen).finish()
+                (context as WriteReviewScreen).finish()
             }
             detail.setOnClickListener {
-                (activityBinding as WriteReviewScreen).finish()
+                (context as WriteReviewScreen).finish()
             }
 
 
@@ -121,7 +121,7 @@ class WriteReviewViewModel @Inject constructor() :ViewModel() {
             val rootRef = FirebaseDatabase.getInstance().reference
             val yourRef = rootRef.child("Product").child("${productIdGlobal.trim()}").child("review").child(result.toString())
             yourRef.setValue(cartItem)
-        (activityBinding as WriteReviewScreen).finish()
+        (context as WriteReviewScreen).finish()
 
     }
 

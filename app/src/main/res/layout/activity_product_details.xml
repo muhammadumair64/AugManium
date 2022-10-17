@@ -32,7 +32,7 @@
                     <ImageView
                         android:id="@+id/image"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
+                        android:layout_height="match_parent" />
                     <RelativeLayout
                         android:id="@+id/upperlayout"
                         android:layout_width="match_parent"
@@ -60,7 +60,7 @@
                             android:layout_marginStart="@dimen/_20sdp"
                             android:fontFamily="@font/montserrat_bold"
                             android:text="Women"
-                            android:textColor="@color/white"
+                            android:textColor="@color/Primary"
                             android:textSize="@dimen/_18sdp"
                             android:textStyle="bold" />
 

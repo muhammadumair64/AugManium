@@ -123,7 +123,7 @@ class ViewModelScanFace @Inject constructor(
 //                imageBitmap = BitmapFactory.decodeFile(url.absolutePath)
 ////                binding.img.setImageBitmap(imageBitmap)
 //                Log.d("FILE_BITMAP",imageBitmap.toString())
-                var user_img = tinyDB.getString(K.USER_IMG)
+                val user_img = tinyDB.getString(K.USER_IMG)
 
                 try {
                     val url = URL(user_img)
@@ -187,21 +187,24 @@ class ViewModelScanFace @Inject constructor(
         }, ContextCompat.getMainExecutor(activityContext))
     }
 
+
     @SuppressLint("UnsafeOptInUsageError")
     private fun bindPreview(cameraProvider: ProcessCameraProvider) {
-Log.d("PREVIEW"," Binding preview")
-        cameraSelector = CameraSelector.Builder()
-            .requireLensFacing(CameraSelector.LENS_FACING_FRONT)
-            .build()
+        Log.d("PREVIEW", " Binding preview")
 
-        viewModelScope.launch(Dispatchers.Main){
+
+        viewModelScope.launch(Dispatchers.Main) {
+            cameraSelector = CameraSelector.Builder()
+                .requireLensFacing(CameraSelector.LENS_FACING_FRONT)
+                .build()
+
             preview = Preview.Builder()
                 .build()
                 .also {
                     it.setSurfaceProvider(binding.cameraPreview.surfaceProvider)
-                    Log.d("PREVIEW"," preview done")
+                    Log.d("PREVIEW", " preview done")
                 }
-        }
+       // }
 //        withContext(Dispatchers.Main){}
 
 
@@ -212,6 +215,7 @@ Log.d("PREVIEW"," Binding preview")
             CaptureRequest.CONTROL_AE_TARGET_FPS_RANGE,
             Range<Int>(1, 5)
         )
+
         val executor: Executor = Executors.newSingleThreadExecutor()
         val imageAnalysis = builder
             .setTargetResolution(Size(300, 350))
@@ -259,12 +263,12 @@ Log.d("PREVIEW"," Binding preview")
 
         try {
             val owner = activityContext as LifecycleOwner
-            cameraProvider.unbindAll()
+//            cameraProvider.unbindAll()
             cameraProvider.bindToLifecycle(owner, cameraSelector!!, preview, imageAnalysis)
         } catch (e: Exception) {
             Log.d(TAG, "Exception on bindPreview ${e.localizedMessage}")
         }
-
+    }
     }
 
     private fun startRunner() {
