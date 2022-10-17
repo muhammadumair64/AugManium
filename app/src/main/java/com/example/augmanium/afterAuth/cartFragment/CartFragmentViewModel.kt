@@ -2,6 +2,7 @@ package com.example.augmanium.afterAuth.cartFragment
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
@@ -9,6 +10,7 @@ import androidx.lifecycle.ViewModel
 import com.example.augmanium.afterAuth.cartFragment.adapter.CartFragmentAdapter
 import com.example.augmanium.afterAuth.cartFragment.dataClass.CartFragmentDataClass
 import com.example.augmanium.afterAuth.cartFragment.interfaceForClick.CartRVClick
+import com.example.augmanium.afterAuth.searchscreen.SearchActivity
 import com.example.augmanium.databinding.FragmentCartBinding
 import com.example.augmanium.utils.K
 import com.example.augmanium.utils.TinyDB
@@ -27,6 +29,7 @@ class CartFragmentViewModel @Inject constructor() : ViewModel(), CartRVClick {
     var database: com.google.firebase.database.DatabaseReference = FirebaseDatabase.getInstance().reference
     val cartFragmentArrayList: ArrayList<CartFragmentDataClass> = ArrayList()
     var totalPriceOfProducts = 0
+    var shipping = 0
 
 
 
@@ -37,6 +40,11 @@ class CartFragmentViewModel @Inject constructor() : ViewModel(), CartRVClick {
 
         binding.checkout.setOnClickListener {
             Log.d("DATA_IS","$cartFragmentArrayList")
+        }
+
+        binding.searchBtn.setOnClickListener {
+            val intent = Intent(activitycontext,SearchActivity::class.java)
+            activitycontext.startActivity(intent)
         }
 
         getCartData()
@@ -61,8 +69,9 @@ class CartFragmentViewModel @Inject constructor() : ViewModel(), CartRVClick {
                     val separatedPrice = price!!.split("$").toTypedArray()[0]
                     var totalPrice = separatedPrice.toInt()
 
+                    var shippingFeePerItem = 20
                     var count = cartData.productCount?.trim()
-
+                    shipping = shipping + shippingFeePerItem
                val currentPrize = totalPrice * (count?.toInt()!!)
                     totalPriceOfProducts = totalPriceOfProducts + currentPrize
                     Log.d("PRODUCT_PRICE","$totalPriceOfProducts")
@@ -90,6 +99,7 @@ class CartFragmentViewModel @Inject constructor() : ViewModel(), CartRVClick {
         }
 
         activityBinding.subTotalPrice.text = totalPriceOfProducts.toString()
+        activityBinding.shippingPrice.text = shipping.toString()
     }
 
     override fun onDlt(position: Int) {

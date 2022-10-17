@@ -9,6 +9,7 @@ import com.example.augmanium.ProductDetailsActivity
 import com.example.augmanium.afterAuth.category.SpecificCategoryProducts
 import com.example.augmanium.afterAuth.mainActivity.dataClass.ProductDetailCategoryProductDataClass
 import com.example.augmanium.afterAuth.mainActivity.dataClass.ReviewDataclass
+import com.example.augmanium.afterAuth.searchscreen.SearchActivity
 import com.example.augmanium.databinding.ActivityCategoryScreenBinding
 import com.example.augmanium.databinding.ActivityProductDetailsBinding
 import com.example.augmanium.utils.K
@@ -71,6 +72,10 @@ class CategoryScreenViewModel @Inject constructor(): ViewModel() {
             electronic.setOnClickListener {
                 val intent = Intent(activityContext,SpecificCategoryProducts::class.java)
                 tinyDB.putString(K.INTENT_CATEGORY,"Electronics")
+                activityContext.startActivity(intent)
+            }
+            searchBtn.setOnClickListener {
+                val intent = Intent(activityContext,SearchActivity::class.java)
                 activityContext.startActivity(intent)
             }
 

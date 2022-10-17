@@ -8,12 +8,14 @@ import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.augmanium.ProductDetailsActivity
 import com.example.augmanium.afterAuth.category.AllCategories
+import com.example.augmanium.afterAuth.category.SpecificCategoryProducts
 import com.example.augmanium.afterAuth.category.adapter.SpecificCategoryProductAdapter
 import com.example.augmanium.afterAuth.category.dataClass.SpecificCatagoryProductDataClass
 import com.example.augmanium.afterAuth.interfaces.OnItemClickListener
 import com.example.augmanium.afterAuth.mainActivity.Adapter.ProductDetailAdapter
 import com.example.augmanium.afterAuth.mainActivity.dataClass.AllProductDataClass
 import com.example.augmanium.afterAuth.mainActivity.dataClass.ProductDetailCategoryProductDataClass
+import com.example.augmanium.afterAuth.searchscreen.SearchActivity
 import com.example.augmanium.databinding.ActivitySpecificCategoryProductsBinding
 import com.example.augmanium.utils.K
 import com.example.augmanium.utils.TinyDB
@@ -43,6 +45,15 @@ class SpecificCategoryProductViewModel @Inject constructor(): ViewModel(), OnIte
         binding.categoryView.setOnClickListener {
             var intent = Intent(activityContext, AllCategories::class.java)
             (activityContext ).startActivity(intent)
+        }
+
+        binding.searchBtn.setOnClickListener {
+            val intent = Intent(activityContext, SearchActivity::class.java)
+            activityContext.startActivity(intent)
+
+        }
+        binding.backButton.setOnClickListener {
+            (activityContext as SpecificCategoryProducts).finish()
         }
 
 //        specificCategoryProductArrayList.add(SpecificCatagoryProductDataClass("White Top"))

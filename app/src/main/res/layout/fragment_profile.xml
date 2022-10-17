@@ -39,12 +39,13 @@
 
 
                 <ImageView
-                    android:layout_centerVertical="true"
+                    android:id="@+id/searchBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_icons_search_gray"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
 
-                    android:layout_alignParentRight="true" />
+                    android:src="@drawable/ic_icons_search_gray" />
 
 
             </RelativeLayout>
@@ -151,7 +152,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-
+                    android:id="@+id/shippingAdress"
                     android:layout_marginEnd="@dimen/_20sdp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -196,7 +197,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-
+                    android:id="@+id/track_order_btn"
                     android:layout_marginEnd="@dimen/_20sdp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -241,7 +242,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-
+                    android:id="@+id/orderHistory"
                     android:layout_marginEnd="@dimen/_20sdp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -267,11 +268,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="@dimen/_60sdp"
                         android:fontFamily="@font/montserrat_semibold"
                         android:text="Order History"
-                        android:layout_centerVertical="true"
                         android:textColor="@color/secondary" />
 
                     <ImageView
@@ -286,7 +287,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-
+                    android:id="@+id/logOut"
                     android:layout_marginEnd="@dimen/_20sdp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -312,11 +313,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="@dimen/_60sdp"
                         android:fontFamily="@font/montserrat_semibold"
                         android:text="Log Out"
-                        android:layout_centerVertical="true"
                         android:textColor="@color/secondary" />
 
 

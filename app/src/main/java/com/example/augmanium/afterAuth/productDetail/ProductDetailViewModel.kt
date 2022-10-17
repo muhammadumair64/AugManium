@@ -3,6 +3,7 @@ package com.example.augmanium.afterAuth.productDetail
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
@@ -82,6 +83,8 @@ class ProductDetailViewModel @Inject constructor(): ViewModel(), OnItemClickList
             Size.text = data.productSize
             productName.text = data.productName
             productPrice.text = data.prize
+            var colorbg = data.productColor
+            color.setBackgroundColor(colorbg!!.toInt())
 
             Log.d("I_________","${data.id}")
 
@@ -212,6 +215,7 @@ class ProductDetailViewModel @Inject constructor(): ViewModel(), OnItemClickList
         val rootRef = FirebaseDatabase.getInstance().reference
         val yourRef = rootRef.child("Cart").child(nodeName).child(data.productName!!)
         yourRef.setValue(cartItem)
+        Toast.makeText(activityContext,"Done",Toast.LENGTH_SHORT).show()
     }
 
     fun onnextscreen(productData: ProductDetailCategoryProductDataClass) {

@@ -11,6 +11,7 @@ import com.example.augmanium.afterAuth.category.adapter.SpecificCategoryProductA
 import com.example.augmanium.afterAuth.category.dataClass.AllCategoryDataClass
 import com.example.augmanium.afterAuth.category.dataClass.SpecificCatagoryProductDataClass
 import com.example.augmanium.afterAuth.interfaces.OnItemClickListener
+import com.example.augmanium.afterAuth.searchscreen.SearchActivity
 import com.example.augmanium.databinding.ActivityAllCategoriesBinding
 import com.example.augmanium.databinding.ActivitySpecificCategoryProductsBinding
 import com.example.augmanium.utils.K
@@ -36,12 +37,20 @@ class AllCategoriesViewModel @Inject constructor(): ViewModel(), OnItemClickList
         activityContext = context
         tinyDB = TinyDB(context)
 
+
        var allCount = tinyDB.getString(K.ALL_COUNT)
        var childrenCount = tinyDB.getString(K.CHILDREN_COUNT)
        var menCount = tinyDB.getString(K.MEN_COUNT)
        var womenCoumt = tinyDB.getString(K.WOMEN_COUNT)
        var electronicCount = tinyDB.getString(K.ELECTRONICS_COUNT)
        var bestSellerCount = tinyDB.getString(K.BESTSALLER_COUNT)
+
+
+        binding.searchBtn.setOnClickListener {
+            val intent = Intent(activityContext, SearchActivity::class.java)
+            activityContext.startActivity(intent)
+
+        }
 
 //        getData()
 

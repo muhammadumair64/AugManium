@@ -20,5 +20,8 @@ class AllCategories : AppCompatActivity() {
         binding =DataBindingUtil.setContentView(this,R.layout.activity_all_categories)
 
         viewModel.allCategoryRv(binding,this)
+
+
+
     }
 }
