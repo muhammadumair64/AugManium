@@ -83,7 +83,7 @@ class TrackOrder : AppCompatActivity() {
             binding.phase3Dot.visibility= View.VISIBLE
         }
         if(order.phase4 != ""){
-            binding.phase4Text.text= order.phase5
+            binding.phase4Text.text= order.phase4
             binding.phase4Dot.visibility= View.VISIBLE
         }
         if(order.phase5 != ""){
