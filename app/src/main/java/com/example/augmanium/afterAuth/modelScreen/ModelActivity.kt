@@ -1,4 +1,4 @@
-package com.example.augmanium
+package com.example.augmanium.afterAuth.modelScreen
 
 import android.net.Uri
 import android.os.Build
@@ -8,23 +8,19 @@ import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.example.augmanium.R
 import com.example.augmanium.utils.K
 import com.example.augmanium.utils.TinyDB
-import com.google.android.gms.tasks.OnSuccessListener
 import com.google.ar.core.HitResult
 import com.google.ar.core.Plane
 import com.google.ar.sceneform.AnchorNode
 import com.google.ar.sceneform.assets.RenderableSource
 import com.google.ar.sceneform.rendering.ModelRenderable
 import com.google.ar.sceneform.ux.ArFragment
-import com.google.ar.sceneform.ux.BaseArFragment.OnTapArPlaneListener
 import com.google.firebase.FirebaseApp
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 import java.io.File
 import java.io.IOException
-import java.util.function.Consumer
 
 
 class ModelActivity : AppCompatActivity() {

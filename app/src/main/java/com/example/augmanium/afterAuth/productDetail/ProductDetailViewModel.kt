@@ -1,14 +1,13 @@
 package com.example.augmanium.afterAuth.productDetail
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
-import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
+import com.example.augmanium.afterAuth.modelScreen.ModelActivity
 import com.example.augmanium.ProductDetailsActivity
 import com.example.augmanium.afterAuth.interfaces.OnItemClickListener
 
@@ -18,8 +17,7 @@ import com.example.augmanium.afterAuth.mainActivity.dataClass.AllProductDataClas
 import com.example.augmanium.afterAuth.mainActivity.dataClass.CartDataClass
 import com.example.augmanium.afterAuth.mainActivity.dataClass.ProductDetailCategoryProductDataClass
 import com.example.augmanium.afterAuth.mainActivity.dataClass.ReviewDataclass
-import com.example.augmanium.afterAuth.search.searchDataClass.SearchAllProductDataClass
-import com.example.augmanium.afterAuth.wrightReview.WriteReviewScreen
+import com.example.augmanium.afterAuth.writeReview.WriteReviewScreen
 import com.example.augmanium.databinding.ActivityProductDetailsBinding
 import com.example.augmanium.utils.K
 import com.example.augmanium.utils.TinyDB
@@ -27,7 +25,6 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.getValue
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.android.synthetic.main.activity_product_details.view.*
 import javax.inject.Inject
@@ -47,20 +44,28 @@ class ProductDetailViewModel @Inject constructor(): ViewModel(), OnItemClickList
         activityBinding = binding
         activityContext = context
         tinyDB = TinyDB(context)
-        var data = tinyDB.getObject(K.PRODUCT_DATA, AllProductDataClass::class.java)
-        var productId = tinyDB.getString(K.PRODUCT_ID)
+        val data = tinyDB.getObject(K.PRODUCT_DATA, AllProductDataClass::class.java)
+        tinyDB.putString(K.MODEL,data.modelName)
+        val productId = tinyDB.getString(K.PRODUCT_ID)
 
         binding.apply {
 
+            binding.Degree.setOnClickListener {
+                val intent = Intent(activityContext, ModelActivity::class.java)
+                activityContext.startActivity(intent)
+
+            }
+
+
             writeRevirw.setOnClickListener {
-                var  intent = Intent(activityContext, WriteReviewScreen::class.java)
+                val intent = Intent(activityContext, WriteReviewScreen::class.java)
                 activityContext.startActivity(intent)
             }
             productCount = count.text.trim().toString().toInt()
             decrease.setOnClickListener {
 
                 if (productCount > 1){
-                    var updatedCount = --productCount
+                    val updatedCount = --productCount
                     count.text = updatedCount.toString()
                     Log.d("productCount-1","$productCount $updatedCount")
 
@@ -69,7 +74,7 @@ class ProductDetailViewModel @Inject constructor(): ViewModel(), OnItemClickList
             }
             increase.setOnClickListener {
 
-                var updatedCount = ++productCount
+                val updatedCount = ++productCount
                 count.text = updatedCount.toString()
                 Log.d("productCount+1","$productCount $updatedCount")
             }
@@ -144,7 +149,8 @@ class ProductDetailViewModel @Inject constructor(): ViewModel(), OnItemClickList
                     Log.d("NODE___"," ${snap.key} $snapshot")
 //                    for (products in snap.children) {
                     Log.d("NODE___"," ${snap.key} $snap")
-                    var product = snap.getValue(ProductDetailCategoryProductDataClass::class.java)
+                    val product = snap.getValue(ProductDetailCategoryProductDataClass::class.java)
+
                     when (category) {
                         "All" -> {
 

@@ -1,6 +1,7 @@
 package com.example.augmanium.afterAuth.mainActivity.viewModel
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.util.Log
@@ -11,6 +12,7 @@ import com.example.augmanium.ProductDetailsActivity
 import com.example.augmanium.afterAuth.interfaces.OnItemClickListener
 import com.example.augmanium.afterAuth.mainActivity.Adapter.AllProductAdapter
 import com.example.augmanium.afterAuth.mainActivity.Adapter.CatagoryAdapter
+import com.example.augmanium.afterAuth.mainActivity.MainActivity
 import com.example.augmanium.afterAuth.mainActivity.dataClass.AllProductDataClass
 import com.example.augmanium.afterAuth.mainActivity.dataClass.CatagoryDataClass
 import com.example.augmanium.afterAuth.searchscreen.SearchActivity
@@ -45,9 +47,11 @@ class MainActivityViewModel @Inject constructor(): ViewModel(), OnItemClickListe
         getData(0)
 
         binding.searchBtn.setOnClickListener {
-            var intent = Intent(activityContext,SearchActivity::class.java)
+            val intent = Intent(activityContext,SearchActivity::class.java)
             activityContext.startActivity(intent)
         }
+
+
 
 
 

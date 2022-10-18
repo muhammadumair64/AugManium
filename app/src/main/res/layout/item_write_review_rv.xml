@@ -4,7 +4,7 @@
     <data>
         <variable
             name="database"
-            type="com.example.augmanium.afterAuth.wrightReview.dataClass.WriteReviewDataClass" />
+            type="com.example.augmanium.afterAuth.writeReview.dataClass.WriteReviewDataClass" />
     </data>
 
     <RelativeLayout

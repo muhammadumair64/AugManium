@@ -34,6 +34,11 @@ class CartFragment : Fragment() {
 
         val viewBinding = binding.root
         val activityContext = (activity as MainActivity).context
+        (activity as MainActivity).cartSelector()
+binding.menuDrawer.setOnClickListener {
+    (activity as MainActivity).menuFuction()
+}
+
         viewModel.bindView(binding,activityContext)
 
         return viewBinding
