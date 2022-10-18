@@ -58,6 +58,12 @@ class CheckOutAddress : AppCompatActivity() {
 
 
         }
+        binding.backButton.setOnClickListener {
+            finish()
+        }
+        binding.cancelButton.setOnClickListener {
+            finish()
+        }
 
 
     }

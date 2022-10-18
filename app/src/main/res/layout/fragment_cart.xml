@@ -127,52 +127,7 @@
                 </RelativeLayout>
 
 
-                <RelativeLayout
 
-                    android:id="@+id/shippingLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/subTotalLayout"
-                    android:layout_marginTop="@dimen/_10sdp">
-
-                    <TextView
-                        android:id="@+id/shipping"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_regular"
-                        android:text="Shipping"
-                        android:textColor="@color/secondary"
-                        android:textSize="@dimen/_15sdp" />
-
-
-                    <ImageView
-                        android:layout_width="@dimen/_130sdp"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/_5sdp"
-                        android:src="@drawable/item_gray_divider" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toLeftOf="@+id/shippingPrice"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:text="$"
-                        android:textColor="@color/secondary"
-                        android:textSize="@dimen/_18sdp" />
-                    <TextView
-                        android:id="@+id/shippingPrice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:text="0.00"
-                        android:textColor="@color/secondary"
-                        android:textSize="@dimen/_18sdp" />
-
-
-                </RelativeLayout>
 
 
             </RelativeLayout>

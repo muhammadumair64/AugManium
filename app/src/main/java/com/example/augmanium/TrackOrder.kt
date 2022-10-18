@@ -24,6 +24,20 @@ class TrackOrder : AppCompatActivity() {
         tinyDb = TinyDB(this)
         database = FirebaseDatabase.getInstance().reference
         getOrderStatus()
+        btnListners()
+    }
+
+    private fun btnListners() {
+
+        binding.backButtonproductDetails.setOnClickListener {
+            finish()
+        }
+
+        binding.ContinueBtn.setOnClickListener {
+            val intent = Intent(this,MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     fun getOrderStatus()

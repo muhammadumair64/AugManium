@@ -21,10 +21,11 @@
         android:layout_height="wrap_content">
 
       <ImageView
+          android:id="@+id/backBtn"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_centerVertical="true"
-          android:src="@drawable/ic_menu" />
+          android:src="@drawable/ic_back" />
 
       <TextView
           android:layout_width="wrap_content"
@@ -38,12 +39,12 @@
           android:textSize="@dimen/_17sdp" />
 
 
-      <ImageView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignParentRight="true"
-          android:layout_centerVertical="true"
-          android:src="@drawable/ic_icons_search_gray" />
+<!--      <ImageView-->
+<!--          android:layout_width="wrap_content"-->
+<!--          android:layout_height="wrap_content"-->
+<!--          android:layout_alignParentRight="true"-->
+<!--          android:layout_centerVertical="true"-->
+<!--          android:src="@drawable/ic_icons_search_gray" />-->
 
 
     </RelativeLayout>
@@ -365,6 +366,7 @@
         android:weightSum="2">
 
       <RelativeLayout
+          android:id="@+id/backButton"
           android:layout_marginStart="@dimen/_12sdp"
           android:layout_marginEnd="@dimen/_6sdp"
           android:layout_width="match_parent"
@@ -382,6 +384,7 @@
       </RelativeLayout>
 
       <RelativeLayout
+          android:id="@+id/checkout_btn"
           android:layout_marginStart="@dimen/_12sdp"
           android:layout_marginEnd="@dimen/_6sdp"
           android:background="@drawable/item_botton"
@@ -390,7 +393,7 @@
           android:layout_weight="1">
 
         <TextView
-            android:id="@+id/checkout_btn"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
