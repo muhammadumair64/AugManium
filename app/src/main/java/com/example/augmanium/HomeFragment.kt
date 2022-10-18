@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import com.example.augmanium.afterAuth.mainActivity.MainActivity
 import com.example.augmanium.afterAuth.mainActivity.viewModel.MainActivityViewModel
 import com.example.augmanium.databinding.FragmentHomeBinding
+
 import com.google.firebase.database.DatabaseReference
 
 
@@ -29,7 +30,7 @@ class HomeFragment : Fragment() {
         val activityContext = (activity as MainActivity).context
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         viewModel.catagoryRvBinding(activityContext, binding)
-
+        (activity as MainActivity).homeSelector()
         binding.menuDrawer.setOnClickListener {
 
             (activity as MainActivity).menuFuction()

@@ -58,7 +58,7 @@ companion object{
             Color.parseColor("#FFFFFFFF")
         )
 
-        binding.menu.setItemSelected(R.id.home, true)
+        binding.menu.setItemSelected(R.id.homeFragment, true)
 
 //        binding.menu.setup
         binding.menu.setOnItemSelectedListener {
@@ -220,5 +220,18 @@ companion object{
     override fun onResume() {
         super.onResume()
         binding.drawerLayout.closeDrawer(Gravity.LEFT)
+    }
+
+
+
+
+    fun homeSelector(){
+        binding.menu.setItemSelected(R.id.homeFragment, true)
+    }
+    fun cartSelector(){
+        binding.menu.setItemSelected(R.id.cartFragment, true)
+    }
+    fun profileSector(){
+        binding.menu.setItemSelected(R.id.profileFragment, true)
     }
 }
