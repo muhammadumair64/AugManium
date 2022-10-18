@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import com.bumptech.glide.Glide
 import com.example.augmanium.EditProfile
 import com.example.augmanium.TrackOrder
+import com.example.augmanium.afterAuth.addAddress.AddAddress
 import com.example.augmanium.afterAuth.mainActivity.MainActivity
 import com.example.augmanium.afterAuth.orderHistory.OrderHistory
 import com.example.augmanium.afterAuth.searchscreen.SearchActivity
@@ -59,8 +60,8 @@ class ProfileFragmentViewModel @Inject constructor() :ViewModel() {
             context.startActivity(intent)
         }
         binding.shippingAdress.setOnClickListener {
-//            val intent = Intent(context, ::class.java)
-//            context.startActivity(intent)
+            val intent = Intent(context, AddAddress::class.java)
+            context.startActivity(intent)
         }
         binding.logOut.setOnClickListener {
             logOut()

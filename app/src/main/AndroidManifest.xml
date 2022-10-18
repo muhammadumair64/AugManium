@@ -30,7 +30,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AugManium">
         <activity
-            android:name=".AddAddress"
+            android:name=".afterAuth.addAddress.AddAddress"
             android:exported="false" />
         <activity
             android:name=".afterAuth.location.Location"
