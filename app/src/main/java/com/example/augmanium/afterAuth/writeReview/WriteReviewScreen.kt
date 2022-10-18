@@ -1,11 +1,11 @@
-package com.example.augmanium.afterAuth.wrightReview
+package com.example.augmanium.afterAuth.writeReview
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.example.augmanium.R
-import com.example.augmanium.afterAuth.wrightReview.wrightReviewViewModel.WriteReviewViewModel
+import com.example.augmanium.afterAuth.writeReview.wrightReviewViewModel.WriteReviewViewModel
 import com.example.augmanium.databinding.ActivityWriteReviewScreenBinding
 import dagger.hilt.android.AndroidEntryPoint
 

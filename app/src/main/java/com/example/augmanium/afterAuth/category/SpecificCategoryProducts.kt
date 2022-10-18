@@ -58,8 +58,6 @@ fun slidingDrawer(){
 
    }
 }
-
-
 fun menuFuction() {
    binding.menu.setOnClickListener(View.OnClickListener {
 
@@ -97,7 +95,6 @@ fun menuFuction() {
 //            popupMenu.show()
 
 }
-
 override fun onBackPressed() {
     if (  binding.drawerLayout.isDrawerOpen(Gravity.LEFT)) {
         binding.drawerLayout.closeDrawer(Gravity.LEFT)
@@ -107,10 +104,6 @@ override fun onBackPressed() {
         finish()
     }
 }
-
-
-
-
 override fun onResume() {
     super.onResume()
     binding.drawerLayout.closeDrawer(Gravity.LEFT)

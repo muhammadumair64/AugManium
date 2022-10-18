@@ -4,6 +4,7 @@ package com.example.augmanium.afterAuth.mainActivity
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.Menu
 import android.view.View
 import android.widget.Toast
@@ -21,6 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 companion object{
     var position = 0
+    var mainContext = this
 }
 
     lateinit var binding:ActivityMainBinding
@@ -29,7 +31,7 @@ companion object{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
-
+        slidingDrawer()
      navigationBar()
 
 //        viewModel.catagoryRvBinding(this,binding)
@@ -171,5 +173,52 @@ companion object{
 
 
         }
+    }
+
+
+
+
+    fun slidingDrawer(){
+
+        binding.naviView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.action_home -> {
+
+                }
+
+                R.id.action_catalog -> {
+
+
+                }
+
+
+                R.id.category -> {
+
+                    finish()
+                }
+            }
+
+            return@setNavigationItemSelectedListener true
+
+
+        }
+    }
+    fun menuFuction() {
+
+           binding.drawerLayout.openDrawer(Gravity.LEFT)
+
+    }
+    override fun onBackPressed() {
+        if (  binding.drawerLayout.isDrawerOpen(Gravity.LEFT)) {
+            binding.drawerLayout.closeDrawer(Gravity.LEFT)
+            return
+        }
+        else{
+            finish()
+        }
+    }
+    override fun onResume() {
+        super.onResume()
+        binding.drawerLayout.closeDrawer(Gravity.LEFT)
     }
 }

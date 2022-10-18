@@ -8,5 +8,6 @@ data class CartFragmentDataClass(val image: String? = "",
                                  val productName: String?= "",
                                  val productSize: String?= "",
                                  val productId: String? = "",
-                                 var productCount: String? = ""
+                                 var productCount: String? = "",
+                                 val modelName: String = ""
 )

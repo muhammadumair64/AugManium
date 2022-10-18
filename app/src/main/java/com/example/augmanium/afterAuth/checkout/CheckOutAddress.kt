@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import com.example.augmanium.ModelActivity
 import com.example.augmanium.R
 import com.example.augmanium.afterAuth.checkout.checkOutPayment.CheckOutPayment
 import com.example.augmanium.databinding.ActivityCheckOutAddressBinding

@@ -30,13 +30,5 @@
         app:cnb_textColor="@color/Primary"
         />
 
-    <item
-        android:id="@+id/settingsFragment"
-        android:icon="@drawable/ic_icon_feather_settings"
-        android:title="Settings"
-        app:cnb_iconColor="@color/Primary"
-        app:cnb_backgroundColor="@color/white"
-        app:cnb_textColor="@color/Primary"
-    />
 
 </menu>

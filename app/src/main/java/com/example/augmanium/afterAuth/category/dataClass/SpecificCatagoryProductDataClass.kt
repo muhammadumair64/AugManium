@@ -7,5 +7,6 @@ class SpecificCatagoryProductDataClass(val image: String? = "",
                                        val productDescription: String?= "",
                                        val productName: String?= "",
                                        val productSize: String?= "",
-                                       val id: String?=""
+                                       val id: String?="",
+                                       val modelName: String = ""
 )

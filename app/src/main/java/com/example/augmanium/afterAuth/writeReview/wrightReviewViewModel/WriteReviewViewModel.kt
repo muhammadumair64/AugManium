@@ -1,14 +1,13 @@
-package com.example.augmanium.afterAuth.wrightReview.wrightReviewViewModel
+package com.example.augmanium.afterAuth.writeReview.wrightReviewViewModel
 
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.example.augmanium.afterAuth.interfaces.OnItemClickListener
 import com.example.augmanium.afterAuth.mainActivity.dataClass.AllProductDataClass
-import com.example.augmanium.afterAuth.wrightReview.WriteReviewScreen
-import com.example.augmanium.afterAuth.wrightReview.adapter.WriteReviewAdapter
-import com.example.augmanium.afterAuth.wrightReview.dataClass.UploadReview
-import com.example.augmanium.afterAuth.wrightReview.dataClass.WriteReviewDataClass
+import com.example.augmanium.afterAuth.writeReview.WriteReviewScreen
+import com.example.augmanium.afterAuth.writeReview.adapter.WriteReviewAdapter
+import com.example.augmanium.afterAuth.writeReview.dataClass.UploadReview
+import com.example.augmanium.afterAuth.writeReview.dataClass.WriteReviewDataClass
 import com.example.augmanium.databinding.ActivityWriteReviewScreenBinding
 import com.example.augmanium.utils.K
 import com.example.augmanium.utils.TinyDB

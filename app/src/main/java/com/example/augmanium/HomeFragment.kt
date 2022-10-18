@@ -30,7 +30,11 @@ class HomeFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         viewModel.catagoryRvBinding(activityContext, binding)
 
+        binding.menuDrawer.setOnClickListener {
 
+            (activity as MainActivity).menuFuction()
+
+        }
         return binding.root
     }
 

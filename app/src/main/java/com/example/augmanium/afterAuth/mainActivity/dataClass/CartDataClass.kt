@@ -8,5 +8,6 @@ data class CartDataClass(val image: String? = "",
                          val productName: String?= "",
                          val productSize: String?= "",
                          val productId: String? = "",
-                         val productCount: String? = ""
+                         val productCount: String? = "",
+                         val modelName: String = ""
 )

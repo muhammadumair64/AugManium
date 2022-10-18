@@ -1,14 +1,11 @@
-package com.example.augmanium.afterAuth.wrightReview.adapter
+package com.example.augmanium.afterAuth.writeReview.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.augmanium.R
-import com.example.augmanium.afterAuth.mainActivity.Adapter.ProductReviewAapter
-import com.example.augmanium.afterAuth.mainActivity.dataClass.ReviewDataclass
-import com.example.augmanium.afterAuth.wrightReview.dataClass.WriteReviewDataClass
-import com.example.augmanium.databinding.ItemProductReviewRvBinding
+import com.example.augmanium.afterAuth.writeReview.dataClass.WriteReviewDataClass
 import com.example.augmanium.databinding.ItemWriteReviewRvBinding
 
 class WriteReviewAdapter(val productReviewArrayList:ArrayList<WriteReviewDataClass>
