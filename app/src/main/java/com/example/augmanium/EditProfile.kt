@@ -1,5 +1,6 @@
 package com.example.augmanium
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
@@ -18,13 +19,16 @@ import com.example.augmanium.beforeAuth.SplashScreen
 import com.example.augmanium.beforeAuth.editProfileDetectFace.FaceDetection
 import com.example.augmanium.dataClass.Mode
 import com.example.augmanium.dataClass.User
+import com.example.augmanium.dataClass.UserImage
+import com.example.augmanium.dataClass.UserInfo
 import com.example.augmanium.utils.K
 import com.example.augmanium.utils.TinyDB
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.*
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.OnProgressListener
 import com.google.firebase.storage.StorageReference
@@ -36,6 +40,9 @@ class EditProfile : AppCompatActivity() {
 
     lateinit var binding: com.example.augmanium.databinding.ActivityEditProfileBinding
     lateinit var tinyDB: TinyDB
+    var database: com.google.firebase.database.DatabaseReference = FirebaseDatabase.getInstance().reference
+    val userArrayList: ArrayList<UserInfo> = ArrayList()
+
     var name: String? =""
     var password: String? =""
     var email: String? =""
@@ -61,14 +68,15 @@ class EditProfile : AppCompatActivity() {
         super.onResume()
         var comesFrom = tinyDB.getInt(K.SIGN_UP)
 
+        initListner()
+
         if (comesFrom == 2){
             setViews()
         }
 
-//        if (comesFrom == 1){
-            initListner()
+
         if (comesFrom == 3) {
-            img = tinyDB.getString(K.IMG)
+            img = tinyDB.getString(K.USER_IMG)
             binding.profilePhoto.setImageURI(Uri.parse(img.toString()))
         }
 //        }
@@ -81,11 +89,15 @@ class EditProfile : AppCompatActivity() {
     }
 
     private fun setViews() {
-        var image = tinyDB.getString(K.USER_IMG)
+//        var image
+        img = tinyDB.getString(K.USER_IMG)
         var gender = tinyDB.getString(K.GENDER)
         var city = tinyDB.getString(K.CITY)
+//        img = image
 
-        Log.d("IMAGE_TT", "${image} $city ")
+
+        getUser()
+        Log.d("IMAGE_TT", "${img} $city ")
 
 //        binding.city.setText(city)
 //        binding.gender.setText(gender)
@@ -94,10 +106,72 @@ class EditProfile : AppCompatActivity() {
 
 
         Glide.with(this)
-            .load(image)
+            .load(img)
             .override(300, 200)
             .into(binding.profilePhoto);
     }
+
+
+    fun getUser(){
+
+        Log.d("User_Email ","${email}")
+        val separated: List<String> = email!!.split("@")
+        val nodeName = separated[0]
+        getUserImage(nodeName)
+        database.child("User").child(nodeName).addListenerForSingleValueEvent(object :
+            ValueEventListener {
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+//                for (snap in snapshot.getChildren()) {
+//                    Log.d("REVIEWE_KEY_SNAP ","${snap}")
+//                    Log.d("REVIEWE_KEY","${snap.key} ${snap.value}")
+                val user = snapshot.getValue(UserInfo::class.java)
+                userArrayList.add(user!!)
+                Log.d("USER_INFO ","${user.city}   ${user.gender}")
+                tinyDB.putString(K.USER_NAME, user!!.userName)
+                tinyDB.putString(K.GENDER,user.gender)
+                tinyDB.putString(K.CITY,user.city)
+
+
+//                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.d("ERROR_DATABASE","$error")
+            }
+
+        })
+    }
+
+
+    fun getUserImage(nodeName: String) {
+        Log.d("IMAGE User ","${nodeName}")
+        database.child("User").child(nodeName).child("Image").addListenerForSingleValueEvent(object :
+            ValueEventListener {
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+//                for (snap in snapshot.getChildren()) {
+                val image = ""
+                Log.d("IMAGE User ","${snapshot.key}   ${snapshot.value}")
+                val user = snapshot.getValue(UserImage::class.java)
+//                    Log.d("IMAGE User ","${user!!.imgUrl}")
+                tinyDB.putString(K.USER_IMG,user!!.imgUrl)
+//                    tinyDB.putString(K.USER_NAME, user!!.userName)
+
+//                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.d("ERROR_DATABASE","$error")
+            }
+
+        })
+    }
+
+
+
 
     private fun initListner() {
 
@@ -148,10 +222,11 @@ class EditProfile : AppCompatActivity() {
 
         Toast.makeText(this,"UPLOADED",Toast.LENGTH_SHORT).show()
 
-        if (tinyDB.getInt(K.SIGN_UP) == 1){
+        if (tinyDB.getInt(K.SIGN_UP) == 2){
+            finish()
+        }else{
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-        }else{
             finish()
         }
 //        var intent = Intent(this, MainActivity::class.java)
@@ -165,10 +240,11 @@ class EditProfile : AppCompatActivity() {
         val  root: DatabaseReference = FirebaseDatabase.getInstance().getReference("User").child(nodeName);
         val  reference: StorageReference = FirebaseStorage.getInstance().getReference();
 
+        Log.d("IMAGE_URI","Uri... $uri")
+
         val fileRef: StorageReference = reference.child(nodeName)
         fileRef.putFile(uri).addOnSuccessListener {
             fileRef.downloadUrl.addOnSuccessListener { uri ->
-                Log.d("IMAGE_URI","Uri... $uri")
                 val model = Mode(uri.toString())
                 root.child("Image").setValue(model)
 //                progressBar.setVisibility(View.INVISIBLE)

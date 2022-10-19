@@ -97,14 +97,16 @@ class AddAddressViewModel @Inject constructor() : ViewModel() {
                     Log.d("IMAGE User ","${user}")
 
 //                binding.password.setText(password, TextView.BufferType.EDITABLE)
-                binding.home.setText(user!!.home,TextView.BufferType.EDITABLE)
-                binding.streetDetail.setText(user!!.street,TextView.BufferType.EDITABLE)
-                binding.nameEditText.setText(user!!.name,TextView.BufferType.EDITABLE)
-                binding.cityNameEditText.setText(user!!.city,TextView.BufferType.EDITABLE)
-                binding.stateNameEditText.setText(user!!.state,TextView.BufferType.EDITABLE)
-                binding.numberEditText.setText(user!!.phNumber,TextView.BufferType.EDITABLE)
+                if (user != null) {
 
+                    binding.home.setText(user!!.home, TextView.BufferType.EDITABLE)
+                    binding.streetDetail.setText(user!!.street, TextView.BufferType.EDITABLE)
+                    binding.nameEditText.setText(user!!.name, TextView.BufferType.EDITABLE)
+                    binding.cityNameEditText.setText(user!!.city, TextView.BufferType.EDITABLE)
+                    binding.stateNameEditText.setText(user!!.state, TextView.BufferType.EDITABLE)
+                    binding.numberEditText.setText(user!!.phNumber, TextView.BufferType.EDITABLE)
 
+                }
 
 
 //                }

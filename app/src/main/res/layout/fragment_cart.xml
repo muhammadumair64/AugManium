@@ -58,22 +58,30 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/cart_product"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_200sdp"
+                android:layout_height="match_parent"
                 android:layout_below="@id/toplayout"
+                android:layout_above="@+id/priceView"
                 android:layout_marginTop="@dimen/_12sdp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_cart_product" />
 
 
             <RelativeLayout
+                android:id="@+id/priceView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_above="@id/checkout"
 
                 >
+                <ImageView
+                    android:id="@+id/line1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_2sdp"
+                    android:src="@drawable/item_gray_divider" />
 
                 <TextView
                     android:id="@+id/total"
+                    android:layout_below="@+id/line1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat_bold"
