@@ -19,10 +19,18 @@ class OrderCompleteScreen : AppCompatActivity() {
         binding.backButton.setOnClickListener {
             finish()
         }
-        binding.searchBtn.setOnClickListener {
-            val intent = Intent(this, SearchActivity::class.java)
+
+        binding.trackOrderBtn.setOnClickListener {
+            val intent = Intent(this,TrackOrder::class.java)
             startActivity(intent)
         }
+
+
+
+//        binding.searchBtn.setOnClickListener {
+//            val intent = Intent(this, SearchActivity::class.java)
+//            startActivity(intent)
+//        }
 
     }
 }

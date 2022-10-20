@@ -10,6 +10,8 @@ import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
+import com.example.augmanium.afterAuth.checkout.checkOutSummary.CheckoutSummary
+import com.example.augmanium.afterAuth.searchscreen.SearchActivity
 import com.example.augmanium.databinding.ActivityCheckOutPaymentBinding
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -86,6 +88,17 @@ class CheckOutPaymentViewModel @Inject constructor(): ViewModel() {
             }
         })
 
+
+        binding.buttonNext.setOnClickListener {
+            val intent = Intent(context, CheckoutSummary::class.java)
+            context.startActivity(intent)
+        }
+        binding.backButton.setOnClickListener {
+            (context as CheckOutPayment).finish()
+        }
+        binding.backBtn.setOnClickListener {
+            (context as CheckOutPayment).finish()
+        }
 
     }
 }

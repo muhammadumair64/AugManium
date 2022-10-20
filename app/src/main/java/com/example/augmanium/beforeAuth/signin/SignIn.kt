@@ -1,8 +1,12 @@
 package com.example.augmanium.beforeAuth.signin
 
+import android.R
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.util.Log
+import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -23,6 +27,7 @@ import com.google.firebase.database.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+
 
 @AndroidEntryPoint
 class SignIn : AppCompatActivity() {
@@ -60,6 +65,37 @@ class SignIn : AppCompatActivity() {
         binding.backButton.setOnClickListener {
             finish()
         }
+
+
+        binding.showPassBtn.setOnClickListener {
+
+            if (binding.editPassword.transformationMethod.equals(PasswordTransformationMethod.getInstance())) {
+                binding.editPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance())
+
+                val uri = "@drawable/icon_hide_password" // where myresource (without the extension) is the file
+                val imageResource = resources.getIdentifier(uri, null, packageName)
+                val res = resources.getDrawable(imageResource)
+                binding.showPassBtn.setImageDrawable(res)
+
+            } else {
+                binding.editPassword.setTransformationMethod(PasswordTransformationMethod.getInstance())
+//                binding.showPassBtn.setImageDrawable(this.getDrawable(R.drawable.));
+//                binding.showPassBtn.setImageResource(R.drawable.)
+
+
+                val uri = "@drawable/ic_icon_awesome_eye" // where myresource (without the extension) is the file
+
+
+                val imageResource = resources.getIdentifier(uri, null, packageName)
+                val res = resources.getDrawable(imageResource)
+                binding.showPassBtn.setImageDrawable(res)
+
+
+            }
+        }
+
+
+
 
     }
 

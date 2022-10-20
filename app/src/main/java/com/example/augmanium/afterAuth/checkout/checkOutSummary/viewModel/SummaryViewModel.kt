@@ -2,11 +2,15 @@ package com.example.augmanium.afterAuth.checkout.checkOutSummary.viewModel
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.augmanium.OrderCompleteScreen
 import com.example.augmanium.afterAuth.cartFragment.dataClass.CartFragmentDataClass
+import com.example.augmanium.afterAuth.checkout.CheckOutAddress
+import com.example.augmanium.afterAuth.checkout.checkOutSummary.CheckoutSummary
 import com.example.augmanium.afterAuth.checkout.checkOutSummary.adapter.SummaryRVAdapter
 import com.example.augmanium.afterAuth.checkout.checkOutSummary.dataClass.OrderDataClass
 import com.example.augmanium.afterAuth.checkout.checkOutSummary.dataClass.StatusDataClass
@@ -69,6 +73,18 @@ class SummaryViewModel @Inject constructor() : ViewModel() {
         }
 
 
+        binding.changeAddress.setOnClickListener {
+            val intent = Intent(context,CheckOutAddress::class.java)
+            context.startActivity(intent)
+        }
+        binding.backButton.setOnClickListener {
+            (context as CheckoutSummary).finish()
+        }
+
+        binding.backBtn.setOnClickListener {
+            (context as CheckoutSummary).finish()
+        }
+
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -111,6 +127,9 @@ class SummaryViewModel @Inject constructor() : ViewModel() {
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 Toast.makeText(context, "Order Place", Toast.LENGTH_SHORT).show()
+
+                val intent = Intent(context,OrderCompleteScreen::class.java)
+                context.startActivity(intent)
             }
 
             override fun onCancelled(databaseError: DatabaseError) {

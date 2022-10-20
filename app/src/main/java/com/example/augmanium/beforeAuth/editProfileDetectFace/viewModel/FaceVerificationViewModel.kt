@@ -60,7 +60,7 @@ class FaceVerificationViewModel @Inject constructor() : ViewModel() {
                 val returnIntent = Intent()
                 returnIntent.putExtra("ImageUri", imageUri.toString())
                 Log.d("IMAGE","IMAGE URI FVM $imageUri")
-                val m = tinyDB.putString(K.IMG, imageUri.toString())
+                val m = tinyDB.putString(K.USER_IMG, imageUri.toString())
                 tinyDB.putInt(K.SIGN_UP,3)
                 Log.d("IMAGE","IMAGE URI tiny $m")
 

@@ -45,7 +45,7 @@ class AuthViewModel @Inject constructor(): ViewModel()  {
         tinyDB = TinyDB(context)
         tinyDB.clear()
         signInInputsArray = arrayOf(binding.email, binding.editPassword, binding.name)
-
+        tinyDB.putInt(K.SIGN_UP,1)
         // identicalPassword() returns true only  when inputs are not empty and passwords are identical
         userEmail = binding.email.text.toString().trim()
         userPassword = binding.editPassword.text.toString().trim()
@@ -64,7 +64,6 @@ class AuthViewModel @Inject constructor(): ViewModel()  {
 
                         if (task.isSuccessful) {
                             Toast.makeText(context, "created account successfully !", Toast.LENGTH_SHORT).show()
-                            tinyDB.putInt(K.SIGN_UP,1)
 //                            getUser(userEmail, context)
                             uploadFCMToken(userEmail,database,context)
                             val intent = Intent(context, EditProfile::class.java)
@@ -119,11 +118,13 @@ class AuthViewModel @Inject constructor(): ViewModel()  {
         Log.d("User_Email ","${email}")
         val separated: List<String> = email!!.split("@")
         val nodeName = separated[0]
-        getUserImage(nodeName)
-        database.child("User").child(nodeName).addListenerForSingleValueEvent(object :
-            ValueEventListener {
+        try {
+            getUserImage(nodeName)
 
-            override fun onDataChange(snapshot: DataSnapshot) {
+            database.child("User").child(nodeName).addListenerForSingleValueEvent(object :
+                ValueEventListener {
+
+                override fun onDataChange(snapshot: DataSnapshot) {
 //                for (snap in snapshot.getChildren()) {
 //                    Log.d("REVIEWE_KEY_SNAP ","${snap}")
 //                    Log.d("REVIEWE_KEY","${snap.key} ${snap.value}")
@@ -137,39 +138,52 @@ class AuthViewModel @Inject constructor(): ViewModel()  {
 
 //                }
 
-            }
+                }
 
-            override fun onCancelled(error: DatabaseError) {
-                Log.d("ERROR_DATABASE","$error")
-            }
+                override fun onCancelled(error: DatabaseError) {
+                    Log.d("ERROR_DATABASE","$error")
+                }
 
-        })
+            })
+        }catch (e: Exception){
+            Log.d("GET_USER_AUTH_VM ","${nodeName}")
+
+        }
+
+
     }
 
 
     fun getUserImage(nodeName: String) {
         Log.d("IMAGE User ","${nodeName}")
-        database.child("User").child(nodeName).child("Image").addListenerForSingleValueEvent(object :
-            ValueEventListener {
 
-            override fun onDataChange(snapshot: DataSnapshot) {
+        try {
+            database.child("User").child(nodeName).child("Image")
+                .addListenerForSingleValueEvent(object :
+                    ValueEventListener {
+
+                    override fun onDataChange(snapshot: DataSnapshot) {
 //                for (snap in snapshot.getChildren()) {
-                    val image = ""
-                Log.d("IMAGE User ","${snapshot.key}   ${snapshot.value}")
-                    val user = snapshot.getValue(UserImage::class.java)
-//                    Log.d("IMAGE User ","${user!!.imgUrl}")
-                tinyDB.putString(K.USER_IMG,user!!.imgUrl)
+                        val image = ""
+                        Log.d("IMAGE User ", "${snapshot.key}   ${snapshot.value}")
+                        val user = snapshot.getValue(UserImage::class.java)
+                        Log.d("IMAGE User ", "${user!!.imgUrl}")
+                        tinyDB.putString(K.USER_IMG, user!!.imgUrl)
 //                    tinyDB.putString(K.USER_NAME, user!!.userName)
 
 //                }
 
-            }
+                    }
 
-            override fun onCancelled(error: DatabaseError) {
-                Log.d("ERROR_DATABASE","$error")
-            }
+                    override fun onCancelled(error: DatabaseError) {
+                        Log.d("ERROR_DATABASE", "$error")
+                    }
 
-        })
+                })
+        }catch (e: Exception){
+            Log.d("GET_IMAGE_EXCEPTION","${e.localizedMessage}")
+        }
+
     }
 
 }
