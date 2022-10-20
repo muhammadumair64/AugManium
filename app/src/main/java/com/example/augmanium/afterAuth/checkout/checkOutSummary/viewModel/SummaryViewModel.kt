@@ -121,7 +121,7 @@ class SummaryViewModel @Inject constructor() : ViewModel() {
         email?.let { database.child("User").child(it).child("Orders").child(millis.toString()).setValue(order)
             database.child("User").child(it).child("Orders").child(millis.toString()).child("location").setValue(location)
             database.child("User").child(it).child("Orders").child(millis.toString()).child("status").setValue(status)
-
+            deleteCart(it)
         }
 
         val postListener = object : ValueEventListener {
@@ -142,6 +142,11 @@ class SummaryViewModel @Inject constructor() : ViewModel() {
 
 
 
+    }
+
+    fun deleteCart(nodeName: String){
+        FirebaseDatabase.getInstance().reference.child("Cart").child(nodeName)
+            .removeValue()
     }
 
     fun getTime(): String {

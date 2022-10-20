@@ -18,6 +18,11 @@ class ProductDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_product_details)
+    }
+
+    override fun onResume() {
+        super.onResume()
         viewModel.detailScreenItems(binding,this)
+
     }
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.ViewModel
+import com.bumptech.glide.Glide
 import com.example.augmanium.afterAuth.mainActivity.dataClass.AllProductDataClass
 import com.example.augmanium.afterAuth.writeReview.WriteReviewScreen
 import com.example.augmanium.afterAuth.writeReview.adapter.WriteReviewAdapter
@@ -43,6 +44,13 @@ class WriteReviewViewModel @Inject constructor() :ViewModel() {
         activityBinding.apply {
             productPrice.text = data.prize
             productName.text = data.productName
+
+            Glide.with(context)
+                .load(data.image)
+                .override(300, 200)
+                .into(productImg);
+
+
             detail.setOnClickListener {
                 (context as WriteReviewScreen).finish()
             }

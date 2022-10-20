@@ -86,7 +86,7 @@
                         android:fontFamily="@font/montserrat_regular"
                         android:hint="Home"
                         android:textColor="@color/secondary"
-                        android:textColorHint="@color/black"
+                        android:textColorHint="@color/light_gray"
                         android:textSize="@dimen/_16sdp"
                         android:textStyle="bold" />
 
@@ -130,10 +130,10 @@
                             android:background="@null"
                             android:fontFamily="@font/montserrat_regular"
                             android:gravity="start"
-                            android:lineSpacingExtra="@dimen/_5sdp"
                             android:hint="Sharps Rd."
+                            android:lineSpacingExtra="@dimen/_5sdp"
                             android:textColor="@color/black"
-                            android:textColorHint="@color/black"
+                            android:textColorHint="@color/light_gray"
                             android:textSize="@dimen/_18sdp"
                             android:textStyle="bold" />
                     </RelativeLayout>
@@ -160,7 +160,7 @@
                         android:fontFamily="@font/montserrat_regular"
                         android:hint="keilor East"
                         android:textColor="@color/secondary"
-                        android:textColorHint="@color/black"
+                        android:textColorHint="@color/light_gray"
                         android:textSize="@dimen/_16sdp"
                         android:textStyle="bold" />
 
@@ -205,7 +205,7 @@
                                 android:fontFamily="@font/montserrat_regular"
                                 android:hint="Lahore"
                                 android:textColor="@color/secondary"
-                                android:textColorHint="@color/black"
+                                android:textColorHint="@color/light_gray"
                                 android:textSize="@dimen/_16sdp"
                                 android:textStyle="bold" />
 
@@ -245,7 +245,7 @@
                                 android:fontFamily="@font/montserrat_regular"
                                 android:hint="Punjab"
                                 android:textColor="@color/secondary"
-                                android:textColorHint="@color/black"
+                                android:textColorHint="@color/light_gray"
                                 android:textSize="@dimen/_16sdp"
                                 android:textStyle="bold" />
                             <ImageView
@@ -284,7 +284,7 @@
                         android:maxLength="13"
                         android:hint="+922347787645"
                         android:textColor="@color/secondary"
-                        android:textColorHint="@color/black"
+                        android:textColorHint="@color/light_gray"
                         android:textSize="@dimen/_16sdp"
                         android:textStyle="bold" />
 
