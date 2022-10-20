@@ -21,6 +21,7 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
 import java.io.IOException
+import com.google.ar.sceneform.ux.TransformableNode
 
 
 class ModelActivity : AppCompatActivity() {
@@ -53,6 +54,17 @@ class ModelActivity : AppCompatActivity() {
             val anchorNode = AnchorNode(hitResult.createAnchor())
             anchorNode.renderable = renderable
             arFragment.arSceneView.scene.addChild(anchorNode)
+
+            // Create the transformable andy and add it to the anchor.
+            val node = TransformableNode(arFragment.transformationSystem)
+            // Maxscale must be greater than minscale
+            node.scaleController.maxScale = 0.02f
+            node.scaleController.minScale = 0.01f
+
+            node.setParent(anchorNode)
+            node.renderable = renderable
+            node.select()
+
         }
     }
 
