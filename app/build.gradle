@@ -203,6 +203,9 @@ dependencies {
     implementation 'com.amitshekhar.android:android-networking:1.0.2'
     implementation 'com.google.ar:core:1.33.0'
     implementation 'com.google.android.gms:play-services-location:18.0.0'
+
+
+    implementation 'com.nabinbhandari.android:permissions:3.8'
 }
 // Allow references to generated code
 kapt {

@@ -3,6 +3,7 @@ package com.example.augmanium.beforeAuth.authViewModel
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -68,6 +69,7 @@ class AuthViewModel @Inject constructor(): ViewModel()  {
                             uploadFCMToken(userEmail,database,context)
                             val intent = Intent(context, EditProfile::class.java)
                            ActivityCompat.startActivity(context,intent,null)
+                            binding.progressLayout.visibility= View.INVISIBLE
 //                            ActivityCompat.finish()
                         } else {
                             Toast.makeText(context, "failed to Authenticate !", Toast.LENGTH_SHORT).show()

@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Base64
 import android.util.Log
+import android.view.View
 import android.webkit.MimeTypeMap
 import android.widget.TextView
 import android.widget.Toast
@@ -114,6 +115,7 @@ class EditProfile : AppCompatActivity() {
 
     fun getUser(){
 
+        binding.progressLayout.visibility=View.VISIBLE
         Log.d("User_Email ","${email}")
         val separated: List<String> = email!!.split("@")
         val nodeName = separated[0]
@@ -127,6 +129,8 @@ class EditProfile : AppCompatActivity() {
 //                    Log.d("REVIEWE_KEY","${snap.key} ${snap.value}")
                 val user = snapshot.getValue(UserInfo::class.java)
                 userArrayList.add(user!!)
+
+                binding.progressLayout.visibility= View.INVISIBLE
                 Log.d("USER_INFO ","${user.city}   ${user.gender}")
                 tinyDB.putString(K.USER_NAME, user!!.userName)
                 tinyDB.putString(K.GENDER,user.gender)
@@ -147,6 +151,8 @@ class EditProfile : AppCompatActivity() {
 
     fun getUserImage(nodeName: String) {
         Log.d("IMAGE User ","${nodeName}")
+
+        binding.progressLayout.visibility=View.VISIBLE
         database.child("User").child(nodeName).child("Image").addListenerForSingleValueEvent(object :
             ValueEventListener {
 
@@ -157,6 +163,7 @@ class EditProfile : AppCompatActivity() {
                 val user = snapshot.getValue(UserImage::class.java)
 //                    Log.d("IMAGE User ","${user!!.imgUrl}")
                 tinyDB.putString(K.USER_IMG,user!!.imgUrl)
+                binding.progressLayout.visibility=View.INVISIBLE
 //                    tinyDB.putString(K.USER_NAME, user!!.userName)
 
 //                }

@@ -70,6 +70,7 @@ class SpecificCategoryProductViewModel @Inject constructor(): ViewModel(), OnIte
     }
 
     fun rvData(product: SpecificCatagoryProductDataClass,binding: ActivitySpecificCategoryProductsBinding, category: String){
+
         if(product!!.productCategory == category){
             specificCategoryProductArrayList.add(product!!)
             binding.stock.visibility = View.INVISIBLE
@@ -94,8 +95,10 @@ class SpecificCategoryProductViewModel @Inject constructor(): ViewModel(), OnIte
 
     fun getData(category: String, binding: ActivitySpecificCategoryProductsBinding){
 
+
         specificCategoryProductArrayList.clear()
         binding.allProductRV.adapter = null
+        binding.progressLayout.visibility=View.VISIBLE
         database.child("Product").addListenerForSingleValueEvent(object :
             ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -104,6 +107,8 @@ class SpecificCategoryProductViewModel @Inject constructor(): ViewModel(), OnIte
 //                    for (products in snap.children) {
                     Log.d("NODE___"," ${snap.key} $snap")
                     var product = snap.getValue(SpecificCatagoryProductDataClass::class.java)
+                    binding.progressLayout.visibility=View.INVISIBLE
+
                     when (category) {
                         "All" -> {
                             if (product != null){

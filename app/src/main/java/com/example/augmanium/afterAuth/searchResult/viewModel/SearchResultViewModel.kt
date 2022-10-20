@@ -3,6 +3,7 @@ package com.example.augmanium.afterAuth.mainActivity.viewModel
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.ViewModel
 import com.example.augmanium.ProductDetailsActivity
 import com.example.augmanium.afterAuth.category.dataClass.SpecificCatagoryProductDataClass
@@ -60,6 +61,7 @@ class SearchResultViewModel @Inject constructor(): ViewModel(), OnItemClickListe
     fun getData(productName: String){
 
         allProductArrayList.clear()
+        activityBinding.progressLayout.visibility= View.VISIBLE
         activityBinding.allProductRV.adapter = null
         database.child("Product").addListenerForSingleValueEvent(object :
             ValueEventListener {
@@ -88,6 +90,8 @@ class SearchResultViewModel @Inject constructor(): ViewModel(), OnItemClickListe
 
     }
     fun rv(){
+
+        activityBinding.progressLayout.visibility=View.INVISIBLE
         activityBinding.allProductRV.also {
             it.adapter = AllProductViewAdapter(allProductArrayList, this)
             it.setHasFixedSize(true)

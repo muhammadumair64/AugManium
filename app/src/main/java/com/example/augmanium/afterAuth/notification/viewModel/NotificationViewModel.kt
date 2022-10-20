@@ -2,6 +2,7 @@ package com.example.augmanium.afterAuth.notification.viewModel
 
 import android.content.Context
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.ViewModel
 import com.example.augmanium.afterAuth.notification.adapter.NotificationAdapter
 import com.example.augmanium.afterAuth.notification.dataClass.NotificationDataClass
@@ -28,6 +29,7 @@ class NotificationViewModel @Inject constructor(): ViewModel() {
         tinyDb: TinyDB
     ) {
 
+        binding.progressLayout.visibility= View.VISIBLE
 
       var email =  tinyDb.getString(K.EMAIL)
         if (email != null) {
@@ -44,6 +46,8 @@ class NotificationViewModel @Inject constructor(): ViewModel() {
                     notificationArrayList.add(NotificationDataClass("Alert!", node!!.body,
                         node.time
                     ))
+
+                    binding.progressLayout.visibility=View.INVISIBLE
                     Log.d("DataTesting","$snapshot")
                 }
                 binding.orderHistoryRv.also {

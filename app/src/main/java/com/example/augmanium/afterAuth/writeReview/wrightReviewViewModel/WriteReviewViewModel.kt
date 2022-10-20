@@ -2,6 +2,7 @@ package com.example.augmanium.afterAuth.writeReview.wrightReviewViewModel
 
 import android.content.Context
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.ViewModel
 import com.example.augmanium.afterAuth.mainActivity.dataClass.AllProductDataClass
 import com.example.augmanium.afterAuth.writeReview.WriteReviewScreen
@@ -70,6 +71,7 @@ class WriteReviewViewModel @Inject constructor() :ViewModel() {
     }
 
     fun getReview(productId: String){
+        activityBinding.progressLayout.visibility= View.VISIBLE
         Log.d("GET_REVIEW","${productId} ")
         productIdGlobal = productId
         database.child("Product").child(productId).child("review").addListenerForSingleValueEvent(object :
@@ -80,6 +82,7 @@ class WriteReviewViewModel @Inject constructor() :ViewModel() {
                     Log.d("REVIEWE_KEY","${snap.key} ${snap.value}")
                     val review = snap.getValue(WriteReviewDataClass::class.java)
                     productReviewArrayList.add(review!!)
+                    activityBinding.progressLayout.visibility=View.INVISIBLE
                     activityBinding.review.also {
                         it.adapter = WriteReviewAdapter(productReviewArrayList)
                         it.setHasFixedSize(true)

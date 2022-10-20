@@ -48,6 +48,7 @@ class SignIn : AppCompatActivity() {
         tinyDB = TinyDB(this)
 
         binding.signInBtn.setOnClickListener {
+            binding.progressLayout.visibility=View.VISIBLE
             signInUser()
         }
         binding.signUp.setOnClickListener {
@@ -143,6 +144,7 @@ class SignIn : AppCompatActivity() {
                            viewModel.getUser(signInEmail, this@SignIn)
 
                            tinyDB.putString(K.PASSWORD,signInPassword)
+                           binding.progressLayout.visibility=View.INVISIBLE
                            val intent = Intent(this@SignIn, MainActivity::class.java)
                            startActivity(intent)
 

@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
@@ -59,6 +60,7 @@ class CartFragmentViewModel @Inject constructor() : ViewModel(), CartRVClick {
 
     fun getCartData(){
         cartFragmentArrayList.clear()
+//        activityBinding.progressLayout.visibility= View.VISIBLE
         email = tinyDB.getString(K.EMAIL).toString()
         val separated: List<String> = email!!.split("@")
         val nodeName = separated[0]
@@ -67,10 +69,12 @@ class CartFragmentViewModel @Inject constructor() : ViewModel(), CartRVClick {
             ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (snap in snapshot.getChildren()) {
-                    Log.d("NODE___"," ${snap.key} $snapshot")
+                    Log.d("NODE___CART"," ${snap.key} $snapshot")
 //                    for (products in snap.children) {
                     Log.d("NODE___"," ${snap.key} $snap")
                     var cartData = snap.getValue(CartFragmentDataClass::class.java)
+//                    activityBinding.progressLayout.visibility=View.INVISIBLE
+
                     var price = cartData!!.productPrice
                     val separatedPrice = price!!.split("$").toTypedArray()[0]
                     var totalPrice = separatedPrice.toInt()
@@ -95,6 +99,7 @@ class CartFragmentViewModel @Inject constructor() : ViewModel(), CartRVClick {
     }
 
     fun rv(){
+
         tinyDB.putListObject(K.CART,cartFragmentArrayList as ArrayList<Object>)
         activityBinding.cartProduct.also {
             it.adapter = CartFragmentAdapter(cartFragmentArrayList,this@CartFragmentViewModel)

@@ -56,7 +56,7 @@ class FaceVerificationViewModel @Inject constructor() : ViewModel() {
         binding.ok.setOnClickListener {
 
             if (faceListSize == 1) {
-//                binding.progressLayout.visibility=View.VISIBLE
+                binding.progressLayout.visibility=View.VISIBLE
                 val returnIntent = Intent()
                 returnIntent.putExtra("ImageUri", imageUri.toString())
                 Log.d("IMAGE","IMAGE URI FVM $imageUri")
@@ -228,16 +228,16 @@ class FaceVerificationViewModel @Inject constructor() : ViewModel() {
                 }
 
                 if (imageUri != null) {
-//                    activityBinding.progressLayout.visibility=View.GONE
+                    activityBinding.progressLayout.visibility=View.GONE
                     activityBinding.userImage.setImageURI(imageUri)
                 } else {
-//                    activityBinding.progressLayout.visibility=View.GONE
+                    activityBinding.progressLayout.visibility=View.GONE
                     activityBinding.userImage.setImageBitmap(myBitmap)
                 }
 
             }
             .addOnFailureListener { e ->
-//                activityBinding.progressLayout.visibility=View.GONE
+                activityBinding.progressLayout.visibility=View.GONE
                 Toast.makeText(activityContext, "Unable to run detection", Toast.LENGTH_SHORT)
                     .show();
             }

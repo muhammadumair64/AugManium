@@ -3,6 +3,7 @@ package com.example.augmanium.afterAuth.orderHistory.viewModel
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -36,6 +37,8 @@ class OrderHistoryViewModel @Inject constructor(): ViewModel() , OnItemClicked{
         activityContext = context
         tinyDb = TinyDB(context)
 
+        binding.progressLayout.visibility= View.VISIBLE
+
         binding.backButton.setOnClickListener {
             (context as OrderHistory).finish()
         }
@@ -68,6 +71,8 @@ viewModelScope.launch {
                     orderHistoryArrayList.add(
                         OrderHistoryDataClass(node.OrderID,(node.totalPrice).toString(),node.time)
                     )
+
+                    binding.progressLayout.visibility=View.INVISIBLE
                 }
 
 

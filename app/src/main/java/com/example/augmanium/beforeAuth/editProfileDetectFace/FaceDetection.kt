@@ -48,7 +48,7 @@ class FaceDetection : AppCompatActivity() {
 
         try {
             if (requestCode == 123) {
-//                binding.progressLayout.visibility=View.VISIBLE
+                binding.progressLayout.visibility=View.VISIBLE
                 val options = BitmapFactory.Options()
                 options.inJustDecodeBounds = true
                 val bitmap = BitmapFactory.decodeFile(viewModel.currentPhotoPath)

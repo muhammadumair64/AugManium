@@ -124,6 +124,7 @@ class MainActivityViewModel @Inject constructor(): ViewModel(), OnItemClickListe
 
         Log.d("category___"," $category")
 
+        activityBinding.progressLayout.visibility=View.VISIBLE
         allProductArrayList.clear()
         activityBinding.allProductRV.adapter = null
         database.child("Product").addListenerForSingleValueEvent(object :
@@ -134,7 +135,7 @@ class MainActivityViewModel @Inject constructor(): ViewModel(), OnItemClickListe
 //                    for (products in snap.children) {
                         Log.d("NODE___"," ${snap.key} $snap")
                         val product = snap.getValue(AllProductDataClass::class.java)
-
+                    activityBinding.progressLayout.visibility=View.INVISIBLE
                         when (category) {
                             0 -> {
                                 if (product != null) {

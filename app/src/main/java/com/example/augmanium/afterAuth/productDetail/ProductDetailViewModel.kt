@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import com.bumptech.glide.Glide
@@ -47,6 +48,8 @@ class ProductDetailViewModel @Inject constructor(): ViewModel(), OnItemClickList
         val data = tinyDB.getObject(K.PRODUCT_DATA, AllProductDataClass::class.java)
         tinyDB.putString(K.MODEL,data.modelName)
         val productId = tinyDB.getString(K.PRODUCT_ID)
+
+        binding.progressLayout.visibility= View.VISIBLE
 
         binding.apply {
 
@@ -117,8 +120,11 @@ class ProductDetailViewModel @Inject constructor(): ViewModel(), OnItemClickList
     }
 
     fun rvData(product: ProductDetailCategoryProductDataClass, category: String){
+
+        activityBinding.progressLayout.visibility=View.INVISIBLE
         if(product!!.productCategory == category){
             categoryProductArrayList.add(product!!)
+
 
             activityBinding.allProductRV.also {
                 it.adapter = ProductDetailAdapter(categoryProductArrayList,this)

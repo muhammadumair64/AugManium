@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
+import android.view.View
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.example.augmanium.R
@@ -34,6 +35,7 @@ class SignUp : AppCompatActivity() {
 
         database = FirebaseDatabase.getInstance().reference
         binding.signupBtn.setOnClickListener {
+            binding.progressLayout.visibility= View.VISIBLE
             viewModel.signUp(binding,this,database)
 
         }

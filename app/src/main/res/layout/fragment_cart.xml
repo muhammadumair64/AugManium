@@ -66,6 +66,7 @@
                 tools:listitem="@layout/item_cart_product" />
 
 
+
             <RelativeLayout
                 android:id="@+id/priceView"
                 android:layout_width="match_parent"
@@ -161,6 +162,24 @@
                     android:text="CHECKOUT"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_13sdp" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/greyishwhite"
+                android:id="@+id/progressLayout"
+                android:visibility="gone">
+                <ProgressBar
+
+                    android:id="@+id/simpleProgressBar"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_centerInParent="true"
+                    android:progressTint="@color/ProfileBox"
+                    android:layout_centerHorizontal="true"/>
+
             </RelativeLayout>
 
         </RelativeLayout>
