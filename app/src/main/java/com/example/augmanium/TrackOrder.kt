@@ -48,7 +48,7 @@ class TrackOrder : AppCompatActivity() {
             email = email.split("@").toTypedArray()[0]
         }
         val orderID =tinyDb.getString(K.Order)
-
+binding.OrderID.text = orderID.toString()
         val postListener = object : ValueEventListener {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -66,6 +66,7 @@ class TrackOrder : AppCompatActivity() {
             }
 
         }
+
 
         if (email != null) {
             if (orderID != null) {

@@ -60,7 +60,7 @@ class CartFragmentViewModel @Inject constructor() : ViewModel(), CartRVClick {
 
     fun getCartData(){
         cartFragmentArrayList.clear()
-//        activityBinding.progressLayout.visibility= View.VISIBLE
+        activityBinding.progressLayout.visibility= View.VISIBLE
         email = tinyDB.getString(K.EMAIL).toString()
         val separated: List<String> = email!!.split("@")
         val nodeName = separated[0]
@@ -68,26 +68,28 @@ class CartFragmentViewModel @Inject constructor() : ViewModel(), CartRVClick {
         database.child("Cart").child(nodeName).addListenerForSingleValueEvent(object :
             ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                for (snap in snapshot.getChildren()) {
+                for (snap in snapshot.children) {
                     Log.d("NODE___CART"," ${snap.key} $snapshot")
 //                    for (products in snap.children) {
                     Log.d("NODE___"," ${snap.key} $snap")
-                    var cartData = snap.getValue(CartFragmentDataClass::class.java)
-//                    activityBinding.progressLayout.visibility=View.INVISIBLE
+                    val cartData = snap.getValue(CartFragmentDataClass::class.java)
+//
 
-                    var price = cartData!!.productPrice
-                    val separatedPrice = price!!.split("$").toTypedArray()[0]
-                    var totalPrice = separatedPrice.toInt()
+                    val price = cartData?.productPrice
+                    if(price != null){
+                        val separatedPrice = price.split("$").toTypedArray()[0]
+                        val totalPrice = separatedPrice.toInt()
+                        val count = cartData.productCount?.trim()
+                        val currentPrize = totalPrice * (count?.toInt()!!)
+                        totalPriceOfProducts += currentPrize
+                        Log.d("PRODUCT_PRICE","$totalPriceOfProducts")
+                        cartFragmentArrayList.add(cartData)
+                        Log.d("CART_DATA___"," $cartFragmentArrayList")
+                        rv()
+                    }
 
-                    var count = cartData.productCount?.trim()
-                    val currentPrize = totalPrice * (count?.toInt()!!)
-                    totalPriceOfProducts = totalPriceOfProducts + currentPrize
-                    Log.d("PRODUCT_PRICE","$totalPriceOfProducts")
-                    cartFragmentArrayList.add(cartData!!)
-                    Log.d("CART_DATA___"," ${cartFragmentArrayList}")
-                    rv()
                 }
-
+                activityBinding.progressLayout.visibility=View.INVISIBLE
             }
 
             override fun onCancelled(error: DatabaseError) {

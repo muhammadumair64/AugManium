@@ -61,7 +61,7 @@ class CheckOutAddress : AppCompatActivity() {
 
                   val value = "${home.text}:${streetDetail.text},${nameEditText.text},${cityNameEditText.text},${stateNameEditText.text}"
                       tinyDB.putString(K.ADDRESS,value)
-
+                     tinyDB.putString(K.ADDRESS, value)
                     uploadDataToFireBase(nodeName)
                     Log.d("AddressTesting","$value")
                     val intent = Intent(context , CheckOutPayment::class.java)
@@ -95,7 +95,7 @@ class CheckOutAddress : AppCompatActivity() {
         val name = binding.nameEditText.text.toString().trim()
         val city = binding.cityNameEditText.text.toString().trim()
         val state =  binding.stateNameEditText.text.toString().trim()
-        var number = binding.numberEditText.text.toString().trim()
+        val number = binding.numberEditText.text.toString().trim()
 //        uploadToFirebase(imageUri, nodeName)
 //        var imageBitmap = MediaStore.Images.Media.getBitmap(this.contentResolver ,imageUri)
 //
@@ -144,6 +144,8 @@ class CheckOutAddress : AppCompatActivity() {
                     binding.cityNameEditText.setText(user.city, TextView.BufferType.EDITABLE)
                     binding.stateNameEditText.setText(user.state, TextView.BufferType.EDITABLE)
                     binding.numberEditText.setText(user.phNumber, TextView.BufferType.EDITABLE)
+
+
                 }
 
 

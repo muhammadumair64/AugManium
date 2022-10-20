@@ -224,7 +224,7 @@
           android:layout_alignParentRight="true"
           android:background="@drawable/ic_circle_tick" />
 
-      <EditText
+      <TextView
           android:id="@+id/Address"
           android:layout_width="match_parent"
           android:layout_height="@dimen/_50sdp"
@@ -232,7 +232,6 @@
           android:background="@null"
           android:editable="false"
           android:fontFamily="@font/montserrat_regular"
-          android:hint="12, Bay brook, Sharps Rd, Keilor East, Lahore"
           android:textSize="@dimen/_15sdp" />
 
       <TextView
