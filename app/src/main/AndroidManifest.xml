@@ -132,7 +132,14 @@
             android:exported="false" />
         <activity
             android:name=".OrderCompleteScreen"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity
             android:name=".afterAuth.checkout.checkOutSummary.CheckoutSummary"
             android:exported="true">
@@ -213,11 +220,11 @@
             android:name=".beforeAuth.SplashScreen"
             android:exported="true"
             android:noHistory="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".afterAuth.mainActivity.MainActivity"

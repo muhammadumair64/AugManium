@@ -12,5 +12,5 @@
     <string name="action_catalog">Catalog</string>
     <string name="action_category">Category</string>
     <string name="action_WishList">WishList</string>
-    <string name="action_collection">Collection</string>
+    <string name="action_Notification">Notification</string>
 </resources>

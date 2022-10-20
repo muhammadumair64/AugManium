@@ -17,6 +17,15 @@ import com.example.augmanium.R
 import com.example.augmanium.afterAuth.mainActivity.viewModel.MainActivityViewModel
 import com.example.augmanium.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import android.content.Intent
+import com.example.augmanium.afterAuth.category.AllCategories
+import com.example.augmanium.afterAuth.category.CategoryScreen
+import com.example.augmanium.afterAuth.notification.NotificationScreen
+
+import org.checkerframework.checker.units.qual.A
+
+
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -61,118 +70,123 @@ companion object{
         binding.menu.setItemSelected(R.id.homeFragment, true)
 
 //        binding.menu.setup
-        binding.menu.setOnItemSelectedListener {
+        try{
+            binding.menu.setOnItemSelectedListener {
 
-            when (it) {
+                when (it) {
 
-                R.id.homeFragment -> {
+                    R.id.homeFragment -> {
 
-                    when(position){
-                        2->{
-                            findNavController(R.id.navHostFragment).navigate(
-                                R.id.action_cartFragment_to_homeFragment, null, null
-                            )
-                            position=0
+                        when(position){
+                            2->{
+                                findNavController(R.id.navHostFragment).navigate(
+                                    R.id.action_cartFragment_to_homeFragment, null, null
+                                )
+                                position=0
+                            }
+                            3->{
+                                findNavController(R.id.navHostFragment).navigate(
+                                    R.id.action_profileFragment_to_homeFragment, null, null
+                                )
+                                position=0
+                            }
+                            4->{
+                                findNavController(R.id.navHostFragment).navigate(
+                                    R.id.action_settingsFragment_to_homeFragment, null, null
+                                )
+                                position=0
+                            }
+
                         }
-                        3->{
-                            findNavController(R.id.navHostFragment).navigate(
-                                R.id.action_profileFragment_to_homeFragment, null, null
-                            )
-                            position=0
+
+                    }
+                    R.id.profileFragment -> {
+
+                        when(position){
+                            0->{
+                                findNavController(R.id.navHostFragment).navigate(
+                                    R.id.action_homeFragment_to_profileFragment, null, null
+                                )
+                                position=3
+                            }
+                            2->{
+                                findNavController(R.id.navHostFragment).navigate(
+                                    R.id.action_cartFragment_to_profileFragment, null, null
+                                )
+                                position=3
+                            }
+                            4->{
+                                findNavController(R.id.navHostFragment).navigate(
+                                    R.id.action_settingsFragment_to_profileFragment, null, null
+                                )
+                                position=3
+                            }
+
                         }
-                        4->{
-                            findNavController(R.id.navHostFragment).navigate(
-                                R.id.action_settingsFragment_to_homeFragment, null, null
-                            )
-                            position=0
+
+
+                    }
+                    R.id.cartFragment -> {
+
+                        when(position){
+                            0->{
+                                findNavController(R.id.navHostFragment).navigate(
+                                    R.id.action_homeFragment_to_cartFragment, null, null
+
+                                )
+                                position = 2
+                            }
+                            3->{
+                                findNavController(R.id.navHostFragment).navigate(
+                                    R.id.action_profileFragment_to_cartFragment, null, null
+                                )
+                                position = 2
+                            }
+                            4->{
+                                findNavController(R.id.navHostFragment).navigate(
+                                    R.id.action_settingsFragment_to_cartFragment, null, null
+                                )
+                                position = 2
+                            }
+
+                        }
+
+                    }
+                    R.id.settingsFragment->{
+
+                        when(position){
+                            0->{
+                                findNavController(R.id.navHostFragment).navigate(
+                                    R.id.action_homeFragment_to_settingsFragment, null, null
+                                )
+                                position=4
+                            }
+                            2->{
+                                findNavController(R.id.navHostFragment).navigate(
+                                    R.id.action_cartFragment_to_settingsFragment, null, null
+                                )
+                                position=4
+                            }
+                            3->{
+                                findNavController(R.id.navHostFragment).navigate(
+                                    R.id.action_profileFragment_to_settingsFragment, null, null
+                                )
+                                position=4
+                            }
+
                         }
 
                     }
 
-                }
-                R.id.profileFragment -> {
-
-                    when(position){
-                        0->{
-                            findNavController(R.id.navHostFragment).navigate(
-                                R.id.action_homeFragment_to_profileFragment, null, null
-                            )
-                            position=3
-                        }
-                        2->{
-                            findNavController(R.id.navHostFragment).navigate(
-                                R.id.action_cartFragment_to_profileFragment, null, null
-                            )
-                            position=3
-                        }
-                        4->{
-                            findNavController(R.id.navHostFragment).navigate(
-                                R.id.action_settingsFragment_to_profileFragment, null, null
-                            )
-                            position=3
-                        }
-
-                    }
-
 
                 }
-                R.id.cartFragment -> {
-
-                    when(position){
-                        0->{
-                            findNavController(R.id.navHostFragment).navigate(
-                                R.id.action_homeFragment_to_cartFragment, null, null
-
-                            )
-                            position = 2
-                        }
-                        3->{
-                            findNavController(R.id.navHostFragment).navigate(
-                                R.id.action_profileFragment_to_cartFragment, null, null
-                            )
-                            position = 2
-                        }
-                        4->{
-                            findNavController(R.id.navHostFragment).navigate(
-                                R.id.action_settingsFragment_to_cartFragment, null, null
-                            )
-                            position = 2
-                        }
-
-                    }
-
-                }
-               R.id.settingsFragment->{
-
-                   when(position){
-                       0->{
-                           findNavController(R.id.navHostFragment).navigate(
-                               R.id.action_homeFragment_to_settingsFragment, null, null
-                           )
-                           position=4
-                       }
-                       2->{
-                           findNavController(R.id.navHostFragment).navigate(
-                               R.id.action_cartFragment_to_settingsFragment, null, null
-                           )
-                           position=4
-                       }
-                       3->{
-                           findNavController(R.id.navHostFragment).navigate(
-                               R.id.action_profileFragment_to_settingsFragment, null, null
-                           )
-                           position=4
-                       }
-
-                   }
-
-}
 
 
             }
-
-
+        } catch (e:Exception){
+            Log.d("NavigationBar","Error : $e")
         }
+
     }
 
 
@@ -183,19 +197,32 @@ companion object{
         binding.naviView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.action_home -> {
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
+                    this.finish()
 
                 }
-
                 R.id.action_catalog -> {
+                    val intent = Intent(this,AllCategories::class.java)
+                    startActivity(intent)
+
+                }
+                R.id.action_Notifications-> {
+                    val intent = Intent(this, NotificationScreen::class.java)
+                    startActivity(intent)
+
+                }
+                R.id.action_category->{
+                    val intent = Intent(this,CategoryScreen::class.java)
+                    startActivity(intent)
+
+                }
+                R.id.action_products->{
 
 
                 }
 
-
-                R.id.category -> {
-
-                    finish()
-                }
             }
 
             return@setNavigationItemSelectedListener true

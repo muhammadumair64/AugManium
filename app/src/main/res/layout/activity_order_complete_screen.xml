@@ -64,9 +64,10 @@
           android:layout_height="@dimen/_200sdp"
           android:layout_centerHorizontal="true"
           android:background="@drawable/ic_bg"
+            app:lottie_rawRes="@raw/purchased"
           app:lottie_autoPlay="true"
           app:lottie_loop="true" />
-<!--      app:lottie_rawRes="@raw/orderdone"-->
+
 
 
       <TextView
