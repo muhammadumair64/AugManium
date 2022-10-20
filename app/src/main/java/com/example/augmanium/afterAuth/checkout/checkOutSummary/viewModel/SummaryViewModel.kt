@@ -90,7 +90,8 @@ class SummaryViewModel @Inject constructor() : ViewModel() {
     @SuppressLint("NotifyDataSetChanged")
     fun recyclerViewInitializer(binding: ActivityCheckoutSummaryBinding, context: Context) {
         Log.d("SummaryScreenTesting", "In function")
-
+        val address = tinyDB.getString(K.ADDRESS)
+binding.Address.text = address.toString()
         binding.summaryRV.also {
             it.adapter = SummaryRVAdapter(summaryArrayList)
             it.setHasFixedSize(true)
@@ -110,6 +111,7 @@ class SummaryViewModel @Inject constructor() : ViewModel() {
     fun uploadOrder(context: Context){
 
         val millis = System.currentTimeMillis()
+        tinyDB.putString(K.Order, millis.toString())
         var email = tinyDB.getString(K.EMAIL)
         if (email != null) {
             email = email.split("@").toTypedArray()[0]
