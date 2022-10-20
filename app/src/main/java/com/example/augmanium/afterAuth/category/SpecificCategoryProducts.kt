@@ -1,5 +1,6 @@
 package com.example.augmanium.afterAuth.category
 
+import android.content.Intent
 import android.database.DatabaseUtils
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,8 @@ import androidx.databinding.DataBindingUtil
 
 import com.example.augmanium.R
 import com.example.augmanium.afterAuth.category.viewModel.SpecificCategoryProductViewModel
+import com.example.augmanium.afterAuth.mainActivity.MainActivity
+import com.example.augmanium.afterAuth.notification.NotificationScreen
 import com.example.augmanium.databinding.ActivitySpecificCategoryProductsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -38,19 +41,32 @@ fun slidingDrawer(){
    binding.naviView.setNavigationItemSelectedListener {
        when (it.itemId) {
            R.id.action_home -> {
+               val intent = Intent(this, MainActivity::class.java)
+               intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+               startActivity(intent)
+               this.finish()
 
            }
-
            R.id.action_catalog -> {
+               val intent = Intent(this,AllCategories::class.java)
+               startActivity(intent)
+
+           }
+           R.id.action_Notifications-> {
+               val intent = Intent(this, NotificationScreen::class.java)
+               startActivity(intent)
+
+           }
+           R.id.action_category->{
+               val intent = Intent(this,CategoryScreen::class.java)
+               startActivity(intent)
+
+           }
+           R.id.action_products->{
 
 
            }
 
-
-           R.id.category -> {
-
-               finish()
-           }
        }
 
        return@setNavigationItemSelectedListener true
@@ -76,23 +92,6 @@ fun menuFuction() {
     })
 
 
-//            val popupMenu: PopupMenu = PopupMenu(this, menubutton)
-//            popupMenu.menuInflater.inflate(R.menu.menu, popupMenu.menu)
-//            popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
-//                when (item.itemId) {
-//                    R.id.action_profile ->
-//                        Toast.makeText(this, "You Clicked : " + item.title, Toast.LENGTH_SHORT)
-//                            .show()
-//                    R.id.action_edit ->
-//                        Toast.makeText(this, "You Clicked : " + item.title, Toast.LENGTH_SHORT)
-//                            .show()
-//                    R.id.action_settings ->
-//                        Toast.makeText(this, "You Clicked : " + item.title, Toast.LENGTH_SHORT)
-//                            .show()
-//                }
-//                true
-//            })
-//            popupMenu.show()
 
 }
 override fun onBackPressed() {

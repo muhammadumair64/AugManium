@@ -5,7 +5,7 @@
     <item
         android:id="@+id/action_home"
         android:title="@string/action_home"
-        android:icon="@drawable/ic_home"
+        android:icon="@drawable/ic_home_2nd"
         app:showAsAction="never"/>
     <item
         android:id="@+id/action_catalog"
@@ -18,20 +18,20 @@
         android:icon="@drawable/ic_icon_category"
         app:showAsAction="never"/>
     <item
-        android:id="@+id/action_collection"
-        android:title="@string/action_collection"
-        android:icon="@drawable/ic_icon_collection"
+        android:id="@+id/action_Notifications"
+        android:title="@string/action_Notification"
+        android:icon="@drawable/ic_icon_material_notifications_none"
         app:showAsAction="never"/>
     <item
         android:id="@+id/action_products"
         android:title="@string/action_product"
         android:icon="@drawable/ic_iconproduct"
         app:showAsAction="never"/>
-    <item
-        android:id="@+id/action_wishlist"
-        android:title="@string/action_WishList"
-        android:icon="@drawable/ic_icons_like"
-        app:showAsAction="never"/>
+<!--    <item-->
+<!--        android:id="@+id/action_wishlist"-->
+<!--        android:title="@string/action_WishList"-->
+<!--        android:icon="@drawable/ic_icons_like"-->
+<!--        app:showAsAction="never"/>-->
 
 
 

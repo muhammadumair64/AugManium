@@ -13,6 +13,7 @@ import com.example.augmanium.afterAuth.addAddress.AddAddress
 import com.example.augmanium.afterAuth.addAddress.dataClass.AddressDetailDataClass
 import com.example.augmanium.afterAuth.checkout.checkOutPayment.CheckOutPayment
 import com.example.augmanium.databinding.ActivityCheckOutAddressBinding
+
 import com.example.augmanium.utils.K
 import com.example.augmanium.utils.MyFirebaseMessagingService
 import com.example.augmanium.utils.TinyDB
@@ -124,7 +125,7 @@ class CheckOutAddress : AppCompatActivity() {
 
     fun getUserAddress(nodeName: String) {
         Log.d("IMAGE User ","${nodeName}")
-        var database: com.google.firebase.database.DatabaseReference = FirebaseDatabase.getInstance().reference
+        val database: com.google.firebase.database.DatabaseReference = FirebaseDatabase.getInstance().reference
         database.child("User").child(nodeName).child("User Address").addListenerForSingleValueEvent(object :
             ValueEventListener {
 
@@ -136,12 +137,15 @@ class CheckOutAddress : AppCompatActivity() {
                 Log.d("IMAGE User ","${user}")
 
 //                binding.password.setText(password, TextView.BufferType.EDITABLE)
-                binding.home.setText(user!!.home, TextView.BufferType.EDITABLE)
-                binding.streetDetail.setText(user!!.street, TextView.BufferType.EDITABLE)
-                binding.nameEditText.setText(user!!.name, TextView.BufferType.EDITABLE)
-                binding.cityNameEditText.setText(user!!.city, TextView.BufferType.EDITABLE)
-                binding.stateNameEditText.setText(user!!.state, TextView.BufferType.EDITABLE)
-                binding.numberEditText.setText(user!!.phNumber, TextView.BufferType.EDITABLE)
+                if (user != null) {
+                    binding.home.setText(user.home, TextView.BufferType.EDITABLE)
+                    binding.streetDetail.setText(user.street, TextView.BufferType.EDITABLE)
+                    binding.nameEditText.setText(user.name, TextView.BufferType.EDITABLE)
+                    binding.cityNameEditText.setText(user.city, TextView.BufferType.EDITABLE)
+                    binding.stateNameEditText.setText(user.state, TextView.BufferType.EDITABLE)
+                    binding.numberEditText.setText(user.phNumber, TextView.BufferType.EDITABLE)
+                }
+
 
 
 
