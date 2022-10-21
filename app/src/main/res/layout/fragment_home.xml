@@ -100,7 +100,6 @@
                 android:id="@+id/progressLayout"
                 android:visibility="gone">
                 <ProgressBar
-
                     android:id="@+id/simpleProgressBar"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="@dimen/_50sdp"

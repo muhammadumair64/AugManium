@@ -8,7 +8,10 @@ import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.example.augmanium.R
+import com.example.augmanium.databinding.ActivityCheckOutAddressBinding
+import com.example.augmanium.databinding.ActivityModelBinding
 import com.example.augmanium.utils.K
 import com.example.augmanium.utils.TinyDB
 import com.google.ar.core.HitResult
@@ -28,21 +31,29 @@ class ModelActivity : AppCompatActivity() {
 
 
     lateinit var tinyDB: TinyDB
-
+lateinit var binding: ActivityModelBinding
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_model)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_model)
         tinyDB = TinyDB(this)
         FirebaseApp.initializeApp(this)
+
         val storage = FirebaseStorage.getInstance()
         val modalName = tinyDB.getString(K.MODEL)
+
+        binding.backButton.setOnClickListener {
+            finish()
+        }
+
         val modelRef = storage.reference.child("$modalName.glb")
+
         val arFragment = supportFragmentManager
             .findFragmentById(R.id.arFragment) as ArFragment?
         findViewById<View>(R.id.add_to_cart_layout)
             .setOnClickListener { v: View? ->
                 try {
+                    binding.progressLayout.visibility = View.VISIBLE
                     val file = File.createTempFile("$modalName", "glb")
                     modelRef.getFile(file).addOnSuccessListener { buildModel(file) }
                 } catch (e: IOException) {
@@ -85,6 +96,7 @@ class ModelActivity : AppCompatActivity() {
             .thenAccept { modelRenderable: ModelRenderable? ->
                 Toast.makeText(this, "Model built", Toast.LENGTH_SHORT).show()
                 renderable = modelRenderable
+                binding.progressLayout.visibility = View.INVISIBLE
             }
     }
 
