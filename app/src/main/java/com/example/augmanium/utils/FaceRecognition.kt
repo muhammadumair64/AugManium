@@ -8,6 +8,7 @@ import android.util.Log
 import com.example.augmanium.extra.CreateNewPassword
 import com.example.augmanium.R
 import com.example.augmanium.beforeAuth.ScanFace
+import com.example.augmanium.beforeAuth.faceVerified.FaceVerified
 import com.google.firebase.auth.FirebaseAuth
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.face.FaceDetection
@@ -305,32 +306,14 @@ class FaceRecognition {
                     {
 
                         isFaceMatched = true
-                        val email = tinyDB.getString(K.EMAIL_FORGOT)
-                        Log.d("FACE_REC_RESULT", "Same face $email")
 //                        BaseClass.runOnMain {
 //                            Toast.makeText(context, "Same Face", Toast.LENGTH_SHORT).show()
 //                        }
-
-
                         if(forgotPass){
                             forgotPass = false
-                            FirebaseAuth.getInstance().sendPasswordResetEmail(email!!)
-                                .addOnCompleteListener { task ->
-                                    if (task.isSuccessful) {
-                                        Log.d(TAG, "Email sent.")
-
-                                        val intent = Intent(context, CreateNewPassword::class.java)
-                                        (context as ScanFace).startActivity(intent)
-                                        (context as ScanFace).finish()
-                                    }
-                                    else if (task.isCanceled){
-                                        Log.d(TAG, "Email sent. Canceled")
-                                        (context as ScanFace).finish()
-                                    }else{
-                                        Log.d(TAG, "Email sent. ${task.exception!!.localizedMessage}")
-                                        (context as ScanFace).finish()
-                                    }
-                                }
+                            val intent = Intent(context,FaceVerified::class.java)
+                            (context as ScanFace).startActivity(intent)
+                            (context as ScanFace).finish()
                         }
 
 

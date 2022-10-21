@@ -5,6 +5,7 @@ import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.augmanium.afterAuth.category.AllCategories
 import com.example.augmanium.afterAuth.category.SpecificCategoryProducts
 import com.example.augmanium.afterAuth.category.adapter.AllCategoriesAdapter
 import com.example.augmanium.afterAuth.category.adapter.SpecificCategoryProductAdapter
@@ -50,6 +51,9 @@ class AllCategoriesViewModel @Inject constructor(): ViewModel(), OnItemClickList
             val intent = Intent(activityContext, SearchActivity::class.java)
             activityContext.startActivity(intent)
 
+        }
+        binding.backBtn.setOnClickListener {
+            (activityContext as AllCategories).finish()
         }
 
 //        getData()

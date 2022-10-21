@@ -196,6 +196,7 @@ class ProductDetailViewModel @Inject constructor(): ViewModel(), OnItemClickList
     fun getReview(productId: String){
         Log.d("GET_REVIEW","${productId} ")
 
+        productReviewArrayList.clear()
         database.child("Product").child(productId).child("review").addListenerForSingleValueEvent(object :
             ValueEventListener {
 

@@ -30,6 +30,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AugManium">
         <activity
+            android:name=".beforeAuth.faceVerified.FaceVerified"
+            android:exported="false" />
+        <activity
             android:name=".afterAuth.addAddress.AddAddress"
             android:exported="false" />
         <activity
@@ -59,12 +62,12 @@
             android:name=".afterAuth.modelScreen.ModelActivity"
             android:exported="true">
 
-<!--             <intent-filter>-->
-<!--             <action android:name="android.intent.action.MAIN" />-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
 
 
-<!--             <category android:name="android.intent.category.LAUNCHER" />-->
-<!--             </intent-filter>-->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
 
         </activity>
 
@@ -133,6 +136,13 @@
         <activity
             android:name=".afterAuth.orderCompletionScreen.OrderCompleteScreen"
             android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
 
@@ -220,13 +230,11 @@
             android:name=".beforeAuth.SplashScreen"
             android:exported="true"
             android:noHistory="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".afterAuth.mainActivity.MainActivity"

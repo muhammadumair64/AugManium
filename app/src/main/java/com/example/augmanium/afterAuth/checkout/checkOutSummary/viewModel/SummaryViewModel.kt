@@ -123,7 +123,7 @@ binding.Address.text = address.toString()
         email?.let { database.child("User").child(it).child("Orders").child(millis.toString()).setValue(order)
             database.child("User").child(it).child("Orders").child(millis.toString()).child("location").setValue(location)
             database.child("User").child(it).child("Orders").child(millis.toString()).child("status").setValue(status)
-
+            deleteCart(it)
         }
 
         val postListener = object : ValueEventListener {
@@ -144,6 +144,11 @@ binding.Address.text = address.toString()
 
 
 
+    }
+
+    fun deleteCart(nodeName: String){
+        FirebaseDatabase.getInstance().reference.child("Cart").child(nodeName)
+            .removeValue()
     }
 
     fun getTime(): String {

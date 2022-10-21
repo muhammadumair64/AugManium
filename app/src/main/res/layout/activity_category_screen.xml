@@ -243,10 +243,11 @@
                 >
 
                 <ImageView
+                    android:id="@+id/backBtn"
                     android:layout_centerVertical="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_menu" />
+                    android:src="@drawable/ic_back" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -254,7 +255,6 @@
                     android:layout_centerInParent="true"
                     android:fontFamily="@font/montserrat_bold"
                     android:paddingTop="@dimen/_4sdp"
-                    android:paddingBottom="@dimen/_8sdp"
                     android:text="Category"
                     android:textColor="@color/Primary"
                     android:textSize="@dimen/_17sdp" />

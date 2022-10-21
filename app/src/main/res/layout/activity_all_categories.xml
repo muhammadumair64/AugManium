@@ -17,17 +17,18 @@
         tools:context=".afterAuth.category.AllCategories">
 
         <RelativeLayout
-            android:paddingStart="@dimen/_8sdp"
-            android:paddingEnd="@dimen/_8sdp"
             android:id="@+id/toplayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/_8sdp"
+            android:paddingEnd="@dimen/_8sdp">
 
             <ImageView
-                android:layout_centerVertical="true"
+                android:id="@+id/backBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_menu" />
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_back" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -42,11 +43,11 @@
 
             <ImageView
                 android:id="@+id/searchBtn"
-                android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_icons_search_gray"
-                android:layout_alignParentRight="true" />
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_icons_search_gray" />
 
 
         </RelativeLayout>

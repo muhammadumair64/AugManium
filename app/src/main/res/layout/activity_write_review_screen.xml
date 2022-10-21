@@ -13,6 +13,14 @@
         tools:context=".afterAuth.writeReview.WriteReviewScreen"
         android:background="@color/secondary">
 
+        <ImageView
+            android:id="@+id/productImg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/write_review_layout"
+            android:layout_marginBottom="-35dp"
+             />
+
         <RelativeLayout
             android:id="@+id/toplayout"
             android:paddingStart="@dimen/_12sdp"
@@ -40,17 +48,17 @@
                 android:paddingTop="@dimen/_4sdp"
                 android:paddingBottom="@dimen/_8sdp"
                 android:text="Women"
-                android:textColor="@color/white"
+                android:textColor="@color/Primary"
                 android:textSize="@dimen/_18sdp" />
 
-            <ImageView
-                android:layout_width="@dimen/_30sdp"
-                android:layout_height="@dimen/_30sdp"
-                android:layout_alignParentRight="true"
-                android:paddingTop="@dimen/_8sdp"
-                android:paddingEnd="@dimen/_8sdp"
-                android:paddingBottom="@dimen/_8sdp"
-                android:src="@drawable/ic_icon_heart_white" />
+<!--            <ImageView-->
+<!--                android:layout_width="@dimen/_30sdp"-->
+<!--                android:layout_height="@dimen/_30sdp"-->
+<!--                android:layout_alignParentRight="true"-->
+<!--                android:paddingTop="@dimen/_8sdp"-->
+<!--                android:paddingEnd="@dimen/_8sdp"-->
+<!--                android:paddingBottom="@dimen/_8sdp"-->
+<!--                android:src="@drawable/ic_icon_heart_white" />-->
 
         </RelativeLayout>
 
@@ -71,7 +79,7 @@
                 android:fontFamily="@font/montserrat_semibold"
                 android:gravity="center_vertical"
                 android:text="Gucci Sunglasses"
-                android:textColor="@color/white"
+                android:textColor="@color/Primary"
                 android:textSize="22sp" />
 
             <TextView
@@ -82,12 +90,13 @@
                 android:fontFamily="@font/montserrat_semibold"
                 android:gravity="center_vertical"
                 android:text="40$"
-                android:textColor="@color/white"
+                android:textColor="@color/Primary"
                 android:textSize="22sp" />
 
         </LinearLayout>
 
         <RelativeLayout
+            android:id="@+id/write_review_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/productLayout"

@@ -6,6 +6,8 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.example.augmanium.R
 import com.example.augmanium.afterAuth.trackOrder.TrackOrder
+import com.example.augmanium.afterAuth.mainActivity.MainActivity
+import com.example.augmanium.afterAuth.searchscreen.SearchActivity
 import com.example.augmanium.databinding.ActivityOrderCompleteScreenBinding
 import com.example.augmanium.utils.K
 import com.example.augmanium.utils.TinyDB
@@ -19,6 +21,8 @@ lateinit var tinyDb :TinyDB
        binding = DataBindingUtil.setContentView(this, R.layout.activity_order_complete_screen)
            tinyDb= TinyDB(this)
         binding.backButton.setOnClickListener {
+            val intent = Intent(this,MainActivity::class.java)
+            startActivity(intent)
             finish()
         }
 
