@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.*
 import android.util.Log
-import com.example.augmanium.CreateNewPassword
+import com.example.augmanium.extra.CreateNewPassword
 import com.example.augmanium.R
 import com.example.augmanium.beforeAuth.ScanFace
 import com.google.firebase.auth.FirebaseAuth
@@ -319,7 +319,7 @@ class FaceRecognition {
                                     if (task.isSuccessful) {
                                         Log.d(TAG, "Email sent.")
 
-                                        val intent = Intent(context,CreateNewPassword::class.java)
+                                        val intent = Intent(context, CreateNewPassword::class.java)
                                         (context as ScanFace).startActivity(intent)
                                         (context as ScanFace).finish()
                                     }

@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ProductDetailsActivity">
+        tools:context=".afterAuth.productDetails.ProductDetailsActivity">
 
         <ScrollView
             android:layout_width="match_parent"

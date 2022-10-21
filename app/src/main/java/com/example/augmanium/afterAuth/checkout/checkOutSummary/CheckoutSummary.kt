@@ -4,11 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.viewModels
 import com.example.augmanium.R
-import com.example.augmanium.afterAuth.cartFragment.CartFragmentViewModel
 import com.example.augmanium.afterAuth.checkout.checkOutSummary.viewModel.SummaryViewModel
-import com.example.augmanium.databinding.ActivityCheckOutAddressBinding
 import com.example.augmanium.databinding.ActivityCheckoutSummaryBinding
 import dagger.hilt.android.AndroidEntryPoint
 
