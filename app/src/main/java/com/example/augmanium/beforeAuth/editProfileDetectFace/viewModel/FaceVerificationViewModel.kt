@@ -104,7 +104,7 @@ class FaceVerificationViewModel @Inject constructor() : ViewModel() {
 //        val myBitmap = BitmapFactory.decodeStream(`is`)
 
         val myRectPaint = Paint()
-        myRectPaint.strokeWidth = 15f
+        myRectPaint.strokeWidth = 0f
         myRectPaint.color = Color.BLUE
         myRectPaint.style = Paint.Style.STROKE
         Log.d("TheLandmarks", "My Bitmap $myBitmap")
@@ -189,7 +189,7 @@ class FaceVerificationViewModel @Inject constructor() : ViewModel() {
                                 "isRightEyeCorret in true block...$isRightEyeCorret isMouthCorrect...$isMouthCorrect isRightCheekCorrect...$isRightCheekCorrect isLeftCheekCorrect...$isLeftCheekCorrect"
                             )
                             val rect = RectF(faces[0].boundingBox)
-                            tempCanvas.drawRoundRect(rect, 2f, 2f, myRectPaint)
+//                            tempCanvas.drawRoundRect(rect, 2f, 2f, myRectPaint)
                             imageUri = getImageUri(activityContext, tempBitmap)!!
                         } else {
                             Log.d(
