@@ -9,8 +9,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.augmanium.EditProfile
-import com.example.augmanium.afterAuth.mainActivity.dataClass.ReviewDataclass
+import com.example.augmanium.afterAuth.editProfile.EditProfile
 import com.example.augmanium.beforeAuth.fireBase.FirebaseUtils
 import com.example.augmanium.dataClass.UserImage
 import com.example.augmanium.dataClass.UserInfo

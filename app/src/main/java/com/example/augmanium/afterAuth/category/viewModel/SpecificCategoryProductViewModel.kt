@@ -6,15 +6,12 @@ import android.util.Log
 import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.augmanium.ProductDetailsActivity
+import com.example.augmanium.afterAuth.productDetails.ProductDetailsActivity
 import com.example.augmanium.afterAuth.category.AllCategories
 import com.example.augmanium.afterAuth.category.SpecificCategoryProducts
 import com.example.augmanium.afterAuth.category.adapter.SpecificCategoryProductAdapter
 import com.example.augmanium.afterAuth.category.dataClass.SpecificCatagoryProductDataClass
 import com.example.augmanium.afterAuth.interfaces.OnItemClickListener
-import com.example.augmanium.afterAuth.mainActivity.Adapter.ProductDetailAdapter
-import com.example.augmanium.afterAuth.mainActivity.dataClass.AllProductDataClass
-import com.example.augmanium.afterAuth.mainActivity.dataClass.ProductDetailCategoryProductDataClass
 import com.example.augmanium.afterAuth.searchscreen.SearchActivity
 import com.example.augmanium.databinding.ActivitySpecificCategoryProductsBinding
 import com.example.augmanium.utils.K

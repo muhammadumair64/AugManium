@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.*
 import android.util.Log
-import com.example.augmanium.CreateNewPassword
+import com.example.augmanium.extra.CreateNewPassword
 import com.example.augmanium.R
 import com.example.augmanium.beforeAuth.ScanFace
 import com.example.augmanium.beforeAuth.faceVerified.FaceVerified

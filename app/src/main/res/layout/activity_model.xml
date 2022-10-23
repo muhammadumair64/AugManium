@@ -1,92 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".afterAuth.modelScreen.ModelActivity">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
 
     <RelativeLayout
-        android:id="@+id/upperlayout"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_marginStart="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_20sdp">
-
-        <ImageButton
-            android:id="@+id/backButton"
-            android:layout_width="@dimen/_15sdp"
-            android:layout_height="@dimen/_20sdp"
-            android:layout_centerVertical="true"
-            android:background="@color/white"
-            android:paddingTop="@dimen/_5sdp"
-            android:paddingEnd="@dimen/_5sdp"
-            android:paddingBottom="@dimen/_5sdp"
-            android:src="@drawable/ic_back" />
-
-        <TextView
-            android:id="@+id/categoryTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="@dimen/_20sdp"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="3D MODEL"
-            android:textColor="@color/Primary"
-            android:textSize="@dimen/_18sdp"
-            android:textStyle="bold" />
-
-    </RelativeLayout>
-
-
-
-<androidx.cardview.widget.CardView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="@dimen/_20sdp"
-    android:layout_below="@id/upperlayout"
-    app:cardCornerRadius="@dimen/_20sdp"
-    android:layout_above="@id/add_to_cart_layout"
-    >
-
-    <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/arFragment"
-        android:name="com.google.ar.sceneform.ux.ArFragment" />
+        tools:context=".afterAuth.modelScreen.ModelActivity">
 
-</androidx.cardview.widget.CardView>
+        <RelativeLayout
+            android:id="@+id/upperlayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_20sdp">
+
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_centerVertical="true"
+                android:background="@color/white"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_5sdp"
+                android:src="@drawable/ic_back" />
+
+            <TextView
+                android:id="@+id/categoryTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="3D MODEL"
+                android:textColor="@color/Primary"
+                android:textSize="@dimen/_18sdp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
 
 
-    <RelativeLayout
-        android:id="@+id/add_to_cart_layout"
-        android:layout_marginStart="@dimen/_12sdp"
-        android:layout_marginEnd="@dimen/_6sdp"
-        android:layout_width="200sp"
-        android:layout_height="@dimen/_35sdp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/_10sdp"
-        android:background="@drawable/item_botton"
-        android:layout_alignParentBottom="true"
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/_20sdp"
+            android:layout_below="@id/upperlayout"
+            app:cardCornerRadius="@dimen/_20sdp"
+            android:layout_above="@id/add_to_cart_layout">
 
-        >
+            <fragment
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/arFragment"
+                android:name="com.google.ar.sceneform.ux.ArFragment" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="@dimen/_15sdp"
-            android:fontFamily="@font/montserrat_semibold"
-            android:text="Download"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_10sdp" />
+        </androidx.cardview.widget.CardView>
 
+
+        <RelativeLayout
+            android:id="@+id/add_to_cart_layout"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_6sdp"
+            android:layout_width="200sp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/item_botton"
+            android:layout_alignParentBottom="true"
+
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="Download"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_10sdp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/progressLayout"
+            android:visibility="invisible">
+            <ProgressBar
+                android:id="@+id/simpleProgressBar"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_centerInParent="true"
+                android:progressTint="@color/ProfileBox"
+                android:layout_centerHorizontal="true"/>
+
+        </RelativeLayout>
     </RelativeLayout>
-
-
-
-
-
-
-</RelativeLayout>
+</layout>

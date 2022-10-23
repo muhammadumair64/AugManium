@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.augmanium.HomeFragment"
+        android:name="com.example.augmanium.afterAuth.fragments.homeFragment.HomeFragment"
         android:label="HomeFragment" >
         <action
             android:id="@+id/action_homeFragment_to_cartFragment"
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
-        android:name="com.example.augmanium.afterAuth.cartFragment.CartFragment"
+        android:name="com.example.augmanium.afterAuth.fragments.cartFragment.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" >
         <action
@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.augmanium.afterAuth.profileFragment.ProfileFragment"
+        android:name="com.example.augmanium.afterAuth.fragments.profileFragment.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action

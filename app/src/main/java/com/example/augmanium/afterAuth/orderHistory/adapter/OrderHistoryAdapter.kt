@@ -5,11 +5,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.augmanium.R
-import com.example.augmanium.afterAuth.cartFragment.interfaceForClick.CartRVClick
 import com.example.augmanium.afterAuth.orderHistory.dataClass.OrderHistoryDataClass
 import com.example.augmanium.afterAuth.orderHistory.orderInterface.OnItemClicked
 import com.example.augmanium.databinding.ItemOrderHistoryRvBinding
-import com.example.augmanium.databinding.ItemSearchRvBinding
 
 class OrderHistoryAdapter(val orderHistoryArrayList:ArrayList<OrderHistoryDataClass>,val orderInterface: OnItemClicked):
     RecyclerView.Adapter<OrderHistoryAdapter.ViewHolderOrderHistory>() {

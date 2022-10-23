@@ -4,15 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.bumptech.glide.Glide
-import com.example.augmanium.ProductDetailsActivity
 import com.example.augmanium.afterAuth.category.CategoryScreen
 import com.example.augmanium.afterAuth.category.SpecificCategoryProducts
 import com.example.augmanium.afterAuth.mainActivity.dataClass.ProductDetailCategoryProductDataClass
 import com.example.augmanium.afterAuth.mainActivity.dataClass.ReviewDataclass
 import com.example.augmanium.afterAuth.searchscreen.SearchActivity
 import com.example.augmanium.databinding.ActivityCategoryScreenBinding
-import com.example.augmanium.databinding.ActivityProductDetailsBinding
 import com.example.augmanium.utils.K
 import com.example.augmanium.utils.TinyDB
 import com.google.firebase.database.DataSnapshot

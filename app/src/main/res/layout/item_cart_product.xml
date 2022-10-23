@@ -5,7 +5,7 @@
     <data>
         <variable
             name="dataClass"
-            type="com.example.augmanium.afterAuth.cartFragment.dataClass.CartFragmentDataClass" />
+            type="com.example.augmanium.afterAuth.fragments.cartFragment.dataClass.CartFragmentDataClass" />
     </data>
 
     <RelativeLayout

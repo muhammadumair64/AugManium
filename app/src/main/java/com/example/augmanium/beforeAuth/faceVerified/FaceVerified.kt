@@ -4,15 +4,15 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
+
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
-import com.example.augmanium.CreateNewPassword
 import com.example.augmanium.R
-import com.example.augmanium.beforeAuth.ScanFace
+
 import com.example.augmanium.dataClass.UserImage
 import com.example.augmanium.dataClass.UserInfo
 import com.example.augmanium.databinding.ActivityFaceVerifiedBinding
+import com.example.augmanium.extra.CreateNewPassword
 import com.example.augmanium.utils.K
 import com.example.augmanium.utils.TinyDB
 import com.google.firebase.auth.FirebaseAuth

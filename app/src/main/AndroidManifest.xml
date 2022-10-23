@@ -76,13 +76,13 @@
             android:value="required" />
 
         <activity
-            android:name=".ProductDetailsActivity"
+            android:name=".afterAuth.productDetails.ProductDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".TrackOrder"
+            android:name=".afterAuth.trackOrder.TrackOrder"
             android:exported="false" />
         <activity
-            android:name=".EditProfile"
+            android:name=".afterAuth.editProfile.EditProfile"
             android:exported="false" /> <!-- <activity -->
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -134,7 +134,7 @@
             android:name=".afterAuth.writeReview.WriteReviewScreen"
             android:exported="false" />
         <activity
-            android:name=".OrderCompleteScreen"
+            android:name=".afterAuth.orderCompletionScreen.OrderCompleteScreen"
             android:exported="true">
 
             <!-- <intent-filter> -->
@@ -215,7 +215,7 @@
             android:name=".beforeAuth.ScanFace"
             android:exported="true" />
         <activity
-            android:name=".CreateNewPassword"
+            android:name=".extra.CreateNewPassword"
             android:exported="false" />
         <activity
             android:name=".beforeAuth.ForgotPassword"

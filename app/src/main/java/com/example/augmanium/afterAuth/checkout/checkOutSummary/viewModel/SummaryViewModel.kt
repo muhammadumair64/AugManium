@@ -7,8 +7,8 @@ import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.augmanium.OrderCompleteScreen
-import com.example.augmanium.afterAuth.cartFragment.dataClass.CartFragmentDataClass
+import com.example.augmanium.afterAuth.orderCompletionScreen.OrderCompleteScreen
+import com.example.augmanium.afterAuth.fragments.cartFragment.dataClass.CartFragmentDataClass
 import com.example.augmanium.afterAuth.checkout.CheckOutAddress
 import com.example.augmanium.afterAuth.checkout.checkOutSummary.CheckoutSummary
 import com.example.augmanium.afterAuth.checkout.checkOutSummary.adapter.SummaryRVAdapter
@@ -130,7 +130,7 @@ binding.Address.text = address.toString()
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 Toast.makeText(context, "Order Place", Toast.LENGTH_SHORT).show()
 
-                val intent = Intent(context,OrderCompleteScreen::class.java)
+                val intent = Intent(context, OrderCompleteScreen::class.java)
                 context.startActivity(intent)
             }
 

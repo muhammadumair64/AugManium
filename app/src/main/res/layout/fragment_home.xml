@@ -10,7 +10,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".HomeFragment">
+        tools:context=".afterAuth.fragments.homeFragment.HomeFragment">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -100,7 +100,6 @@
                 android:id="@+id/progressLayout"
                 android:visibility="gone">
                 <ProgressBar
-
                     android:id="@+id/simpleProgressBar"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="@dimen/_50sdp"
