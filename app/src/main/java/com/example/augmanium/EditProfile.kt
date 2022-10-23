@@ -120,7 +120,7 @@ class EditProfile : AppCompatActivity() {
         val separated: List<String> = email!!.split("@")
         val nodeName = separated[0]
         getUserImage(nodeName)
-        database.child("User").child(nodeName).addListenerForSingleValueEvent(object :
+        database.child("User").child(nodeName).child("User Data").addListenerForSingleValueEvent(object :
             ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -224,7 +224,7 @@ class EditProfile : AppCompatActivity() {
         val userinfo = User(name!!,email!!,UID!!,password!!, city, gender)
         Log.d("Data_FIRE", "${name} $email $password $city $gender")
         val rootRef = FirebaseDatabase.getInstance().reference
-        val yourRef = rootRef.child("User").child(nodeName)
+        val yourRef = rootRef.child("User").child(nodeName).child("User Data")
         yourRef.setValue(userinfo)
 
         Toast.makeText(this,"UPLOADED",Toast.LENGTH_SHORT).show()

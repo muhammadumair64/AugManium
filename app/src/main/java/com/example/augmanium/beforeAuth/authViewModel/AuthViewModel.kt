@@ -123,7 +123,7 @@ class AuthViewModel @Inject constructor(): ViewModel()  {
         try {
             getUserImage(nodeName)
 
-            database.child("User").child(nodeName).addListenerForSingleValueEvent(object :
+            database.child("User").child(nodeName).child("User Data").addListenerForSingleValueEvent(object :
                 ValueEventListener {
 
                 override fun onDataChange(snapshot: DataSnapshot) {
