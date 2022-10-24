@@ -168,8 +168,13 @@ class AuthViewModel @Inject constructor(): ViewModel()  {
                         val image = ""
                         Log.d("IMAGE User ", "${snapshot.key}   ${snapshot.value}")
                         val user = snapshot.getValue(UserImage::class.java)
-                        Log.d("IMAGE User ", "${user!!.imgUrl}")
-                        tinyDB.putString(K.USER_IMG, user!!.imgUrl)
+                        if (user != null) {
+                            Log.d("IMAGE User ", user.imgUrl)
+                            tinyDB.putString(K.USER_IMG, user.imgUrl)
+                        }else{
+                            Log.d("IMAGE User ","Image is null")
+                        }
+
 //                    tinyDB.putString(K.USER_NAME, user!!.userName)
 
 //                }

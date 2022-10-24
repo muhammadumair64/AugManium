@@ -108,13 +108,11 @@ class MainActivityViewModel @Inject constructor(): ViewModel(), OnItemClickListe
         onnextscreen(order)
     }
     fun onnextscreen(productData: AllProductDataClass) {
-
-        var intent = Intent(activityContextGlobal, ProductDetailsActivity::class.java)
-
+        val intent = Intent(activityContextGlobal, ProductDetailsActivity::class.java)
         tinyDB.putObject(K.PRODUCT_DATA, productData)
         tinyDB.putString(K.PRODUCT_ID,productData.id)
         Log.d("PRODUCTID",productData.id!!)
-        (activityContextGlobal ).startActivity(intent)
+        activityContextGlobal.startActivity(intent)
     }
 
 

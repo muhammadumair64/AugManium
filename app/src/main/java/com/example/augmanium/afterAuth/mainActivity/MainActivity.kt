@@ -30,10 +30,10 @@ import org.checkerframework.checker.units.qual.A
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 companion object{
-    var position = 0
+
     var mainContext = this
 }
-
+    var position = 0
     lateinit var binding:ActivityMainBinding
 //    val viewModel: MainActivityViewModel by viewModels<MainActivityViewModel>()
     val context = this
@@ -152,31 +152,7 @@ companion object{
                         }
 
                     }
-                    R.id.settingsFragment->{
 
-                        when(position){
-                            0->{
-                                findNavController(R.id.navHostFragment).navigate(
-                                    R.id.action_homeFragment_to_settingsFragment, null, null
-                                )
-                                position=4
-                            }
-                            2->{
-                                findNavController(R.id.navHostFragment).navigate(
-                                    R.id.action_cartFragment_to_settingsFragment, null, null
-                                )
-                                position=4
-                            }
-                            3->{
-                                findNavController(R.id.navHostFragment).navigate(
-                                    R.id.action_profileFragment_to_settingsFragment, null, null
-                                )
-                                position=4
-                            }
-
-                        }
-
-                    }
 
 
                 }

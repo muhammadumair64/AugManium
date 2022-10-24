@@ -19,6 +19,7 @@ import com.example.augmanium.afterAuth.mainActivity.dataClass.ProductDetailCateg
 import com.example.augmanium.afterAuth.mainActivity.dataClass.ReviewDataclass
 import com.example.augmanium.afterAuth.writeReview.WriteReviewScreen
 import com.example.augmanium.databinding.ActivityProductDetailsBinding
+import com.example.augmanium.utils.AlertDataClass
 import com.example.augmanium.utils.K
 import com.example.augmanium.utils.TinyDB
 import com.google.firebase.database.DataSnapshot
@@ -231,14 +232,28 @@ class ProductDetailViewModel @Inject constructor(): ViewModel(), OnItemClickList
         Log.d("NODE_NAME_USER","$nodeName")
         val cartItem = CartDataClass(data.image,data.prize,data.productCategory,data.productColor,data.productDescription,data.productName,data.productSize,data.id,productCount.toString())
         val rootRef = FirebaseDatabase.getInstance().reference
-        val yourRef = rootRef.child("Cart").child(nodeName).child(data.productName!!)
-        yourRef.setValue(cartItem)
-        Toast.makeText(activityContext,"Done",Toast.LENGTH_SHORT).show()
+        rootRef.child("Cart").child(nodeName).child(data.productName!!).setValue(cartItem)
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                Toast.makeText(activityContext, "Product Added", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+
+            }
+        }
+
+        database.addValueEventListener(postListener)
+
+
+
+
     }
 
     fun onnextscreen(productData: ProductDetailCategoryProductDataClass) {
 
-        var intent = Intent(activityContext, ProductDetailsActivity::class.java)
+        val intent = Intent(activityContext, ProductDetailsActivity::class.java)
 
         tinyDB.putObject(K.PRODUCT_DATA, productData)
         tinyDB.putString(K.PRODUCT_ID,productData.id)

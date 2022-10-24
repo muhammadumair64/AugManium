@@ -11,6 +11,7 @@ import com.example.augmanium.afterAuth.searchscreen.SearchActivity
 import com.example.augmanium.databinding.ActivityOrderCompleteScreenBinding
 import com.example.augmanium.utils.K
 import com.example.augmanium.utils.TinyDB
+import com.google.firebase.database.FirebaseDatabase
 
 class OrderCompleteScreen : AppCompatActivity() {
 
@@ -20,6 +21,12 @@ lateinit var tinyDb :TinyDB
         super.onCreate(savedInstanceState)
        binding = DataBindingUtil.setContentView(this, R.layout.activity_order_complete_screen)
            tinyDb= TinyDB(this)
+        var email = tinyDb.getString(K.EMAIL)
+        if (email != null) {
+            email = email.split("@").toTypedArray()[0]
+            deleteCart(email)
+        }
+
         binding.backButton.setOnClickListener {
             val intent = Intent(this,MainActivity::class.java)
             startActivity(intent)
@@ -40,4 +47,9 @@ lateinit var tinyDb :TinyDB
 //        }
 
     }
+    fun deleteCart(nodeName: String){
+        FirebaseDatabase.getInstance().reference.child("Cart").child(nodeName)
+            .removeValue()
+    }
+
 }

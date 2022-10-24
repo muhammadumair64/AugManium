@@ -33,11 +33,15 @@ class SummaryViewModel @Inject constructor() : ViewModel() {
     var summaryArrayList: ArrayList<SummaryDataClass> = ArrayList()
     lateinit var tinyDB: TinyDB
     var totalPrice = 0
-    private lateinit var database: DatabaseReference
 
 
-    fun viewsOfSummaryScreen(context: Context, binding: ActivityCheckoutSummaryBinding) {
-        database = FirebaseDatabase.getInstance().reference
+
+    fun viewsOfSummaryScreen(
+        context: Context,
+        binding: ActivityCheckoutSummaryBinding,
+        database: DatabaseReference
+    ) {
+
         tinyDB = TinyDB(context)
         viewModelScope.launch {
             cartFragmentArrayList = tinyDB.getListObject(
@@ -69,7 +73,7 @@ class SummaryViewModel @Inject constructor() : ViewModel() {
             }
 
 
-            recyclerViewInitializer(binding,context)
+            recyclerViewInitializer(binding,context,database)
         }
 
 
@@ -88,7 +92,7 @@ class SummaryViewModel @Inject constructor() : ViewModel() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun recyclerViewInitializer(binding: ActivityCheckoutSummaryBinding, context: Context) {
+    fun recyclerViewInitializer(binding: ActivityCheckoutSummaryBinding, context: Context,database: DatabaseReference) {
         Log.d("SummaryScreenTesting", "In function")
         val address = tinyDB.getString(K.ADDRESS)
 binding.Address.text = address.toString()
@@ -99,7 +103,7 @@ binding.Address.text = address.toString()
         }
 
         binding.checkoutBtn.setOnClickListener {
-            uploadOrder(context)
+            uploadOrder(context,database)
 
         }
 
@@ -108,7 +112,7 @@ binding.Address.text = address.toString()
 
 
 
-    fun uploadOrder(context: Context){
+    fun uploadOrder(context: Context, database: DatabaseReference){
 
         val millis = System.currentTimeMillis()
         tinyDB.putString(K.Order, millis.toString())
@@ -123,33 +127,33 @@ binding.Address.text = address.toString()
         email?.let { database.child("User").child(it).child("Orders").child(millis.toString()).setValue(order)
             database.child("User").child(it).child("Orders").child(millis.toString()).child("location").setValue(location)
             database.child("User").child(it).child("Orders").child(millis.toString()).child("status").setValue(status)
-            deleteCart(it)
+
         }
 
-        val postListener = object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                Toast.makeText(context, "Order Place", Toast.LENGTH_SHORT).show()
+        viewModelScope.launch {
+            val postListener = object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    Toast.makeText(context, "Order Place", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "At Same Place", Toast.LENGTH_SHORT).show()
+                }
 
-                val intent = Intent(context, OrderCompleteScreen::class.java)
-                context.startActivity(intent)
+                override fun onCancelled(databaseError: DatabaseError) {
+                    // Getting Post failed, log a message
+
+                }
             }
 
-            override fun onCancelled(databaseError: DatabaseError) {
-                // Getting Post failed, log a message
+            database.addValueEventListener(postListener)
+            (context as CheckoutSummary).finish()
+            val intent = Intent(context, OrderCompleteScreen::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            context.startActivity(intent)
 
-            }
         }
-
-        database.addValueEventListener(postListener)
-
-
 
     }
 
-    fun deleteCart(nodeName: String){
-        FirebaseDatabase.getInstance().reference.child("Cart").child(nodeName)
-            .removeValue()
-    }
+
 
     fun getTime(): String {
         val c : Calendar = Calendar.getInstance()
