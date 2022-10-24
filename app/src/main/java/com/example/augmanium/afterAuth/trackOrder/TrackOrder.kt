@@ -1,9 +1,10 @@
 package com.example.augmanium.afterAuth.trackOrder
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.example.augmanium.R
 import com.example.augmanium.afterAuth.checkout.checkOutSummary.dataClass.StatusDataClass
@@ -35,7 +36,8 @@ class TrackOrder : AppCompatActivity() {
 
         binding.ContinueBtn.setOnClickListener {
             val intent = Intent(this,MainActivity::class.java)
-            startActivity(intent)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity( intent, Bundle.EMPTY)
             finish()
         }
     }

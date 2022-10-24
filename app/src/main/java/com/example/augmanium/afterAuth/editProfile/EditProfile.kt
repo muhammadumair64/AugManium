@@ -229,8 +229,9 @@ class EditProfile : AppCompatActivity() {
         if (tinyDB.getInt(K.SIGN_UP) == 2){
             finish()
         }else{
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(this, MainActivity::class.java)
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//            startActivity(intent)
             finish()
         }
 //        var intent = Intent(this, MainActivity::class.java)
