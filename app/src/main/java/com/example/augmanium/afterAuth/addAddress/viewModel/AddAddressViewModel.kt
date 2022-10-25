@@ -2,6 +2,7 @@ package com.example.augmanium.afterAuth.addAddress.viewModel
 
 import android.content.Context
 import android.util.Log
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
@@ -24,6 +25,15 @@ class AddAddressViewModel @Inject constructor() : ViewModel() {
     lateinit var context: Context
     lateinit var binding: ActivityAddAddressBinding
     lateinit var tinyDB : TinyDB
+    lateinit var signInInputsArray: Array<EditText>
+    lateinit var home: String
+    lateinit var street: String
+    lateinit var name: String
+    lateinit var city: String
+    lateinit var state: String
+    lateinit var number: String
+
+    var database: com.google.firebase.database.DatabaseReference = FirebaseDatabase.getInstance().reference
 
     fun binding(activityContext: Context, activityBinding: ActivityAddAddressBinding){
         context = activityContext
@@ -32,6 +42,8 @@ class AddAddressViewModel @Inject constructor() : ViewModel() {
         val email = tinyDB.getString(K.EMAIL)
         val separated: List<String> = email!!.split("@")
         val nodeName = separated[0]
+
+        signInInputsArray = arrayOf(binding.home, binding.streetDetail, binding.nameEditText, binding.cityNameEditText, binding.stateNameEditText, binding.numberEditText)
 
         getUserAddress(nodeName)
 
@@ -46,38 +58,47 @@ class AddAddressViewModel @Inject constructor() : ViewModel() {
     }
 
 
+    private fun notEmpty(): Boolean = home.isNotEmpty() && street.isNotEmpty() && name.isNotEmpty() && city.isNotEmpty() && state.isNotEmpty() && number.isNotEmpty()
     fun uploadDataToFireBase(nodeName: String) {
 
-
-        val home = binding.home.text.toString().trim()
-        val street = binding.streetDetail.text.toString().trim()
-        val name = binding.nameEditText.text.toString().trim()
-        val city = binding.cityNameEditText.text.toString().trim()
-        val state =  binding.stateNameEditText.text.toString().trim()
-        var number = binding.numberEditText.text.toString().trim()
+        home = binding.home.text.toString().trim()
+        street = binding.streetDetail.text.toString().trim()
+        name = binding.nameEditText.text.toString().trim()
+        city = binding.cityNameEditText.text.toString().trim()
+        state = binding.stateNameEditText.text.toString().trim()
+        number = binding.numberEditText.text.toString().trim()
 //        uploadToFirebase(imageUri, nodeName)
 //        var imageBitmap = MediaStore.Images.Media.getBitmap(this.contentResolver ,imageUri)
 //
 //        var imgString = BitMapToString(imageBitmap)
+        if (notEmpty()) {
 
-        val userinfo = AddressDetailDataClass(home,street,name,city,state,number)
+        val userinfo = AddressDetailDataClass(home, street, name, city, state, number)
         Log.d("Data_FIRE", "${name} $city")
         val rootRef = FirebaseDatabase.getInstance().reference
         val yourRef = rootRef.child("User").child(nodeName).child("User Address")
         yourRef.setValue(userinfo)
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                Toast.makeText(context, "UPLOADED", Toast.LENGTH_SHORT).show()
 
-        Toast.makeText(context,"UPLOADED", Toast.LENGTH_SHORT).show()
+                (context as AddAddress).finish()
+            }
 
-        (context as AddAddress).finish()
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
 
-//        if (tinyDB.getInt(K.SIGN_UP) == 1){
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-//        }else{
-//            finish()
-//        }
-//        var intent = Intent(this, MainActivity::class.java)
-//        startActivity(intent)
+            }
+        }
+
+        rootRef.addValueEventListener(postListener)
+    }else{
+            signInInputsArray.forEach { input ->
+                if (input.text.toString().trim().isEmpty()) {
+                    input.error = "${input.hint} is required"
+                }
+            }
+        }
 
 
     }
@@ -121,5 +142,10 @@ class AddAddressViewModel @Inject constructor() : ViewModel() {
     }
 
 
+
+    fun ifEmptyField(){
+
+
+    }
 
 }
