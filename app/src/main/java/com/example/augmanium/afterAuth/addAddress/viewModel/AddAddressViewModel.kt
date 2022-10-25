@@ -2,13 +2,13 @@ package com.example.augmanium.afterAuth.addAddress.viewModel
 
 import android.content.Context
 import android.util.Log
+import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import com.example.augmanium.afterAuth.addAddress.AddAddress
 import com.example.augmanium.afterAuth.addAddress.dataClass.AddressDetailDataClass
-import com.example.augmanium.dataClass.UserImage
 import com.example.augmanium.databinding.ActivityAddAddressBinding
 import com.example.augmanium.utils.K
 import com.example.augmanium.utils.TinyDB
@@ -48,7 +48,8 @@ class AddAddressViewModel @Inject constructor() : ViewModel() {
         getUserAddress(nodeName)
 
         binding.saveBtn.setOnClickListener {
-            uploadDataToFireBase(nodeName)
+            checkDetails(nodeName)
+
         }
 
         binding.backButton.setOnClickListener {
@@ -61,18 +62,6 @@ class AddAddressViewModel @Inject constructor() : ViewModel() {
     private fun notEmpty(): Boolean = home.isNotEmpty() && street.isNotEmpty() && name.isNotEmpty() && city.isNotEmpty() && state.isNotEmpty() && number.isNotEmpty()
     fun uploadDataToFireBase(nodeName: String) {
 
-        home = binding.home.text.toString().trim()
-        street = binding.streetDetail.text.toString().trim()
-        name = binding.nameEditText.text.toString().trim()
-        city = binding.cityNameEditText.text.toString().trim()
-        state = binding.stateNameEditText.text.toString().trim()
-        number = binding.numberEditText.text.toString().trim()
-//        uploadToFirebase(imageUri, nodeName)
-//        var imageBitmap = MediaStore.Images.Media.getBitmap(this.contentResolver ,imageUri)
-//
-//        var imgString = BitMapToString(imageBitmap)
-        if (notEmpty()) {
-
         val userinfo = AddressDetailDataClass(home, street, name, city, state, number)
         Log.d("Data_FIRE", "${name} $city")
         val rootRef = FirebaseDatabase.getInstance().reference
@@ -81,7 +70,7 @@ class AddAddressViewModel @Inject constructor() : ViewModel() {
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 Toast.makeText(context, "UPLOADED", Toast.LENGTH_SHORT).show()
-
+                binding.progressLayout.visibility=View.INVISIBLE
                 (context as AddAddress).finish()
             }
 
@@ -92,14 +81,6 @@ class AddAddressViewModel @Inject constructor() : ViewModel() {
         }
 
         rootRef.addValueEventListener(postListener)
-    }else{
-            signInInputsArray.forEach { input ->
-                if (input.text.toString().trim().isEmpty()) {
-                    input.error = "${input.hint} is required"
-                }
-            }
-        }
-
 
     }
 
@@ -142,10 +123,50 @@ class AddAddressViewModel @Inject constructor() : ViewModel() {
     }
 
 
+    fun checkDetails(nodeName: String) {
+        home = binding.home.text.toString().trim()
+        street = binding.streetDetail.text.toString().trim()
+        name = binding.nameEditText.text.toString().trim()
+        city = binding.cityNameEditText.text.toString().trim()
+        state = binding.stateNameEditText.text.toString().trim()
+        number = binding.numberEditText.text.toString().trim()
+        if (notEmpty()){
+            validateText(nodeName)
+        }else{
+            signInInputsArray.forEach { input ->
+                if (input.text.toString().trim().isEmpty()) {
+                    input.error = "${input.hint} is required"
+                }
+            }
+        }
+    }
 
-    fun ifEmptyField(){
+    fun validateText(nodeName: String) {
+        binding.apply {
+            if(home.text.length <= 2)
+            {
+                showToast("Incomplete Home Address")
+            }else if(streetDetail.text.length <= 5){
+                showToast("Incomplete Street Detail")
+            }else if(nameEditText.text.length <= 3){
+                showToast("Incomplete Name")
+            }else if(cityNameEditText.text.length <= 3){
+                showToast("Incomplete City Name")
+            }else if(stateNameEditText.text.length <= 3){
+                showToast("Incomplete State Name")
+            }else if(numberEditText.text.length <= 10){
+                showToast("Incomplete Number")
+            }else{
+                binding.progressLayout.visibility= View.VISIBLE
+                uploadDataToFireBase(nodeName)
+            }
+        }
 
 
+    }
+
+    fun showToast(toastText: String) {
+        Toast.makeText(context, toastText, Toast.LENGTH_SHORT).show()
     }
 
 }

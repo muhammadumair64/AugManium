@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.*
 import android.util.Log
+import android.widget.Toast
 import com.example.augmanium.extra.CreateNewPassword
 import com.example.augmanium.R
 import com.example.augmanium.beforeAuth.ScanFace
@@ -47,6 +48,7 @@ class FaceRecognition {
     var isFaceMatched = false
     var TAG = "FACE_RECOGNITION"
     var forgotPass = true
+    var count = 0
 
 
     init {
@@ -320,12 +322,18 @@ class FaceRecognition {
 
                     } else {
                         isFaceMatched = false
+                        count++
 
+                        if (count == 10){
+                            tinyDB.putInt(K.RET_FAC_REC,1)
+                            (context as ScanFace).finish()
+                        }
 //                        BaseClass.runOnMain {
 //                            Toast.makeText(context, "Face not match", Toast.LENGTH_SHORT).show()
 //                        }
 
-                        Log.d("FACE_REC_RESULT", "Face not match")
+                        Log.d("FACE_REC_RESULT", "Face not match $count")
+//                        Toast.makeText(context, "count is $count", Toast.LENGTH_SHORT).show()
                     }
 //                embeedings= emptyArray()
 //                Log.d("Embeddings", "Empty....${embeedings[0]}...${embeedings[1]}")

@@ -125,6 +125,7 @@ class ViewModelScanFace @Inject constructor(
 //                Log.d("FILE_BITMAP",imageBitmap.toString())
                 val user_img = tinyDB.getString(K.USER_IMG)
 
+
                 try {
                     val url = URL(user_img)
                     imageBitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream())
@@ -140,7 +141,7 @@ class ViewModelScanFace @Inject constructor(
                 {
 
 
-
+                    Log.d(TAG, "Image_Bitmp $imageBitmap")
                     faceRecognition.detectoreAnalyze(imageBitmap!!, activityContext, 1, {
 
                         Toast.makeText(
@@ -237,22 +238,23 @@ class ViewModelScanFace @Inject constructor(
             val imageToBitmap = toBitmap(mediaImage!!)
 
 
-            val bos = ByteArrayOutputStream()
-            imageToBitmap?.compress(
-                Bitmap.CompressFormat.JPEG,
-                100 /*ignored for PNG*/,
-                bos
-            )
-            val bitmapdata: ByteArray = bos.toByteArray()
+//            val bos = ByteArrayOutputStream()
+//            imageToBitmap?.compress(
+//                Bitmap.CompressFormat.JPEG,
+//                100 /*ignored for PNG*/,
+//                bos
+//            )
+//            val bitmapdata: ByteArray = bos.toByteArray()
+//
+//            val fileStream = FileOutputStream(file)
+//            fileStream.write(bitmapdata)
+//            fileStream.flush()
+//            fileStream.close()
 
-            val fileStream = FileOutputStream(file)
-            fileStream.write(bitmapdata)
-            fileStream.flush()
-            fileStream.close()
 
-
-
-            faceRecognition(imageProxy.imageInfo.rotationDegrees)
+            if (imageToBitmap != null) {
+                faceRecognition(imageToBitmap,imageProxy.imageInfo.rotationDegrees)
+            }
 
             Log.d(TAG, "Image $captureImage")
 
@@ -305,16 +307,16 @@ class ViewModelScanFace @Inject constructor(
 
     }
 
-    fun faceRecognition(rotationDegrees: Int) {
+    fun faceRecognition(imageBitmap: Bitmap,rotationDegrees: Int) {
         if (mediaImage != null) {
 
-            getFile = File(
-                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
-                "/RecognizeImage/CaptureImage.jpg"
-            )
-            val options = BitmapFactory.Options()
-            options.inJustDecodeBounds = true
-            val imageBitmap = BitmapFactory.decodeFile(getFile!!.absolutePath)
+//            getFile = File(
+//                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+//                "/RecognizeImage/CaptureImage.jpg"
+//            )
+//            val options = BitmapFactory.Options()
+//            options.inJustDecodeBounds = true
+//            val imageBitmap = BitmapFactory.decodeFile(getFile!!.absolutePath)
 
 
 

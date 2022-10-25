@@ -3,6 +3,7 @@ package com.example.augmanium.beforeAuth.authViewModel
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import android.util.Patterns
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
@@ -40,6 +41,9 @@ class AuthViewModel @Inject constructor(): ViewModel()  {
 
 
     private fun notEmpty(): Boolean = userEmail.isNotEmpty() && userPassword.isNotEmpty() && userName.isNotEmpty()
+    fun String.isValidEmail(): Boolean {
+        return Patterns.EMAIL_ADDRESS.matcher(this).matches()
+    }
     fun signUp(binding: ActivitySignUpBinding, context: Context, database: DatabaseReference) {
 
         tinyDB = TinyDB(context)
@@ -58,25 +62,20 @@ class AuthViewModel @Inject constructor(): ViewModel()  {
 
         /*create a user*/
         if(notEmpty()) {
-            viewModelScope.launch(Dispatchers.IO) {
-                FirebaseUtils.firebaseAuth.createUserWithEmailAndPassword(userEmail, userPassword)
-                    .addOnCompleteListener { task ->
 
-                        if (task.isSuccessful) {
-                            Toast.makeText(context, "created account successfully !", Toast.LENGTH_SHORT).show()
-//                            getUser(userEmail, context)
-                            uploadFCMToken(userEmail,database,context)
-                            val intent = Intent(context, EditProfile::class.java)
-                           ActivityCompat.startActivity(context,intent,null)
-                            binding.progressLayout.visibility= View.INVISIBLE
-//                            ActivityCompat.finish()
-                        } else {
-                            Toast.makeText(context, "failed to Authenticate !", Toast.LENGTH_SHORT).show()
-                            println("error on signup.... " + task.exception)
+            val emailValid = binding.email.text.toString()
 
+            if(binding.editPassword.text.length <= 5){
+                showToast(context,"Password must have more then 6 digits")
+            }else if(!emailValid.isValidEmail()){
+                showToast(context, "Invalid e-mail...!")
+            }else if (binding.name.text.length <= 2){
+                showToast(context, "Invalid name")
+            }
+            else{
+                binding.progressLayout.visibility=View.VISIBLE
+                sigUpFireBase(context, binding)
 
-                        }
-                    }
             }
         }else{
             signInInputsArray.forEach { input ->
@@ -89,6 +88,34 @@ class AuthViewModel @Inject constructor(): ViewModel()  {
     }
 
 
+
+    fun sigUpFireBase(context: Context, binding: ActivitySignUpBinding) {
+
+        viewModelScope.launch(Dispatchers.IO) {
+            FirebaseUtils.firebaseAuth.createUserWithEmailAndPassword(userEmail, userPassword)
+                .addOnCompleteListener { task ->
+
+                    if (task.isSuccessful) {
+                        Toast.makeText(context, "created account successfully !", Toast.LENGTH_SHORT).show()
+//                            getUser(userEmail, context)
+                        uploadFCMToken(userEmail,database,context)
+                        val intent = Intent(context, EditProfile::class.java)
+                        ActivityCompat.startActivity(context,intent,null)
+                        binding.progressLayout.visibility= View.INVISIBLE
+//                            ActivityCompat.finish()
+                    } else {
+                        Toast.makeText(context, "failed to Authenticate !", Toast.LENGTH_SHORT).show()
+                        println("error on signup.... " + task.exception)
+
+
+                    }
+                }
+        }
+
+
+
+
+    }
 
 
 
@@ -190,6 +217,10 @@ class AuthViewModel @Inject constructor(): ViewModel()  {
             Log.d("GET_IMAGE_EXCEPTION","${e.localizedMessage}")
         }
 
+    }
+
+    fun showToast(context: Context, toastText: String) {
+        Toast.makeText(context, toastText, Toast.LENGTH_SHORT).show()
     }
 
 }

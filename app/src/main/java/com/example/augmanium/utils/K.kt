@@ -25,6 +25,7 @@ class K {
         val SEARCH_QUERY = "query"
         val GENDER = "gender"
         val CITY = "city"
+        val RET_FAC_REC = "face_rec_ret"
     }
 }
 

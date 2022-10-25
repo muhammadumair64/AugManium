@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.util.Log
+import android.util.Patterns
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
@@ -48,8 +49,8 @@ class SignIn : AppCompatActivity() {
         tinyDB = TinyDB(this)
 
         binding.signInBtn.setOnClickListener {
-            binding.progressLayout.visibility=View.VISIBLE
-            signInUser()
+            notEmptyCheck()
+
         }
         binding.signUp.setOnClickListener {
             val intent = Intent(this, SignUp::class.java)
@@ -115,26 +116,10 @@ class SignIn : AppCompatActivity() {
                 }
     }
 
-
-
-
-
-
-
-
     private fun notEmpty(): Boolean = signInEmail.isNotEmpty() && signInPassword.isNotEmpty()
 
-
-
-
-
-
-
     private fun signInUser() {
-        signInEmail = binding.email.text.toString().trim()
-        signInPassword = binding.editPassword.text.toString().trim()
 
-        if (notEmpty()) {
             lifecycleScope.launch(Dispatchers.IO) {
                firebaseAuth.signInWithEmailAndPassword(signInEmail, signInPassword)
                    .addOnCompleteListener { signIn ->
@@ -156,24 +141,63 @@ class SignIn : AppCompatActivity() {
                        else {
 
                            Log.d("Login_Exception "," ${signIn.exception}")
-
+                           binding.progressLayout.visibility=View.INVISIBLE
                            toast("sign in failed")
                        }
                    }
                    .addOnFailureListener {
                        Log.d("Faild_to_login"," ${it.localizedMessage}")
+                       toast("sign in failed")
+                       binding.progressLayout.visibility=View.INVISIBLE
                    }
            }
-           }
-        else {
-            signInInputsArray.forEach { input ->
-                if (input.text.toString().trim().isEmpty()) {
-                    input.error = "${input.hint} is required"
-                }
-            }
-        }
+
 
             }
+
+
+    fun notEmptyCheck(){
+        signInEmail = binding.email.text.toString().trim()
+        signInPassword = binding.editPassword.text.toString().trim()
+
+        if (notEmpty()) {
+            validate()
+        }
+    else {
+        signInInputsArray.forEach { input ->
+            if (input.text.toString().trim().isEmpty()) {
+                input.error = "${input.hint} is required"
+            }
+        }
+    }
+    }
+
+
+    fun String.isValidEmail(): Boolean {
+        return Patterns.EMAIL_ADDRESS.matcher(this).matches()
+    }
+
+
+    fun validate(){
+
+        val emailValid = binding.email.text.toString()
+
+        if(binding.editPassword.text.length <= 5){
+            showToast("Password must have more then 6 digits")
+        }else if(!emailValid.isValidEmail()){
+            showToast("Invalid e-mail...!")
+        }else{
+            binding.progressLayout.visibility=View.VISIBLE
+
+            signInUser()
+        }
+    }
+
+
+    fun showToast(toastText: String) {
+        Toast.makeText(this, toastText, Toast.LENGTH_SHORT).show()
+    }
+
 
     }
 

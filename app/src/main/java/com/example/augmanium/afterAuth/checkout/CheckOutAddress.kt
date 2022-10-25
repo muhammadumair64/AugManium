@@ -5,6 +5,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -25,6 +27,15 @@ import com.google.firebase.database.ValueEventListener
 class CheckOutAddress : AppCompatActivity() {
     lateinit var binding: ActivityCheckOutAddressBinding
     lateinit var tinyDB: TinyDB
+    lateinit var signInInputsArray: Array<EditText>
+
+    lateinit var home: String
+    lateinit var street: String
+    lateinit var name: String
+    lateinit var city: String
+    lateinit var state: String
+    lateinit var number: String
+
     var context :Context = this
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +43,7 @@ class CheckOutAddress : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_check_out_address)
 
+        signInInputsArray = arrayOf(binding.home, binding.streetDetail, binding.nameEditText, binding.cityNameEditText, binding.stateNameEditText, binding.numberEditText)
         val tokan = MyFirebaseMessagingService.getToken(this)
         if (tokan != null) {
             Log.d("AddressTesting",tokan)
@@ -51,23 +63,7 @@ class CheckOutAddress : AppCompatActivity() {
         binding.applyBtn.setOnClickListener {
             binding.apply {
 
-                if (home.text.equals("") && streetDetail.text.equals("") && nameEditText.text.equals(
-                        ""
-                    ) && cityNameEditText.text.equals("") && stateNameEditText.text.equals("")
-                ) {
-                    Log.d("AddressTesting","value is empty ")
-                         showToast()
-                } else {
-
-                  val value = "${home.text}:${streetDetail.text},${nameEditText.text},${cityNameEditText.text},${stateNameEditText.text}"
-                      tinyDB.putString(K.ADDRESS,value)
-                     tinyDB.putString(K.ADDRESS, value)
-                    uploadDataToFireBase(nodeName)
-                    Log.d("AddressTesting","$value")
-                    val intent = Intent(context , CheckOutPayment::class.java)
-                    startActivity(intent)
-
-                }
+                checkDetails(nodeName)
             }
 
 
@@ -83,31 +79,42 @@ class CheckOutAddress : AppCompatActivity() {
     }
 
 
-    fun showToast() {
-        Toast.makeText(this, "Fields Missing", Toast.LENGTH_SHORT).show()
-    }
+
+    private fun notEmpty(): Boolean = home.isNotEmpty() && street.isNotEmpty() && name.isNotEmpty() && city.isNotEmpty() && state.isNotEmpty() && number.isNotEmpty()
 
     fun uploadDataToFireBase(nodeName: String) {
 
+            val userinfo = AddressDetailDataClass(home, street, name, city, state, number)
+            Log.d("Data_FIRE", "${name} $city")
+            val rootRef = FirebaseDatabase.getInstance().reference
+            val yourRef = rootRef.child("User").child(nodeName).child("User Address")
+            yourRef.setValue(userinfo)
+            val postListener = object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    binding.progressLayout.visibility=View.INVISIBLE
+                    Toast.makeText(context, "UPLOADED", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(context , CheckOutPayment::class.java)
+                    startActivity(intent)
 
-        val home = binding.home.text.toString().trim()
-        val street = binding.streetDetail.text.toString().trim()
-        val name = binding.nameEditText.text.toString().trim()
-        val city = binding.cityNameEditText.text.toString().trim()
-        val state =  binding.stateNameEditText.text.toString().trim()
-        val number = binding.numberEditText.text.toString().trim()
-//        uploadToFirebase(imageUri, nodeName)
-//        var imageBitmap = MediaStore.Images.Media.getBitmap(this.contentResolver ,imageUri)
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    // Getting Post failed, log a message
+
+                }
+            }
+
+            rootRef.addValueEventListener(postListener)
+
+
+
+//        val userinfo = AddressDetailDataClass(home,street,name,city,state,number)
+//        Log.d("Data_FIRE", "${name} $city")
+//        val rootRef = FirebaseDatabase.getInstance().reference
+//        val yourRef = rootRef.child("User").child(nodeName).child("User Address")
+//        yourRef.setValue(userinfo)
 //
-//        var imgString = BitMapToString(imageBitmap)
-
-        val userinfo = AddressDetailDataClass(home,street,name,city,state,number)
-        Log.d("Data_FIRE", "${name} $city")
-        val rootRef = FirebaseDatabase.getInstance().reference
-        val yourRef = rootRef.child("User").child(nodeName).child("User Address")
-        yourRef.setValue(userinfo)
-
-        Toast.makeText(context,"UPLOADED", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(context,"UPLOADED", Toast.LENGTH_SHORT).show()
 
 
 
@@ -162,4 +169,57 @@ class CheckOutAddress : AppCompatActivity() {
 
         })
     }
+
+    fun checkDetails(nodeName: String) {
+        home = binding.home.text.toString().trim()
+        street = binding.streetDetail.text.toString().trim()
+        name = binding.nameEditText.text.toString().trim()
+        city = binding.cityNameEditText.text.toString().trim()
+        state = binding.stateNameEditText.text.toString().trim()
+        number = binding.numberEditText.text.toString().trim()
+        if (notEmpty()){
+            validateText(nodeName)
+        }else{
+            signInInputsArray.forEach { input ->
+                if (input.text.toString().trim().isEmpty()) {
+                    input.error = "${input.hint} is required"
+                }
+            }
+        }
+    }
+
+    fun validateText(nodeName: String) {
+        binding.apply {
+            if(home.text.length <= 2)
+            {
+                showToast("Incomplete Home Address")
+            }else if(streetDetail.text.length <= 5){
+                showToast("Incomplete Street Detail")
+            }else if(nameEditText.text.length <= 3){
+                showToast("Incomplete Name")
+            }else if(cityNameEditText.text.length <= 3){
+                showToast("Incomplete City Name")
+            }else if(stateNameEditText.text.length <= 3){
+                showToast("Incomplete State Name")
+            }else if(numberEditText.text.length <= 10){
+                showToast("Incomplete Number")
+            }else{
+                val value = "${home.text}:${streetDetail.text},${nameEditText.text},${cityNameEditText.text},${stateNameEditText.text}"
+                tinyDB.putString(K.ADDRESS,value)
+                tinyDB.putString(K.ADDRESS, value)
+                binding.progressLayout.visibility= View.VISIBLE
+                uploadDataToFireBase(nodeName)
+                Log.d("AddressTesting","$value")
+            }
+        }
+
+
+    }
+
+    fun showToast(toastText: String) {
+        Toast.makeText(context, toastText, Toast.LENGTH_SHORT).show()
+    }
+
+
+
 }

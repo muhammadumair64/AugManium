@@ -3,6 +3,8 @@ package com.example.augmanium.beforeAuth
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.util.Patterns
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.augmanium.R
@@ -28,15 +30,31 @@ class ForgotPassword : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding =DataBindingUtil.setContentView(this,R.layout.activity_forgot_password)
         tinyDB = TinyDB(this)
+
+        var ret = tinyDB.getInt(K.RET_FAC_REC)
+        if ( ret == 1){
+            Toast.makeText(this, "Face not match...", Toast.LENGTH_SHORT).show()
+        }
+
         tinyDB.clear()
         database = FirebaseDatabase.getInstance().reference
         binding.scanFace.setOnClickListener {
+            val emailValid = binding.email.text.toString()
+            if(!emailValid.isValidEmail()){
+                Toast.makeText(this, "Email not valid", Toast.LENGTH_SHORT).show()
+            }else{
             forgotPassword()
+            }
         }
 
         binding.backButton.setOnClickListener {
             finish()
         }
+    }
+
+
+    fun String.isValidEmail(): Boolean {
+        return Patterns.EMAIL_ADDRESS.matcher(this).matches()
     }
 
     fun forgotPassword(){
@@ -52,7 +70,7 @@ class ForgotPassword : AppCompatActivity() {
 
         database.child("User").child(nodeName).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.child("email").value==email) {
+                    if (snapshot.child("User Data").child("email").value==email) {
                         var userImage = snapshot.child("Image").child("imgUrl").value
                         tinyDB.putString(K.USER_IMG,userImage.toString())
                         tinyDB.putString(K.EMAIL_FORGOT,email)
