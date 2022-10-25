@@ -79,6 +79,7 @@ class ForgotPassword : AppCompatActivity() {
                         val intent = Intent(this@ForgotPassword, ScanFace::class.java)
                         startActivity(intent)
                     } else {
+                        Toast.makeText(this@ForgotPassword, "User not exist", Toast.LENGTH_SHORT).show()
                         //do something if not exists
                         Log.d("Check_EMAIL", "NOT_Exist    ${snapshot}  ${snapshot.child("email")}")
                     }

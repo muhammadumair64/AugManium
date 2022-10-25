@@ -50,9 +50,10 @@ lateinit var binding: ActivityModelBinding
 
         val arFragment = supportFragmentManager
             .findFragmentById(R.id.arFragment) as ArFragment?
-        findViewById<View>(R.id.add_to_cart_layout)
+        findViewById<View>(R.id.download)
             .setOnClickListener { v: View? ->
                 try {
+                    binding.download.visibility=View.INVISIBLE
                     binding.progressLayout.visibility = View.VISIBLE
                     val file = File.createTempFile("$modalName", "glb")
                     modelRef.getFile(file).addOnSuccessListener { buildModel(file) }
