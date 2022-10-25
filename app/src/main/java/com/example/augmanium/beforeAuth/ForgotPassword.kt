@@ -25,13 +25,14 @@ class ForgotPassword : AppCompatActivity() {
     lateinit var binding: ActivityForgotPasswordBinding
     lateinit var tinyDB: TinyDB
     lateinit var database: com.google.firebase.database.DatabaseReference
+    var ret = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding =DataBindingUtil.setContentView(this,R.layout.activity_forgot_password)
         tinyDB = TinyDB(this)
 
-        var ret = tinyDB.getInt(K.RET_FAC_REC)
+        ret = tinyDB.getInt(K.RET_FAC_REC)
         if ( ret == 1){
             Toast.makeText(this, "Face not match...", Toast.LENGTH_SHORT).show()
         }
