@@ -3,6 +3,7 @@ package com.example.augmanium.beforeAuth
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.augmanium.R
@@ -52,8 +53,8 @@ class ForgotPassword : AppCompatActivity() {
 
         database.child("User").child(nodeName).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.child("email").value==email) {
-                        var userImage = snapshot.child("Image").child("imgUrl").value
+                    if (snapshot.child("User Data").child("email").value==email) {
+                        val userImage = snapshot.child("Image").child("imgUrl").value
                         tinyDB.putString(K.USER_IMG,userImage.toString())
                         tinyDB.putString(K.EMAIL_FORGOT,email)
                         //do ur stuff
@@ -61,6 +62,7 @@ class ForgotPassword : AppCompatActivity() {
                         val intent = Intent(this@ForgotPassword, ScanFace::class.java)
                         startActivity(intent)
                     } else {
+                        Toast.makeText(this@ForgotPassword, "User not exist", Toast.LENGTH_SHORT).show()
                         //do something if not exists
                         Log.d("Check_EMAIL", "NOT_Exist    ${snapshot}  ${snapshot.child("email")}")
                     }

@@ -123,7 +123,7 @@ binding.Address.text = address.toString()
 
        val order = OrderDataClass(totalPrice,millis.toString(),getTime(),summaryArrayList)
         val location = LatLongDataClass()
-        val status = StatusDataClass()
+        val status = StatusDataClass(getTimeForStatus())
         email?.let { database.child("User").child(it).child("Orders").child(millis.toString()).setValue(order)
             database.child("User").child(it).child("Orders").child(millis.toString()).child("location").setValue(location)
             database.child("User").child(it).child("Orders").child(millis.toString()).child("status").setValue(status)
@@ -162,6 +162,18 @@ binding.Address.text = address.toString()
 
 // goes to main method or onCreate(Android)
         df = SimpleDateFormat("dd-MM-yyyy HH:mm a")
+        formattedDate = df!!.format(c.time)
+        println("Format dateTime => $formattedDate")
+        return formattedDate
+    }
+
+    fun getTimeForStatus(): String {
+        val c : Calendar = Calendar.getInstance()
+        var df : SimpleDateFormat? = null
+        var formattedDate = ""
+
+// goes to main method or onCreate(Android)
+        df = SimpleDateFormat("MM/dd")
         formattedDate = df!!.format(c.time)
         println("Format dateTime => $formattedDate")
         return formattedDate
