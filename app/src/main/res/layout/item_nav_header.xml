@@ -13,6 +13,7 @@
         android:orientation="vertical">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/headerImage"
             android:layout_width="@dimen/_60sdp"
             android:layout_height="@dimen/_60sdp"
             android:src="@color/white"
@@ -20,21 +21,21 @@
             />
 
         <TextView
-            android:id="@+id/Username"
+            android:id="@+id/headerUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="Muhammad Umair"
+            android:text="User Name"
             android:textColor="@color/white"
             android:textSize="@dimen/_16sdp" />
 
         <TextView
-            android:id="@+id/Email"
+            android:id="@+id/headerEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
-            android:text="Muhammadumair@gmail.com"
+            android:text="Username@gmail.com"
             android:textColor="@color/white"
             android:textSize="@dimen/_11sdp" />
 

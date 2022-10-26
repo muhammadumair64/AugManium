@@ -89,8 +89,8 @@ class EditProfile : AppCompatActivity() {
     private fun setViews() {
 //        var image
         img = tinyDB.getString(K.USER_IMG)
-        var gender = tinyDB.getString(K.GENDER)
-        var city = tinyDB.getString(K.CITY)
+        val gender = tinyDB.getString(K.GENDER)
+        val city = tinyDB.getString(K.CITY)
 //        img = image
 
 

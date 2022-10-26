@@ -133,8 +133,15 @@ binding.Address.text = address.toString()
         viewModelScope.launch {
             val postListener = object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    Toast.makeText(context, "Order Place", Toast.LENGTH_SHORT).show()
-                    Toast.makeText(context, "At Same Place", Toast.LENGTH_SHORT).show()
+                    try{
+                        val intent = Intent(context, OrderCompleteScreen::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        context.startActivity(intent)
+                        (context as CheckoutSummary).finish()
+                    }catch (e:Exception){
+                        Log.d("orderPlace","Error : $e")
+                    }
+
                 }
 
                 override fun onCancelled(databaseError: DatabaseError) {
@@ -144,10 +151,8 @@ binding.Address.text = address.toString()
             }
 
             database.addValueEventListener(postListener)
-            (context as CheckoutSummary).finish()
-            val intent = Intent(context, OrderCompleteScreen::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            context.startActivity(intent)
+
+
 
         }
 
@@ -162,7 +167,7 @@ binding.Address.text = address.toString()
 
 // goes to main method or onCreate(Android)
         df = SimpleDateFormat("dd-MM-yyyy HH:mm a")
-        formattedDate = df!!.format(c.time)
+        formattedDate = df.format(c.time)
         println("Format dateTime => $formattedDate")
         return formattedDate
     }
@@ -174,7 +179,7 @@ binding.Address.text = address.toString()
 
 // goes to main method or onCreate(Android)
         df = SimpleDateFormat("MM/dd")
-        formattedDate = df!!.format(c.time)
+        formattedDate = df.format(c.time)
         println("Format dateTime => $formattedDate")
         return formattedDate
     }

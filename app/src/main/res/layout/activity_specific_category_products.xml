@@ -206,16 +206,16 @@
                     android:textSize="@dimen/_13sdp"
                     />
 
-                <TextView
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Logout"
-                    android:textColor="@color/headerColor"
-                    android:textSize="@dimen/_13sdp"
-                    android:fontFamily="@font/montserrat_semibold"
+<!--                <TextView-->
+<!--                    android:layout_marginTop="@dimen/_10sdp"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Logout"-->
+<!--                    android:textColor="@color/headerColor"-->
+<!--                    android:textSize="@dimen/_13sdp"-->
+<!--                    android:fontFamily="@font/montserrat_semibold"-->
 
-                    />
+<!--                    />-->
 
             </LinearLayout>
 

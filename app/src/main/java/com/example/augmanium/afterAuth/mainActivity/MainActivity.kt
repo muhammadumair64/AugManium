@@ -18,13 +18,22 @@ import com.example.augmanium.afterAuth.mainActivity.viewModel.MainActivityViewMo
 import com.example.augmanium.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import android.content.Intent
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
 import com.example.augmanium.afterAuth.category.AllCategories
 import com.example.augmanium.afterAuth.category.CategoryScreen
 import com.example.augmanium.afterAuth.notification.NotificationScreen
+import com.example.augmanium.utils.K
+import com.example.augmanium.utils.TinyDB
+import kotlinx.android.synthetic.main.activity_product_details.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 import org.checkerframework.checker.units.qual.A
-
-
+import java.util.*
+import kotlin.concurrent.schedule
 
 
 @AndroidEntryPoint
@@ -33,15 +42,18 @@ companion object{
 
     var mainContext = this
 }
+ lateinit var tinyDB: TinyDB
     var position = 0
     lateinit var binding:ActivityMainBinding
+
 //    val viewModel: MainActivityViewModel by viewModels<MainActivityViewModel>()
     val context = this
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
+        tinyDB = TinyDB(this)
         slidingDrawer()
-     navigationBar()
+       navigationBar()
 
 //        viewModel.catagoryRvBinding(this,binding)
     }
@@ -61,6 +73,7 @@ companion object{
 
 
     fun navigationBar() {
+
 
         binding.menu.setMenuResource(
             R.menu.navigationbar_menu,
@@ -205,10 +218,18 @@ companion object{
 
 
         }
+
+
     }
     fun menuFuction() {
 
            binding.drawerLayout.openDrawer(Gravity.LEFT)
+        Timer().schedule(500) {
+           lifecycleScope.launch(Dispatchers.Main) {
+
+               setHeaderData()
+           }
+        }
 
     }
     override fun onBackPressed() {
@@ -236,5 +257,23 @@ companion object{
     }
     fun profileSector(){
         binding.menu.setItemSelected(R.id.profileFragment, true)
+    }
+
+
+    fun setHeaderData(){
+       val image=findViewById<de.hdodenhof.circleimageview.CircleImageView>(R.id.headerImage)
+      val  headerName = findViewById<TextView>(R.id.headerUsername)
+      val  headerEmail = findViewById<TextView>(R.id.headerEmail)
+
+        val img = tinyDB.getString(K.USER_IMG)
+
+        headerName.text = tinyDB.getString(K.USER_NAME)
+        headerEmail.text = tinyDB.getString(K.EMAIL)
+
+        Log.d("HeaderTesting"," Value = $img")
+        Glide.with(this)
+            .load(img)
+            .override(300, 200)
+            .into(image);
     }
 }

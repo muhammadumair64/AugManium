@@ -1,6 +1,5 @@
 package com.example.augmanium.beforeAuth.signin
 
-import android.R
 import android.content.Intent
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
@@ -20,6 +19,8 @@ import com.example.augmanium.beforeAuth.SignUp
 import com.example.augmanium.beforeAuth.authViewModel.AuthViewModel
 import com.example.augmanium.beforeAuth.fireBase.Extensions.toast
 import com.example.augmanium.beforeAuth.fireBase.FirebaseUtils.firebaseAuth
+import com.example.augmanium.dataClass.UserImage
+import com.example.augmanium.dataClass.UserInfo
 import com.example.augmanium.databinding.ActivitySignInBinding
 import com.example.augmanium.utils.K
 import com.example.augmanium.utils.TinyDB
@@ -124,14 +125,16 @@ class SignIn : AppCompatActivity() {
                firebaseAuth.signInWithEmailAndPassword(signInEmail, signInPassword)
                    .addOnCompleteListener { signIn ->
                        if (signIn.isSuccessful) {
-                           tinyDB.putString(K.EMAIL,signInEmail)
-                           viewModel.uploadFCMToken(signInEmail,database,this@SignIn)
-                           viewModel.getUser(signInEmail, this@SignIn)
 
+
+                               tinyDB.putString(K.EMAIL,signInEmail)
+                               viewModel.uploadFCMToken(signInEmail,database,this@SignIn)
+                               viewModel.getUser(signInEmail, this@SignIn)
                            tinyDB.putString(K.PASSWORD,signInPassword)
-                           binding.progressLayout.visibility=View.INVISIBLE
-                           val intent = Intent(this@SignIn, MainActivity::class.java)
-                           startActivity(intent)
+                               getUser(signInEmail)
+
+
+
 
 //
 //                           val intent = Intent(this@SignIn, ModelActivity::class.java)
@@ -196,6 +199,63 @@ class SignIn : AppCompatActivity() {
 
     fun showToast(toastText: String) {
         Toast.makeText(this, toastText, Toast.LENGTH_SHORT).show()
+    }
+
+
+    fun getUser(email: String) {
+        val separated: List<String> = email.split("@")
+        val nodeName = separated[0]
+        database.child("User").child(nodeName).child("User Data").addListenerForSingleValueEvent(object :
+            ValueEventListener {
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val user = snapshot.getValue(UserInfo::class.java)
+                if (user != null) {
+                    Log.d("USER_INFO ","${user.userName}   ${user.gender}")
+                }
+                tinyDB.putString(K.USER_NAME, user!!.userName)
+                tinyDB.putString(K.GENDER,user.gender)
+                tinyDB.putString(K.CITY,user.city)
+                getUserImage(nodeName)
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.d("ERROR_DATABASE","$error")
+            }
+
+        })
+    }
+
+
+    fun getUserImage(nodeName: String) {
+        Log.d("IMAGE User ","${nodeName}")
+
+        binding.progressLayout.visibility=View.VISIBLE
+        database.child("User").child(nodeName).child("Image").addListenerForSingleValueEvent(object :
+            ValueEventListener {
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+//                for (snap in snapshot.getChildren()) {
+                val image = ""
+                Log.d("IMAGE User ","${snapshot.key}   ${snapshot.value}")
+                val user = snapshot.getValue(UserImage::class.java)
+//                    Log.d("IMAGE User ","${user!!.imgUrl}")
+                tinyDB.putString(K.USER_IMG,user!!.imgUrl)
+//                    tinyDB.putString(K.USER_NAME, user!!.userName)
+
+                binding.progressLayout.visibility=View.INVISIBLE
+                val intent = Intent(this@SignIn, MainActivity::class.java)
+                startActivity(intent)
+//                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.d("ERROR_DATABASE","$error")
+            }
+
+        })
     }
 
 
