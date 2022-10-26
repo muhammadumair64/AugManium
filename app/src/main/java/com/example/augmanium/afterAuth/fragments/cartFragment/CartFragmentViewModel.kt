@@ -52,13 +52,14 @@ class CartFragmentViewModel @Inject constructor() : ViewModel(), CartRVClick {
             val intent = Intent(activitycontext,CheckOutAddress::class.java)
             activitycontext.startActivity(intent)
         }
-
         getCartData()
 
     }
 
     fun getCartData(){
+        totalPriceOfProducts = 0
         cartFragmentArrayList.clear()
+        activityBinding.checkout.visibility=View.INVISIBLE
         activityBinding.progressLayout.visibility= View.VISIBLE
         email = tinyDB.getString(K.EMAIL).toString()
         val separated: List<String> = email!!.split("@")
@@ -83,11 +84,15 @@ class CartFragmentViewModel @Inject constructor() : ViewModel(), CartRVClick {
                         totalPriceOfProducts += currentPrize
                         Log.d("PRODUCT_PRICE","$totalPriceOfProducts")
                         cartFragmentArrayList.add(cartData)
+                        activityBinding.checkout.visibility=View.VISIBLE
                         Log.d("CART_DATA___"," $cartFragmentArrayList")
-                        rv()
+                    }else{
+                        totalPriceOfProducts = 0
+                        activityBinding.subTotalPrice.text = totalPriceOfProducts.toString()
                     }
 
                 }
+                rv()
                 activityBinding.progressLayout.visibility=View.INVISIBLE
             }
 
@@ -125,8 +130,9 @@ class CartFragmentViewModel @Inject constructor() : ViewModel(), CartRVClick {
             FirebaseDatabase.getInstance().reference.child("Cart").child(nodeName)
                 .child(product.productName!!)
                 .removeValue()
-            getCartData()
             Toast.makeText(activitycontext, "Item deleted", Toast.LENGTH_SHORT).show()
+            getCartData()
+
         }
         alert.setNegativeButton("no") { dialoge, id ->
             Toast.makeText(activitycontext, "cancel", Toast.LENGTH_SHORT).show()

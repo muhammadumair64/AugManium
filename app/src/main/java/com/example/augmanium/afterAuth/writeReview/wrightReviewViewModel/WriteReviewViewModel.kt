@@ -3,9 +3,11 @@ package com.example.augmanium.afterAuth.writeReview.wrightReviewViewModel
 import android.content.Context
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import com.bumptech.glide.Glide
 import com.example.augmanium.afterAuth.mainActivity.dataClass.AllProductDataClass
+import com.example.augmanium.afterAuth.mainActivity.dataClass.CartDataClass
 import com.example.augmanium.afterAuth.writeReview.WriteReviewScreen
 import com.example.augmanium.afterAuth.writeReview.adapter.WriteReviewAdapter
 import com.example.augmanium.afterAuth.writeReview.dataClass.UploadReview
@@ -64,6 +66,10 @@ class WriteReviewViewModel @Inject constructor() :ViewModel() {
             }
             detail.setOnClickListener {
                 (context as WriteReviewScreen).finish()
+            }
+
+            addtocart.setOnClickListener {
+                addToCart(data)
             }
 
 
@@ -135,6 +141,34 @@ class WriteReviewViewModel @Inject constructor() :ViewModel() {
 
     }
 
+
+    fun addToCart(data: AllProductDataClass){
+
+        val email = tinyDB.getString(K.EMAIL)
+        val separated: List<String> = email!!.split("@")
+        val nodeName = separated[0]
+
+        Log.d("NODE_NAME_USER","$nodeName")
+        val cartItem = CartDataClass(data.image,data.prize,data.productCategory,data.productColor,data.productDescription,data.productName,data.productSize,data.id,"1")
+        val rootRef = FirebaseDatabase.getInstance().reference
+        rootRef.child("Cart").child(nodeName).child(data.productName!!).setValue(cartItem)
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                Toast.makeText(context, "Product Added", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+
+            }
+        }
+
+        database.addValueEventListener(postListener)
+
+
+
+
+    }
 
 
 }
