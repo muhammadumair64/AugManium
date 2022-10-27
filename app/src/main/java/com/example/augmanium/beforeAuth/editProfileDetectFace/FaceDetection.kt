@@ -61,6 +61,8 @@ class FaceDetection : AppCompatActivity() {
             }
         } catch (e: Exception) {
             e.localizedMessage
+            binding.progressLayout.visibility=View.INVISIBLE
+            finish()
         }
 
 

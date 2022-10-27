@@ -326,7 +326,10 @@ class FaceRecognition {
 
                         if (count == 10){
                             tinyDB.putInt(K.RET_FAC_REC,1)
-                            (context as ScanFace).finish()
+                            CoroutineScope(Job()).launch(Dispatchers.Main) {
+                                Toast.makeText(context, "Face not match", Toast.LENGTH_SHORT).show()
+                                (context as ScanFace).finish()
+                            }
                         }
 //                        BaseClass.runOnMain {
 //                            Toast.makeText(context, "Face not match", Toast.LENGTH_SHORT).show()

@@ -32,10 +32,10 @@ class ForgotPassword : AppCompatActivity() {
         binding =DataBindingUtil.setContentView(this,R.layout.activity_forgot_password)
         tinyDB = TinyDB(this)
 
-        ret = tinyDB.getInt(K.RET_FAC_REC)
-        if ( ret == 1){
-            Toast.makeText(this, "Face not match...", Toast.LENGTH_SHORT).show()
-        }
+//        ret = tinyDB.getInt(K.RET_FAC_REC)
+//        if ( ret == 1){
+//            Toast.makeText(this, "Face not match...", Toast.LENGTH_SHORT).show()
+//        }
 
         tinyDB.clear()
         database = FirebaseDatabase.getInstance().reference

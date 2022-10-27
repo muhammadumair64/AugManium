@@ -35,7 +35,6 @@ class SignUp : AppCompatActivity() {
 
         database = FirebaseDatabase.getInstance().reference
         binding.signupBtn.setOnClickListener {
-            binding.progressLayout.visibility= View.VISIBLE
             viewModel.signUp(binding,this,database)
 
         }

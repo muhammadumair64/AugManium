@@ -76,6 +76,8 @@ class EditProfile : AppCompatActivity() {
         if (comesFrom == 3) {
             img = tinyDB.getString(K.USER_IMG)
             binding.profilePhoto.setImageURI(Uri.parse(img.toString()))
+            binding.progressLayout.visibility= View.INVISIBLE
+
         }
 //        }
 
@@ -140,6 +142,7 @@ class EditProfile : AppCompatActivity() {
 
             override fun onCancelled(error: DatabaseError) {
                 Log.d("ERROR_DATABASE","$error")
+
             }
 
         })
@@ -149,7 +152,7 @@ class EditProfile : AppCompatActivity() {
     fun getUserImage(nodeName: String) {
         Log.d("IMAGE User ","${nodeName}")
 
-        binding.progressLayout.visibility=View.VISIBLE
+//        binding.progressLayout.visibility=View.VISIBLE
         database.child("User").child(nodeName).child("Image").addListenerForSingleValueEvent(object :
             ValueEventListener {
 
@@ -169,9 +172,12 @@ class EditProfile : AppCompatActivity() {
 
             override fun onCancelled(error: DatabaseError) {
                 Log.d("ERROR_DATABASE","$error")
+                binding.progressLayout.visibility=View.INVISIBLE
+
             }
 
         })
+
     }
 
 
@@ -229,9 +235,9 @@ class EditProfile : AppCompatActivity() {
         if (tinyDB.getInt(K.SIGN_UP) == 2){
             finish()
         }else{
-//            val intent = Intent(this, MainActivity::class.java)
-//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            startActivity(intent)
+            val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent)
             finish()
         }
 //        var intent = Intent(this, MainActivity::class.java)

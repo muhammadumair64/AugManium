@@ -20,10 +20,11 @@
             android:layout_height="wrap_content">
 
             <ImageView
+                android:id="@+id/backBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:src="@drawable/ic_menu" />
+                android:src="@drawable/ic_back" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -74,16 +75,16 @@
                 android:textSize="@dimen/_18sdp"
                 android:textColor="@color/secondary" />
 
-            <TextView
-                android:id="@+id/researchItemCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="15 Items found"
-                android:textColor="@color/gray"
-                android:textSize="@dimen/_10sdp" />
+<!--            <TextView-->
+<!--                android:id="@+id/researchItemCount"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:fontFamily="@font/montserrat_bold"-->
+<!--                android:text="15 Items found"-->
+<!--                android:textColor="@color/gray"-->
+<!--                android:textSize="@dimen/_10sdp" />-->
 
         </RelativeLayout>
 

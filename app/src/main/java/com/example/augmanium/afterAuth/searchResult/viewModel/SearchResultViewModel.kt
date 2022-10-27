@@ -41,6 +41,9 @@ class SearchResultViewModel @Inject constructor(): ViewModel(), OnItemClickListe
         binding.searchBtn.setOnClickListener {
             (context as SearchResult).finish()
         }
+        binding.backBtn.setOnClickListener {
+            (context as SearchResult).finish()
+        }
 
         var search_for= tinyDB.getString(K.SEARCH_QUERY)
         productsTitleArrayList.clear()

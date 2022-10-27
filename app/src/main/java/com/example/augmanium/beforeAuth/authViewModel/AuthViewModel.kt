@@ -106,10 +106,12 @@ class AuthViewModel @Inject constructor(): ViewModel()  {
                     } else {
                         Toast.makeText(context, "failed to Authenticate !", Toast.LENGTH_SHORT).show()
                         println("error on signup.... " + task.exception)
+                        binding.progressLayout.visibility= View.INVISIBLE
 
 
                     }
                 }
+
         }
 
 

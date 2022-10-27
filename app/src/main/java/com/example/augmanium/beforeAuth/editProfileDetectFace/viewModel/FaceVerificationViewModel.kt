@@ -56,7 +56,7 @@ class FaceVerificationViewModel @Inject constructor() : ViewModel() {
         binding.ok.setOnClickListener {
 
             if (faceListSize == 1) {
-                binding.progressLayout.visibility=View.VISIBLE
+                binding.progressLayout.visibility=View.INVISIBLE
                 val returnIntent = Intent()
                 returnIntent.putExtra("ImageUri", imageUri.toString())
                 Log.d("IMAGE","IMAGE URI FVM $imageUri")
