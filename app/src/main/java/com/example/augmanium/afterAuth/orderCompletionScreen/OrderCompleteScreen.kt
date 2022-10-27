@@ -3,6 +3,7 @@ package com.example.augmanium.afterAuth.orderCompletionScreen
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import com.example.augmanium.R
 import com.example.augmanium.afterAuth.trackOrder.TrackOrder
@@ -35,6 +36,7 @@ lateinit var tinyDb :TinyDB
 
         binding.trackOrderBtn.setOnClickListener {
             val intent = Intent(this, TrackOrder::class.java)
+            finishAffinity()
             startActivity(intent)
         }
       val order =  tinyDb.getString(K.Order)
@@ -47,9 +49,15 @@ lateinit var tinyDb :TinyDB
 //        }
 
     }
-    fun deleteCart(nodeName: String){
-        FirebaseDatabase.getInstance().reference.child("Cart").child(nodeName)
-            .removeValue()
+
+        fun deleteCart(nodeName: String){
+            try{
+                FirebaseDatabase.getInstance().reference.child("Cart").child(nodeName)
+                    .removeValue()
+            } catch (e:Exception){
+                Log.d("OrderCompleteTag"," Error : $e")
+            }
+
     }
 
 }

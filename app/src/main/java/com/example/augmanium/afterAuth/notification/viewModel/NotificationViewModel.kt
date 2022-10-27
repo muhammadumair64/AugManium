@@ -32,6 +32,7 @@ class NotificationViewModel @Inject constructor(): ViewModel() {
         binding.progressLayout.visibility= View.VISIBLE
 
       var email =  tinyDb.getString(K.EMAIL)
+
         if (email != null) {
             email = email.split("@").toTypedArray()[0]
         }
@@ -43,9 +44,11 @@ class NotificationViewModel @Inject constructor(): ViewModel() {
                 for (snapshot in dataSnapshot.children) {
 
                 val node = snapshot.getValue(AlertDataClass::class.java)
-                    notificationArrayList.add(NotificationDataClass("Alert!", node!!.body,
-                        node.time
-                    ))
+                    if (node != null) {
+                        notificationArrayList.add(NotificationDataClass("Alert!", node.body,
+                            node.time
+                        ))
+                    }
 
                     binding.progressLayout.visibility=View.INVISIBLE
                     Log.d("DataTesting","$snapshot")

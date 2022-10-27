@@ -10,10 +10,12 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
 import com.example.augmanium.R
 import com.example.augmanium.afterAuth.addAddress.AddAddress
 import com.example.augmanium.afterAuth.addAddress.dataClass.AddressDetailDataClass
 import com.example.augmanium.afterAuth.checkout.checkOutPayment.CheckOutPayment
+import com.example.augmanium.afterAuth.orderCompletionScreen.OrderCompleteScreen
 import com.example.augmanium.databinding.ActivityCheckOutAddressBinding
 
 import com.example.augmanium.utils.K
@@ -23,6 +25,10 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.util.*
+import kotlin.concurrent.schedule
 
 class CheckOutAddress : AppCompatActivity() {
     lateinit var binding: ActivityCheckOutAddressBinding
@@ -35,10 +41,11 @@ class CheckOutAddress : AppCompatActivity() {
     lateinit var city: String
     lateinit var state: String
     lateinit var number: String
-
+var nextCheck = false
     var context :Context = this
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        nextCheck = true
         tinyDB = TinyDB(this)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_check_out_address)
@@ -92,9 +99,18 @@ class CheckOutAddress : AppCompatActivity() {
             val postListener = object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     binding.progressLayout.visibility=View.INVISIBLE
-                    Toast.makeText(context, "UPLOADED", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(context , CheckOutPayment::class.java)
-                    startActivity(intent)
+                    if(nextCheck){
+                        Toast.makeText(context, "UPLOADED", Toast.LENGTH_SHORT).show()
+                        Timer().schedule(1000) {
+                            lifecycleScope.launch(Dispatchers.Main){
+                                val intent = Intent(context , CheckOutPayment::class.java)
+                                startActivity(intent)
+                                nextCheck = false
+                                finish()
+
+                            }
+                        }
+                    }
 
                 }
 
@@ -103,8 +119,8 @@ class CheckOutAddress : AppCompatActivity() {
 
                 }
             }
+           rootRef.addValueEventListener(postListener)
 
-            rootRef.addValueEventListener(postListener)
 
 
 

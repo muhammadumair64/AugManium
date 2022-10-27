@@ -2,7 +2,9 @@ package com.example.augmanium.afterAuth.trackOrder
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -19,12 +21,19 @@ class TrackOrder : AppCompatActivity() {
     lateinit var tinyDb:TinyDB
     lateinit var binding: ActivityTrackOrderBinding
     lateinit var database: DatabaseReference
+    var orderID = ""
+    var email=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_track_order)
         tinyDb = TinyDB(this)
         database = FirebaseDatabase.getInstance().reference
-        getOrderStatus()
+        try{
+            getOrderStatus()
+        } catch (e:Exception){
+            Log.d("TrackOrderTag","Error : $e")
+        }
+
         btnListners()
     }
 
@@ -44,13 +53,21 @@ class TrackOrder : AppCompatActivity() {
 
     fun getOrderStatus()
     {
-
-        var email =  tinyDb.getString(K.EMAIL)
-        if (email != null) {
+        try{
+             email = tinyDb.getString(K.EMAIL).toString()
             email = email.split("@").toTypedArray()[0]
+            orderID = tinyDb.getString(K.Order).toString()
+            if(orderID==""){
+                Toast.makeText(this, "Order Not place yet", Toast.LENGTH_SHORT).show()
+            }
+            binding.OrderID.text = orderID.toString()
+
+
+        } catch (e:Exception){
+            Log.d("TrackOrderTag","Error : $e")
         }
-        val orderID =tinyDb.getString(K.Order)
-binding.OrderID.text = orderID.toString()
+
+
         val postListener = object : ValueEventListener {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
