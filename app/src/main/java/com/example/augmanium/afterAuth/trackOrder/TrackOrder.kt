@@ -58,6 +58,7 @@ class TrackOrder : AppCompatActivity() {
             email = email.split("@").toTypedArray()[0]
             orderID = tinyDb.getString(K.Order).toString()
             if(orderID==""){
+                binding.trackOrderBtn.visibility = View.INVISIBLE
                 Toast.makeText(this, "Order Not place yet", Toast.LENGTH_SHORT).show()
             }
             binding.OrderID.text = orderID.toString()

@@ -67,14 +67,14 @@ viewModelScope.launch {
                         OrderHistoryDataClass(node.OrderID,(node.totalPrice).toString(),node.time)
                     )
 
-                    binding.progressLayout.visibility=View.INVISIBLE
+
                 }
 
 
                 Log.d("DataTesting","$snapshot")
             }
 
-
+            binding.progressLayout.visibility=View.INVISIBLE
             binding.orderHistoryRv.also {
                 it.adapter =OrderHistoryAdapter(orderHistoryArrayList,this@OrderHistoryViewModel)
                 it.setHasFixedSize(true)

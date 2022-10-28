@@ -50,9 +50,10 @@ class NotificationViewModel @Inject constructor(): ViewModel() {
                         ))
                     }
 
-                    binding.progressLayout.visibility=View.INVISIBLE
                     Log.d("DataTesting","$snapshot")
                 }
+                binding.progressLayout.visibility=View.INVISIBLE
+
                 binding.orderHistoryRv.also {
                     it.adapter = NotificationAdapter(notificationArrayList)
                     it.setHasFixedSize(true)

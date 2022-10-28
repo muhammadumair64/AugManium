@@ -47,6 +47,7 @@ class EditProfile : AppCompatActivity() {
     var img: String? =""
 //    var city: String=""
 //    var gender: String=""
+    var imageUpload = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -203,8 +204,20 @@ class EditProfile : AppCompatActivity() {
             startActivity(intent)
         }
         binding.saveBtn.setOnClickListener {
-            uploadDataToFireBase()
+            validate()
 
+        }
+    }
+
+    fun validate(){
+        if(binding.city.text.length <= 2){
+            Toast.makeText(this, "Enter your city name", Toast.LENGTH_SHORT).show()
+        }else if (binding.gender.text.length <= 3){
+            Toast.makeText(this, "Enter your gender", Toast.LENGTH_SHORT).show()
+        }else if (img == ""){
+            Toast.makeText(this, "Capture your image first", Toast.LENGTH_SHORT).show()
+        }else{
+            uploadDataToFireBase()
         }
     }
 
@@ -224,7 +237,7 @@ class EditProfile : AppCompatActivity() {
 //
 //        var imgString = BitMapToString(imageBitmap)
 
-        val userinfo = User(name!!,email!!,UID!!,password!!, city, gender)
+        val userinfo = User(name.toString(),email.toString(), UID.toString(), password.toString(), city, gender)
         Log.d("Data_FIRE", "${name} $email $password $city $gender")
         val rootRef = FirebaseDatabase.getInstance().reference
         val yourRef = rootRef.child("User").child(nodeName).child("User Data")
@@ -259,6 +272,7 @@ class EditProfile : AppCompatActivity() {
                 val model = Mode(uri.toString())
                 root.child("Image").setValue(model)
 //                progressBar.setVisibility(View.INVISIBLE)
+                imageUpload = true
                 Toast.makeText(this, "Uploaded Successfully", Toast.LENGTH_SHORT)
                     .show()
 //                imageView.setImageResource(R.drawable.ic_baseline_add_photo_alternate_24)
